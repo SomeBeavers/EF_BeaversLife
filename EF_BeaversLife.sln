@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_BeaversLife", "EF_BeaversLife\EF_BeaversLife.csproj", "{6B9E9449-E2C6-49A8-99A5-1C8ACB0F7405}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLib_Common", "CoreLib_Common\CoreLib_Common.csproj", "{5E13DFF7-CD36-4CD6-B3B6-FF489A9A51E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B9E9449-E2C6-49A8-99A5-1C8ACB0F7405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9E9449-E2C6-49A8-99A5-1C8ACB0F7405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9E9449-E2C6-49A8-99A5-1C8ACB0F7405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9E9449-E2C6-49A8-99A5-1C8ACB0F7405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E13DFF7-CD36-4CD6-B3B6-FF489A9A51E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E13DFF7-CD36-4CD6-B3B6-FF489A9A51E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E13DFF7-CD36-4CD6-B3B6-FF489A9A51E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E13DFF7-CD36-4CD6-B3B6-FF489A9A51E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8B6EA7C-A9FB-48D4-B07E-163E7DA5F41B}
+	EndGlobalSection
+EndGlobal
