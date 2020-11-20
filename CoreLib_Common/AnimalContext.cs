@@ -16,6 +16,11 @@ namespace CoreLib_Common
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<Drawback> Drawbacks { get; set; }
+        public DbSet<JobDrawback> JobDrawbacks { get; set; }
+        public DbSet<Food> Food { get; set; }
+        public DbSet<NormalFood> NormalFood { get; set; }
+        public DbSet<VeganFood> VeganFood { get; set; }
 
         #endregion
 
@@ -72,6 +77,25 @@ namespace CoreLib_Common
                 entity.Property(e => e.TheGrade)
                       .HasColumnType("decimal(3, 2)")
                       .HasAnnotation("Relational:ColumnType", "decimal(3, 2)");
+            });
+
+            // Many-to-many old style
+            modelBuilder.Entity<JobDrawback>(entity =>
+            {
+                entity.HasKey(j => new
+                {
+                    j.JobId, j.DrawbackId
+                });
+
+                entity.HasOne(jd => jd.Job)
+                      .WithMany(j => j.JobDrawbacks)
+                      .HasForeignKey(x => x.JobId)
+                      .OnDelete(DeleteBehavior.ClientSetNull);
+
+                entity.HasOne(jd => jd.Drawback)
+                      .WithMany(d => d.JobDrawbacks)
+                      .HasForeignKey(x => x.DrawbackId)
+                      .OnDelete(DeleteBehavior.ClientSetNull);
             });
         }
     }

@@ -4,20 +4,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoreLib_Common.Model
 {
-    public class Job
+    public class Drawback
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Title { get; set; }
-        public int Salary { get; set; }
 
-        public virtual ICollection<Animal>? Animals { get; set; }
         public virtual ICollection<JobDrawback>? JobDrawbacks { get; set; }
+        public virtual ICollection<Food>? Foods { get; set; }
+        public virtual ICollection<Club>? Clubs { get; set; }
 
         public override string ToString()
         {
-            return $"Job : Id = {Id} Title = {Title}";
+            return $"Drawback : Id = {Id} Title = {Title}";
         }
     }
 }

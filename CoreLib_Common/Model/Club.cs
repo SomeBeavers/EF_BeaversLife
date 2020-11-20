@@ -15,6 +15,7 @@ namespace CoreLib_Common.Model
         public virtual ICollection<Animal>? Animals { get; set; }
         public virtual ICollection<Location> Locations { get; set; }
         public virtual ICollection<Grade> Grades { get; set; }
+        public virtual ICollection<Drawback>? Drawbacks { get; set; }
 
         public override string ToString()
         {

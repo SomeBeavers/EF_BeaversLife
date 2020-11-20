@@ -12,10 +12,12 @@ namespace CoreLib_Common.Model
         public int Id { get; set; }
         public string? Name { get; set; }
         public int Age { get; set; }
+
         public virtual List<Club>? Clubs { get; set; }
         public virtual ICollection<Grade>? Grades { get; set; }
         public virtual Job Job { get; set; }
         public int? JobId { get; set; }
+        public virtual Food Food { get; set; }
 
         //public JsonDocument? Passport { get; set; }
 

@@ -18,17 +18,17 @@ namespace EF_BeaversLife
             SeedDB();
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Test1();
+            PrintTest();
 
             Console.ForegroundColor = ConsoleColor.White;
 
             using var context = new AnimalContext();
 
-            context.Database.EnsureDeleted();
+            //context.Database.EnsureDeleted();
         }
 
         // TODO [for me]: use ef_method template to generate simple ef method
-        private static void Test1()
+        private static void PrintTest()
         {
             using var context = new AnimalContext();
             var s = context.Clubs;
@@ -40,6 +40,10 @@ namespace EF_BeaversLife
                                          .Include(x => x.Clubs)
                                          .Include(x => x.Grades)
                                          .Include(x => x.Job)
+                                         .ThenInclude(j => j.JobDrawbacks)
+                                         .ThenInclude(jd => jd.Drawback)
+                                         .Include(x => x.Food)
+                                         .ThenInclude(x => x.Drawbacks)
                                          // other
                                          .OrderBy(x => x.Id)
                                          .First();
@@ -78,6 +82,32 @@ namespace EF_BeaversLife
                 Console.Write("\t");
 
                 Console.WriteLine(firstBeaver.Job);
+
+                if (firstBeaver.Job?.JobDrawbacks != null)
+                {
+                    foreach (var drawback in firstBeaver.Job.JobDrawbacks)
+                    {
+                        Console.Write("\t");
+                        Console.Write("\t");
+
+                        Console.WriteLine(drawback.Drawback);
+                    }
+                }
+
+                Console.Write("\t");
+
+                Console.WriteLine(firstBeaver.Food);
+
+                if (firstBeaver.Food.Drawbacks != null)
+                {
+                    foreach (var drawback in firstBeaver.Food.Drawbacks)
+                    {
+                        Console.Write("\t");
+                        Console.Write("\t");
+
+                        Console.WriteLine(drawback);
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -534,6 +564,250 @@ namespace EF_BeaversLife
             context.Jobs.Add(job1);
             context.Jobs.Add(job2);
             context.Jobs.Add(job3);
+
+            #endregion
+
+            #region Seed TPH (Food)
+
+            var food1 = new NormalFood
+            {
+                Title = "Elm",
+                Animal = beaver1,
+                Taste = Taste.Normal
+            };
+            var food2 = new VeganFood
+            {
+                Title = "Daphne laureola",
+                Animal = beaver2,
+                Calories = 100
+            };
+            var food3 = new VeganFood
+            {
+                Title = "Carpinus betulus",
+                Animal = beaver3,
+                Calories = 1001
+            };
+            var food4 = new VeganFood
+            {
+                Title = "Hornbeam",
+                Animal = beaver4,
+                Calories = 101
+            };
+            var food5 = new NormalFood
+            {
+                Title = "Pizza",
+                Animal = beaver5,
+                Taste = Taste.Excellent
+            };
+            var food6 = new NormalFood
+            {
+                Title = "Steak",
+                Animal = crow1,
+                Taste = Taste.Excellent
+            };
+            var food7 = new NormalFood
+            {
+                Title = "Meat",
+                Animal = crow2,
+                Taste = Taste.Good
+            };
+            var food8 = new NormalFood
+            {
+                Title = "Pizza",
+                Animal = crow3,
+                Taste = Taste.VeryGood
+            };
+            var food9 = new VeganFood
+            {
+                Title = "Corn",
+                Animal = crow4,
+                Calories = 1
+            };
+            var food10 = new NormalFood
+            {
+                Title = "Pizza",
+                Animal = crow5,
+                Taste = Taste.Normal
+            };
+            var food11 = new VeganFood
+            {
+                Title = "Pizza",
+                Animal = deer1,
+                Calories = 10
+            };
+            var food12 = new VeganFood
+            {
+                Title = "Pizza",
+                Animal = deer2,
+                Calories = 10
+            };
+            var food13 = new VeganFood
+            {
+                Title = "Pizza",
+                Animal = deer3,
+                Calories = 10
+            };
+            var food14 = new VeganFood
+            {
+                Title = "Pizza",
+                Animal = deer4,
+                Calories = 10
+            };
+            var food15 = new VeganFood
+            {
+                Title = "Pizza",
+                Animal = deer5,
+                Calories = 10
+            };
+            var food16 = new VeganFood
+            {
+                Title = "Pizza",
+                Animal = deer6,
+                Calories = 10
+            };
+            var food17 = new NormalFood
+            {
+                Title = "Elves",
+                Animal = deer7,
+                Taste = Taste.Excellent
+            };
+            var food18 = new VeganFood
+            {
+                Title = "Pizza",
+                Animal = deer8,
+                Calories = 10
+            };
+
+            context.Food.Add(food1);
+            context.Food.Add(food2);
+            context.Food.Add(food3);
+            context.Food.Add(food4);
+            context.Food.Add(food5);
+            context.Food.Add(food6);
+            context.Food.Add(food7);
+            context.Food.Add(food8);
+            context.Food.Add(food9);
+            context.Food.Add(food10);
+            context.Food.Add(food11);
+            context.Food.Add(food12);
+            context.Food.Add(food13);
+            context.Food.Add(food14);
+            context.Food.Add(food15);
+            context.Food.Add(food16);
+            context.Food.Add(food17);
+            context.Food.Add(food18);
+
+            #endregion
+
+            #region Seed Many-to-many old style (Drawback)
+
+            var drawback1 = new Drawback
+            {
+                Title = "Crowdy",
+                Foods = new List<Food>
+                {
+                    food1, food2, food3, food4, /*food5,*/ food6, food7, food8, food9, food10, food11, food12, food13,
+                    food14, food15, food16, food17, food18
+                },
+                Clubs = new List<Club>
+                {
+                    club1, club2, club3
+                }
+            };
+            var drawback2 = new Drawback
+            {
+                Title = "Windy",
+                Foods = new List<Food>
+                {
+                    food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, food11, food12, food13,
+                    food14, food15, food16, food17, food18
+                },
+                Clubs = new List<Club>
+                {
+                    club1, club2, club3
+                }
+            };
+            var drawback3 = new Drawback
+            {
+                Title = "Soggy",
+                Foods = new List<Food>
+                {
+                    food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, food11, food12, food13,
+                    food14, food15, food16, food17, food18
+                },
+                Clubs = new List<Club>
+                {
+                    club1, club2, club3
+                }
+            };
+            var drawback4 = new Drawback
+            {
+                Title = "Hardy",
+                Foods = new List<Food>
+                {
+                    food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, food11, food12, food13,
+                    food14, food15, food16, food17, food18
+                },
+                Clubs = new List<Club>
+                {
+                    club1, club2, club3
+                }
+            };
+
+            context.Drawbacks.Add(drawback1);
+            context.Drawbacks.Add(drawback2);
+            context.Drawbacks.Add(drawback3);
+            context.Drawbacks.Add(drawback4);
+
+            var jobDrawback1 = new JobDrawback
+            {
+                Job = job1,
+                Drawback = drawback1
+            };
+            var jobDrawback2 = new JobDrawback
+            {
+                Job = job1,
+                Drawback = drawback2
+            };
+            var jobDrawback3 = new JobDrawback
+            {
+                Job = job1,
+                Drawback = drawback3
+            };
+            var jobDrawback4 = new JobDrawback
+            {
+                Job = job1,
+                Drawback = drawback4
+            };
+            var jobDrawback5 = new JobDrawback
+            {
+                Job = job2,
+                Drawback = drawback1
+            };
+            var jobDrawback6 = new JobDrawback
+            {
+                Job = job2,
+                Drawback = drawback2
+            };
+            var jobDrawback7 = new JobDrawback
+            {
+                Job = job3,
+                Drawback = drawback1
+            };
+            var jobDrawback8 = new JobDrawback
+            {
+                Job = job3,
+                Drawback = drawback2
+            };
+
+            context.JobDrawbacks.Add(jobDrawback1);
+            context.JobDrawbacks.Add(jobDrawback2);
+            context.JobDrawbacks.Add(jobDrawback3);
+            context.JobDrawbacks.Add(jobDrawback4);
+            context.JobDrawbacks.Add(jobDrawback5);
+            context.JobDrawbacks.Add(jobDrawback6);
+            context.JobDrawbacks.Add(jobDrawback7);
+            context.JobDrawbacks.Add(jobDrawback8);
 
             #endregion
 
