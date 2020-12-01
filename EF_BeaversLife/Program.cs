@@ -6,6 +6,7 @@ using System.Linq;
 using CoreLib_Common;
 using CoreLib_Common.Model;
 using EF_BeaversLife.Queries;
+using Microsoft.EntityFrameworkCore;
 
 #endregion
 
@@ -40,6 +41,14 @@ namespace EF_BeaversLife
         private static void SeedDB()
         {
             using var context = new AnimalContext();
+
+            context.SavedChanges += (sender, args) =>
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(
+                    $"Saved {args.EntitiesSavedCount} changes for {((DbContext) sender).Database.GetConnectionString()}");
+                Console.ForegroundColor = ConsoleColor.White;
+            };
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
@@ -733,7 +742,6 @@ namespace EF_BeaversLife
 
             #endregion
 
-
             context.SaveChanges();
 
             #region Seed Property Bags (Category, Product)
@@ -746,8 +754,6 @@ namespace EF_BeaversLife
 
             context.Categories.Add(category1);
 
-            #endregion
-
             context.SaveChanges();
 
             var product1 = new Dictionary<string, object>
@@ -757,6 +763,8 @@ namespace EF_BeaversLife
             };
 
             context.Products.Add(product1);
+
+            #endregion
 
             context.SaveChanges();
         }

@@ -50,6 +50,7 @@ namespace CoreLib_Common
                 //optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;"+
                 //                            "MultipleActiveResultSets=True");
                 optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
+                optionsBuilder.AddInterceptors(new MySaveChangesInterceptor());
             }
         }
 

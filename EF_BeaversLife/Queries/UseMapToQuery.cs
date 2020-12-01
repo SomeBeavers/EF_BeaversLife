@@ -12,6 +12,8 @@ namespace EF_BeaversLife.Queries
 
             var mapToQueries = context.MapToQuery.Include(x => x.Club);
 
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
             foreach (var mapToQuery in mapToQueries)
             {
                 Console.WriteLine(mapToQuery);
@@ -19,7 +21,7 @@ namespace EF_BeaversLife.Queries
                 Console.WriteLine(mapToQuery.Club);
             }
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
         }
     }

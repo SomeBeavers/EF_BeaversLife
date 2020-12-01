@@ -92,6 +92,8 @@ namespace EF_BeaversLife.Queries
             {
                 Console.WriteLine(e);
             }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void PrintTest2()
@@ -99,14 +101,14 @@ namespace EF_BeaversLife.Queries
             using var context = new AnimalContext();
 
             var products = context.Products;
-
+            Console.ForegroundColor = ConsoleColor.Magenta;
             foreach (var product in products)
             {
                 Console.WriteLine(product["Id"]);
                 Console.WriteLine(product["CategoryId"]);
             }
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
         }
     }
