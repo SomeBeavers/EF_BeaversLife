@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreLib_Common;
 using CoreLib_Common.Model;
 using EF_BeaversLife.Queries;
@@ -23,13 +24,14 @@ namespace EF_BeaversLife
 
             using var context = new AnimalContext();
 
-            //context.Database.EnsureDeleted();
+            context.Database.EnsureDeleted();
         }
 
         private static void ExecuteQueries()
         {
             new UseMapToQuery().MapToQuery1();
             new UseMix().PrintTest();
+            new UseMix().PrintTest2();
         }
 
         // TODO [for me]: use ef_method template to generate simple ef method
@@ -730,6 +732,31 @@ namespace EF_BeaversLife
             context.JobDrawbacks.Add(jobDrawback8);
 
             #endregion
+
+
+            context.SaveChanges();
+
+            #region Seed Property Bags (Category, Product)
+
+            var category1 = new Dictionary<string, object>
+            {
+                ["Name"] = "Beverages",
+                ["FoodId"] = food1.Id
+            };
+
+            context.Categories.Add(category1);
+
+            #endregion
+
+            context.SaveChanges();
+
+            var product1 = new Dictionary<string, object>
+            {
+                ["Name"] = "Product1",
+                ["CategoryId"] = context.Categories.First()["Id"]
+            };
+
+            context.Products.Add(product1);
 
             context.SaveChanges();
         }

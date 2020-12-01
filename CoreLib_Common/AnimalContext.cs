@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CoreLib_Common.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -22,6 +23,10 @@ namespace CoreLib_Common
         public DbSet<NormalFood> NormalFood { get; set; }
         public DbSet<VeganFood> VeganFood { get; set; }
         public DbSet<MapToQuery> MapToQuery { get; set; }
+
+        // Property bags
+        public DbSet<Dictionary<string, object>> Products => Set<Dictionary<string, object>>("Product");
+        public DbSet<Dictionary<string, object>> Categories => Set<Dictionary<string, object>>("Category");
 
         #endregion
 
@@ -109,6 +114,25 @@ namespace CoreLib_Common
                               select cr.Id, 2, 1, ac.ClubId as ClubId  from Crows cr
                               inner join AnimalClub ac on cr.Id = ac.AnimalId
                     ");
+
+            // Property bags
+            modelBuilder.SharedTypeEntity<Dictionary<string, object>>("Category", category =>
+            {
+                category.IndexerProperty<int>("Id");
+                category.IndexerProperty<string>("Name").IsRequired();
+                category.IndexerProperty<int?>("FoodId");
+
+                category.HasOne(typeof(Food)).WithOne() /*.HasForeignKey("Category", "FoodId")*/;
+            });
+
+            modelBuilder.SharedTypeEntity<Dictionary<string, object>>("Product", product =>
+            {
+                product.IndexerProperty<int>("Id");
+                product.IndexerProperty<string>("Name").IsRequired();
+                product.IndexerProperty<int?>("CategoryId");
+
+                product.HasOne("Category", null).WithMany();
+            });
         }
     }
 }

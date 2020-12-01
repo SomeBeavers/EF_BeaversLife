@@ -93,5 +93,21 @@ namespace EF_BeaversLife.Queries
                 Console.WriteLine(e);
             }
         }
+
+        public void PrintTest2()
+        {
+            using var context = new AnimalContext();
+
+            var products = context.Products;
+
+            foreach (var product in products)
+            {
+                Console.WriteLine(product["Id"]);
+                Console.WriteLine(product["CategoryId"]);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine();
+        }
     }
 }
