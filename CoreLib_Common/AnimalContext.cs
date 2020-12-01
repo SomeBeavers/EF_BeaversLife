@@ -21,6 +21,7 @@ namespace CoreLib_Common
         public DbSet<Food> Food { get; set; }
         public DbSet<NormalFood> NormalFood { get; set; }
         public DbSet<VeganFood> VeganFood { get; set; }
+        public DbSet<MapToQuery> MapToQuery { get; set; }
 
         #endregion
 
@@ -39,8 +40,10 @@ namespace CoreLib_Common
             if (!optionsBuilder.IsConfigured)
             {
                 // TODO: fix connection property
-                optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;"+
+                optionsBuilder.UseSqlServer("Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;"+
                                             "MultipleActiveResultSets=True");
+                //optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;"+
+                //                            "MultipleActiveResultSets=True");
                 optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
             }
         }
@@ -97,6 +100,15 @@ namespace CoreLib_Common
                       .HasForeignKey(x => x.DrawbackId)
                       .OnDelete(DeleteBehavior.ClientSetNull);
             });
+
+            //Map entity types to queries
+            modelBuilder.Entity<MapToQuery>().ToSqlQuery(
+                @"    select b.Id, b.Fluffiness, b.Size, ac.ClubId as ClubId from Beavers b
+                              inner join AnimalClub ac on b.Id = ac.AnimalId
+                              Union all
+                              select cr.Id, 2, 1, ac.ClubId as ClubId  from Crows cr
+                              inner join AnimalClub ac on cr.Id = ac.AnimalId
+                    ");
         }
     }
 }

@@ -2,10 +2,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using CoreLib_Common;
 using CoreLib_Common.Model;
-using Microsoft.EntityFrameworkCore;
+using EF_BeaversLife.Queries;
 
 #endregion
 
@@ -18,7 +17,7 @@ namespace EF_BeaversLife
             SeedDB();
 
             Console.ForegroundColor = ConsoleColor.Green;
-            PrintTest();
+            ExecuteQueries();
 
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -27,93 +26,14 @@ namespace EF_BeaversLife
             //context.Database.EnsureDeleted();
         }
 
-        // TODO [for me]: use ef_method template to generate simple ef method
-        private static void PrintTest()
+        private static void ExecuteQueries()
         {
-            using var context = new AnimalContext();
-            var s = context.Clubs;
-
-            try
-            {
-                var firstBeaver = context.Beavers
-                                         // includes
-                                         .Include(x => x.Clubs)
-                                         .Include(x => x.Grades)
-                                         .Include(x => x.Job)
-                                         .ThenInclude(j => j.JobDrawbacks)
-                                         .ThenInclude(jd => jd.Drawback)
-                                         .Include(x => x.Food)
-                                         .ThenInclude(x => x.Drawbacks)
-                                         // other
-                                         .OrderBy(x => x.Id)
-                                         .First();
-
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine(firstBeaver);
-
-                if (firstBeaver.Clubs != null)
-                {
-                    foreach (var club in firstBeaver.Clubs)
-                    {
-                        Console.Write("\t");
-
-                        Console.WriteLine(club);
-
-                        foreach (var location in club.Locations)
-                        {
-                            Console.Write("\t");
-                            Console.Write("\t");
-
-                            Console.WriteLine(location);
-                        }
-                    }
-                }
-
-                if (firstBeaver.Grades != null)
-                {
-                    foreach (var grade in firstBeaver.Grades)
-                    {
-                        Console.Write("\t");
-
-                        Console.WriteLine(grade);
-                    }
-                }
-
-                Console.Write("\t");
-
-                Console.WriteLine(firstBeaver.Job);
-
-                if (firstBeaver.Job?.JobDrawbacks != null)
-                {
-                    foreach (var drawback in firstBeaver.Job.JobDrawbacks)
-                    {
-                        Console.Write("\t");
-                        Console.Write("\t");
-
-                        Console.WriteLine(drawback.Drawback);
-                    }
-                }
-
-                Console.Write("\t");
-
-                Console.WriteLine(firstBeaver.Food);
-
-                if (firstBeaver.Food.Drawbacks != null)
-                {
-                    foreach (var drawback in firstBeaver.Food.Drawbacks)
-                    {
-                        Console.Write("\t");
-                        Console.Write("\t");
-
-                        Console.WriteLine(drawback);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            new UseMapToQuery().MapToQuery1();
+            new UseMix().PrintTest();
         }
+
+        // TODO [for me]: use ef_method template to generate simple ef method
+
 
         private static void SeedDB()
         {
@@ -276,15 +196,15 @@ namespace EF_BeaversLife
                 Animals = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5, crow4},
                 Locations = new List<Location>
                 {
-                    new Location
+                    new()
                     {
                         Address = "North America"
                     },
-                    new Location
+                    new()
                     {
                         Address = "Canada"
                     },
-                    new Location
+                    new()
                     {
                         Address = "Russia"
                     }
@@ -297,7 +217,7 @@ namespace EF_BeaversLife
                 Animals = new List<Animal> {crow1, crow2, crow3, crow4, crow5},
                 Locations = new List<Location>
                 {
-                    new Location
+                    new()
                     {
                         Address = "Westeros"
                     }
@@ -315,7 +235,7 @@ namespace EF_BeaversLife
                 },
                 Locations = new List<Location>
                 {
-                    new Location
+                    new()
                     {
                         Address = "North Pole"
                     }
