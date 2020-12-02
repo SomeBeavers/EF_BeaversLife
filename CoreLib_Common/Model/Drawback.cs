@@ -14,6 +14,7 @@ namespace CoreLib_Common.Model
         public virtual ICollection<JobDrawback>? JobDrawbacks { get; set; }
         public virtual ICollection<Food>? Foods { get; set; }
         public virtual ICollection<Club>? Clubs { get; set; }
+        public virtual Consequence Consequence { get; set; }
 
         public override string ToString()
         {

@@ -70,6 +70,12 @@ namespace EF_BeaversLife.Queries
                         Console.Write("\t");
 
                         Console.WriteLine(drawback.Drawback);
+
+                        Console.Write("\t");
+                        Console.Write("\t");
+                        Console.Write("\t");
+
+                        Console.WriteLine(drawback.Drawback.Consequence);
                     }
                 }
 

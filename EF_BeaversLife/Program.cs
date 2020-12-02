@@ -643,6 +643,10 @@ namespace EF_BeaversLife
                 Clubs = new List<Club>
                 {
                     club1, club2, club3
+                },
+                Consequence = new Consequence
+                {
+                    Name = "Nervousness"
                 }
             };
             var drawback2 = new Drawback
@@ -656,6 +660,10 @@ namespace EF_BeaversLife
                 Clubs = new List<Club>
                 {
                     club1, club2, club3
+                },
+                Consequence = new Consequence
+                {
+                    Name = "Teleportation to Land of Oz"
                 }
             };
             var drawback3 = new Drawback
@@ -669,6 +677,10 @@ namespace EF_BeaversLife
                 Clubs = new List<Club>
                 {
                     club1, club2, club3
+                },
+                Consequence = new Consequence
+                {
+                    Name = "Wet clothes"
                 }
             };
             var drawback4 = new Drawback
@@ -682,6 +694,10 @@ namespace EF_BeaversLife
                 Clubs = new List<Club>
                 {
                     club1, club2, club3
+                },
+                Consequence = new Consequence
+                {
+                    Name = "Sadness"
                 }
             };
 

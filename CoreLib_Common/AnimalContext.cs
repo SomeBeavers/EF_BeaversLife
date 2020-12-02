@@ -134,6 +134,14 @@ namespace CoreLib_Common
 
                 product.HasOne("Category", null).WithMany();
             });
+
+            // Required 1:1 dependents
+            modelBuilder.Entity<Drawback>(drawback =>
+            {
+                drawback.OwnsOne(d => d.Consequence,
+                    cons => { cons.Property(c => c.Name).IsRequired(); });
+                drawback.Navigation(d => d.Consequence).IsRequired();
+            });
         }
     }
 }
