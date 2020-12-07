@@ -25,11 +25,13 @@ namespace EF_BeaversLife
 
             using var context = new AnimalContext();
 
-            context.Database.EnsureDeleted();
+            //context.Database.EnsureDeleted();
         }
 
         private static void ExecuteQueries()
         {
+            // TODO: execute SQL script when db is created
+            //new UseTVF().UseTVF1();
             new UseMapToQuery().MapToQuery1();
             new UseMix().PrintTest();
             new UseMix().PrintTest2();
@@ -207,15 +209,15 @@ namespace EF_BeaversLife
                 Animals = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5, crow4},
                 Locations = new List<Location>
                 {
-                    new()
+                    new Location
                     {
                         Address = "North America"
                     },
-                    new()
+                    new Location
                     {
                         Address = "Canada"
                     },
-                    new()
+                    new Location
                     {
                         Address = "Russia"
                     }
@@ -228,7 +230,7 @@ namespace EF_BeaversLife
                 Animals = new List<Animal> {crow1, crow2, crow3, crow4, crow5},
                 Locations = new List<Location>
                 {
-                    new()
+                    new Location
                     {
                         Address = "Westeros"
                     }
@@ -246,7 +248,7 @@ namespace EF_BeaversLife
                 },
                 Locations = new List<Location>
                 {
-                    new()
+                    new Location
                     {
                         Address = "North Pole"
                     }

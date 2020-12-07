@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreLib_Common.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -23,10 +24,17 @@ namespace CoreLib_Common
         public DbSet<NormalFood> NormalFood { get; set; }
         public DbSet<VeganFood> VeganFood { get; set; }
         public DbSet<MapToQuery> MapToQuery { get; set; }
+        //public DbSet<AnimalLocation> AnimalLocation { get; set; }
 
         // Property bags
         public DbSet<Dictionary<string, object>> Products => Set<Dictionary<string, object>>("Product");
         public DbSet<Dictionary<string, object>> Categories => Set<Dictionary<string, object>>("Category");
+
+        public IQueryable<AnimalLocation> GetAnimalLocation(
+            int animalId)
+        {
+            return FromExpression(() => GetAnimalLocation(animalId));
+        }
 
         #endregion
 
@@ -45,10 +53,12 @@ namespace CoreLib_Common
             if (!optionsBuilder.IsConfigured)
             {
                 // TODO: fix connection property
-                optionsBuilder.UseSqlServer("Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;"+
-                                            "MultipleActiveResultSets=True");
-                //optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;"+
+                //optionsBuilder.UseSqlServer("Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;"+
                 //                            "MultipleActiveResultSets=True");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
+                                            "MultipleActiveResultSets=True"
+                    //, b=> b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
+                );
                 optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
                 optionsBuilder.AddInterceptors(new MySaveChangesInterceptor());
             }
@@ -142,6 +152,10 @@ namespace CoreLib_Common
                     cons => { cons.Property(c => c.Name).IsRequired(); });
                 drawback.Navigation(d => d.Consequence).IsRequired();
             });
+
+            // Table-valued functions
+            modelBuilder.Entity(typeof(AnimalLocation)).HasNoKey();
+            modelBuilder.HasDbFunction(() => GetAnimalLocation(default));
         }
     }
 }
