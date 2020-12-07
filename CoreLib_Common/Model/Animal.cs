@@ -10,6 +10,8 @@ namespace CoreLib_Common.Model
     [Index(nameof(Name), IsUnique = true)]
     public class Animal
     {
+        private Food _food = null!;
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -21,7 +23,13 @@ namespace CoreLib_Common.Model
         public virtual ICollection<Grade>? Grades { get; set; }
         public virtual Job Job { get; set; } = null!;
         public int? JobId { get; set; }
-        public virtual Food Food { get; set; } = null!;
+
+        [BackingField(nameof(_food))]
+        public virtual Food Food
+        {
+            get => _food;
+            set => _food = value;
+        }
 
         // Translates to string in db so Include is not needed.
         public IPAddress IpAddress { get; set; } = null!;
