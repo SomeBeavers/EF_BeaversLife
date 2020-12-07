@@ -5,7 +5,7 @@ namespace CoreLib_Common.Model
     //[Table("Crow")]
     public class Crow : Animal
     {
-        public string Color { get; set; }
+        public string Color { get; set; } = null!;
 
         [NotMapped]
         public int Size { get; set; }

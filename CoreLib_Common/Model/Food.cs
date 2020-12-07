@@ -9,9 +9,10 @@ namespace CoreLib_Common.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Title { get; set; }
 
-        public virtual Animal Animal { get; set; }
+        public string Title { get; set; } = null!;
+
+        public virtual Animal Animal { get; set; } = null!;
         public int? AnimalId { get; set; }
 
         public virtual ICollection<Drawback>? Drawbacks { get; set; }

@@ -14,9 +14,9 @@ namespace EF_BeaversLife
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            SeedDB();
+            SeedDb();
 
             Console.ForegroundColor = ConsoleColor.Green;
             ExecuteQueries();
@@ -40,7 +40,7 @@ namespace EF_BeaversLife
         // TODO [for me]: use ef_method template to generate simple ef method
 
 
-        private static void SeedDB()
+        private static void SeedDb()
         {
             using var context = new AnimalContext();
 
@@ -48,7 +48,7 @@ namespace EF_BeaversLife
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(
-                    $"Saved {args.EntitiesSavedCount} changes for {((DbContext) sender).Database.GetConnectionString()}");
+                    $"Saved {args.EntitiesSavedCount} changes for {((DbContext) sender)?.Database.GetConnectionString()}");
                 Console.ForegroundColor = ConsoleColor.White;
             };
 

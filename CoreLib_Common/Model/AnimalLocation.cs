@@ -3,8 +3,8 @@
     // Table-valued functions
     public class AnimalLocation
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
+        public string Name { get; set; } = null!;
+        public string Address { get; set; } = null!;
 
         public override string ToString()
         {

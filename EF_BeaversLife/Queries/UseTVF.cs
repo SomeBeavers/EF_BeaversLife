@@ -3,8 +3,10 @@ using CoreLib_Common;
 
 namespace EF_BeaversLife.Queries
 {
+    // ReSharper disable once InconsistentNaming
     public class UseTVF
     {
+        // ReSharper disable once InconsistentNaming
         public void UseTVF1()
         {
             using var context = new AnimalContext();

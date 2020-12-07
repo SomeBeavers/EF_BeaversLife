@@ -10,7 +10,7 @@ namespace EF_BeaversLife.Queries
         public void PrintTest()
         {
             using var context = new AnimalContext();
-            var s = context.Clubs;
+            var unused = context.Clubs;
 
             try
             {
@@ -62,8 +62,7 @@ namespace EF_BeaversLife.Queries
 
                 Console.WriteLine(firstBeaver.Job);
 
-                if (firstBeaver.Job?.JobDrawbacks != null)
-                {
+                if (firstBeaver.Job.JobDrawbacks != null)
                     foreach (var drawback in firstBeaver.Job.JobDrawbacks)
                     {
                         Console.Write("\t");
@@ -77,7 +76,6 @@ namespace EF_BeaversLife.Queries
 
                         Console.WriteLine(drawback.Drawback.Consequence);
                     }
-                }
 
                 Console.Write("\t");
 

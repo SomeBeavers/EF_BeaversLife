@@ -9,12 +9,13 @@ namespace CoreLib_Common.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Title { get; set; }
-        public NotMappedText LocalizedText { get; set; }
+
+        public string Title { get; set; } = null!;
+        public NotMappedText LocalizedText { get; set; } = null!;
 
         public virtual ICollection<Animal>? Animals { get; set; }
-        public virtual ICollection<Location> Locations { get; set; }
-        public virtual ICollection<Grade> Grades { get; set; }
+        public virtual ICollection<Location> Locations { get; set; } = null!;
+        public virtual ICollection<Grade> Grades { get; set; } = null!;
         public virtual ICollection<Drawback>? Drawbacks { get; set; }
 
         public override string ToString()
@@ -26,6 +27,6 @@ namespace CoreLib_Common.Model
     [NotMapped]
     public class NotMappedText
     {
-        public string LocalizedText { get; set; }
+        public string LocalizedText { get; set; } = null!;
     }
 }

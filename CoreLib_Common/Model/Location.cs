@@ -5,9 +5,9 @@ namespace CoreLib_Common.Model
     [Owned]
     public class Location
     {
-        public string Address { get; set; }
+        public string Address { get; set; } = null!;
 
-        public virtual Club Club { get; set; }
+        public virtual Club Club { get; set; } = null!;
 
         public override string ToString()
         {
