@@ -25,7 +25,6 @@ namespace CoreLib_Common
         public DbSet<VeganFood> VeganFood { get; set; } = null!;
 
         public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
-        //public DbSet<AnimalLocation> AnimalLocation { get; set; }
 
         // Property bags
         public DbSet<Dictionary<string, object>> Products => Set<Dictionary<string, object>>("Product");

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using CoreLib_Common;
 using CoreLib_Common.Model;
 using EF_BeaversLife.Queries;
@@ -12,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EF_BeaversLife
 {
+    // TODO [for me]: use ef_method template to generate simple ef method
+    // TODO [for me]: use format_print to paste Console.Write("\t");
     internal class Program
     {
         private static void Main()
@@ -30,8 +33,8 @@ namespace EF_BeaversLife
 
         private static void ExecuteQueries()
         {
-            new UseSplitQuery().UseSplitQuery1();
-            new UseSplitQuery().UseSplitQuery2();
+            //new UseSplitQuery().UseSplitQuery1();
+            //new UseSplitQuery().UseSplitQuery2();
 
             // TODO: execute SQL script when db is created
             //new UseTVF().UseTVF1();
@@ -39,10 +42,9 @@ namespace EF_BeaversLife
             //new UseMapToQuery().MapToQuery1();
             //new UseMix().PrintTest();
             //new UseMix().PrintTest2();
+            // new UseMix().PrintTest3();
+            new UseMix().PrintTest4();
         }
-
-        // TODO [for me]: use ef_method template to generate simple ef method
-
 
         private static void SeedDb()
         {
@@ -66,35 +68,40 @@ namespace EF_BeaversLife
                 Name = "SomeBeavers1",
                 Age = 27,
                 Fluffiness = FluffinessEnum.VeryFluffy,
-                Size = 15
+                Size = 15,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var beaver2 = new Beaver
             {
                 Name = "SomeBeavers2",
                 Age = 26,
                 Fluffiness = FluffinessEnum.Fluffy,
-                Size = 14
+                Size = 14,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var beaver3 = new Beaver
             {
                 Name = "SomeBeavers3",
                 Age = 25,
                 Fluffiness = FluffinessEnum.NotFluffy,
-                Size = 13
+                Size = 13,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var beaver4 = new Beaver
             {
                 Name = "SomeBeavers4",
                 Age = 24,
                 Fluffiness = FluffinessEnum.Fluffy,
-                Size = 12
+                Size = 12,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var beaver5 = new Beaver
             {
                 Name = "SomeBeavers5",
                 Age = 23,
                 Fluffiness = FluffinessEnum.VeryFluffy,
-                Size = 11
+                Size = 11,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
 
             var crow1 = new Crow
@@ -102,84 +109,97 @@ namespace EF_BeaversLife
                 Name = "Crowly",
                 Age = 5,
                 Color = "black",
-                Size = 1
+                Size = 1,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow2 = new Crow
             {
                 Name = "Crowly1",
                 Age = 5,
                 Color = "black",
-                Size = 1
+                Size = 1,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow3 = new Crow
             {
                 Name = "Crowly2",
                 Age = 22,
                 Color = "black",
-                Size = 4
+                Size = 4,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow4 = new Crow
             {
                 Name = "Crowly3",
                 Age = 50,
                 Color = "white",
-                Size = 10
+                Size = 10,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow5 = new Crow
             {
                 Name = "Crowly4",
                 Age = 5,
                 Color = "pink",
-                Size = 1
+                Size = 1,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
 
             var deer1 = new Deer
             {
                 Name = "Dasher",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer2 = new Deer
             {
                 Name = "Dancer",
                 Age = 2,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer3 = new Deer
             {
                 Name = "Prancer",
                 Age = 1,
-                Horns = false
+                Horns = false,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer4 = new Deer
             {
                 Name = "Vixen",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer5 = new Deer
             {
                 Name = "Comet",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer6 = new Deer
             {
                 Name = "Cupid",
                 Age = 1,
-                Horns = false
+                Horns = false,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer7 = new Deer
             {
                 Name = "Donder ",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer8 = new Deer
             {
                 Name = "Blitzen",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
 
             context.Beavers.Add(beaver1);

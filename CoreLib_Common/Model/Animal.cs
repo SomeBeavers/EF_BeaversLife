@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Net;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoreLib_Common.Model
@@ -22,11 +23,14 @@ namespace CoreLib_Common.Model
         public int? JobId { get; set; }
         public virtual Food Food { get; set; } = null!;
 
+        // Translates to string in db so Include is not needed.
+        public IPAddress IpAddress { get; set; } = null!;
+
         //public JsonDocument? Passport { get; set; }
 
         public override string ToString()
         {
-            return $"Animal : Id = {Id} Clubs = {Clubs?.Count}";
+            return $"Animal : Id = {Id} IpAddress = {IpAddress}";
         }
     }
 }

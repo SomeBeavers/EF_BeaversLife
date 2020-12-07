@@ -115,5 +115,49 @@ namespace EF_BeaversLife.Queries
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
         }
+
+        /// <summary>
+        ///     FirstOrDefault on strings.
+        /// </summary>
+        public void PrintTest3()
+        {
+            using var context = new AnimalContext();
+
+            var animals = context.Animals.Where(animal => animal.Name.FirstOrDefault() == 'S').ToList();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     OrderBy + ThenBy.
+        /// </summary>
+        public void PrintTest4()
+        {
+            using var context = new AnimalContext();
+
+            // ReSharper disable once StringCompareToIsCultureSpecific
+            var clubs = context.Clubs.OrderBy(club => club.Title.CompareTo("CornLovers") == 0).ThenBy(club => club.Id)
+                .Include(club => club.Grades);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var club in clubs)
+            {
+                Console.WriteLine(club);
+                foreach (var grade in club.Grades)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(grade);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
