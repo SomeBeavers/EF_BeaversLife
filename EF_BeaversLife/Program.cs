@@ -30,11 +30,15 @@ namespace EF_BeaversLife
 
         private static void ExecuteQueries()
         {
+            new UseSplitQuery().UseSplitQuery1();
+            new UseSplitQuery().UseSplitQuery2();
+
             // TODO: execute SQL script when db is created
             //new UseTVF().UseTVF1();
-            new UseMapToQuery().MapToQuery1();
-            new UseMix().PrintTest();
-            new UseMix().PrintTest2();
+
+            //new UseMapToQuery().MapToQuery1();
+            //new UseMix().PrintTest();
+            //new UseMix().PrintTest2();
         }
 
         // TODO [for me]: use ef_method template to generate simple ef method

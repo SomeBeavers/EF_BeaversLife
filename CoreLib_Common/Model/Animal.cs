@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreLib_Common.Model
 {
     //[Table("Animals")]
+    [Index(nameof(Name), IsUnique = true)]
     public class Animal
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string? Name { get; set; }
+
+        [MaxLength(128)] public string? Name { get; set; }
         public int Age { get; set; }
 
         public virtual List<Club>? Clubs { get; set; }
