@@ -2,8 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using CoreLib_Common;
 using CoreLib_Common.Model;
 using EF_BeaversLife.Queries;
@@ -17,12 +19,13 @@ namespace EF_BeaversLife
     // TODO [for me]: use format_print to paste Console.Write("\t");
     internal class Program
     {
-        private static void Main()
+        private static async Task Main()
         {
             SeedDb();
 
             Console.ForegroundColor = ConsoleColor.Green;
             ExecuteQueries();
+            await ExecuteQueriesAsync();
 
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -36,7 +39,6 @@ namespace EF_BeaversLife
             //new UseSplitQuery().UseSplitQuery1();
             //new UseSplitQuery().UseSplitQuery2();
 
-            // TODO: execute SQL script when db is created
             //new UseTVF().UseTVF1();
 
             //new UseMapToQuery().MapToQuery1();
@@ -48,8 +50,16 @@ namespace EF_BeaversLife
             //new UseInclude().UseFilteredInclude1();
             //new UseInclude().UseFilteredInclude2();
 
-            new UseAsEnumerable().UseAsEnumerable1();
-            new UseAsEnumerable().UseAsEnumerable2();
+            //new UseAsEnumerable().UseAsEnumerable1();
+            //new UseAsEnumerable().UseAsEnumerable2();
+
+            //new UseRawSql().UseRawSql1();
+            //new UseRawSql().UseRawSql2("Pizza");
+        }
+
+        private static async Task ExecuteQueriesAsync()
+        {
+            await new UseLinq().UseLinq1();
         }
 
         private static void SeedDb()
@@ -815,6 +825,8 @@ namespace EF_BeaversLife
             #endregion
 
             context.SaveChanges();
+
+            context.Database.ExecuteSqlRaw(File.ReadAllText(".\\BD\\CreateTVF.sql"));
         }
     }
 }
