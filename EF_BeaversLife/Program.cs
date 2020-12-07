@@ -49,6 +49,7 @@ namespace EF_BeaversLife
             //new UseInclude().UseFilteredInclude2();
 
             new UseAsEnumerable().UseAsEnumerable1();
+            new UseAsEnumerable().UseAsEnumerable2();
         }
 
         private static void SeedDb()
