@@ -30,7 +30,7 @@ namespace CoreLib_Common.Model
 
         public override string ToString()
         {
-            return $"Animal : Id = {Id} IpAddress = {IpAddress}";
+            return $"Animal : Id = {Id} Name = {Name} IpAddress = {IpAddress}";
         }
     }
 }

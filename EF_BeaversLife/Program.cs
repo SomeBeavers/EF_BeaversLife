@@ -43,7 +43,10 @@ namespace EF_BeaversLife
             //new UseMix().PrintTest();
             //new UseMix().PrintTest2();
             // new UseMix().PrintTest3();
-            new UseMix().PrintTest4();
+            //new UseMix().PrintTest4();
+
+            new UseInclude().UseFilteredInclude1();
+            new UseInclude().UseFilteredInclude2();
         }
 
         private static void SeedDb()
