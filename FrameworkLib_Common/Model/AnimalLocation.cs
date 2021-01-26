@@ -1,4 +1,4 @@
-﻿namespace FrameworkLib_Common.NewFolder1
+﻿namespace FrameworkLib_Common.Model
 {
     // Table-valued functions
     public class AnimalLocation

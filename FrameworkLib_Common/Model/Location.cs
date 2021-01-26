@@ -1,7 +1,8 @@
-﻿namespace FrameworkLib_Common.NewFolder1
+﻿namespace FrameworkLib_Common.Model
 { 
     public class Location
     {
+        public int Id { get; set; }
         public string Address { get; set; } = null!;
 
         public virtual Club Club { get; set; } = null!;

@@ -1,0 +1,60 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=EntityFramework_002ENPlusOne_002EUsage/@EntryIndexedValue">ERROR</s:String>
+	<s:String x:Key="/Default/Environment/InlayHints/GeneralInlayHintsOptions/DefaultMode/@EntryValue">PushToShowHints</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Description/@EntryValue">Create simple async ef method</s:String>
+	
+	
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Field/=Test/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Field/=Test/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">8.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Shortcut/@EntryValue">ef_method_async</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=31AA2ABD8FC17D45BB092F5F54FF765E/Text/@EntryValue">public async void $Test$()&#xD;
+{&#xD;
+	await using var context = new AnimalContext();&#xD;
+&#xD;
+	$END$&#xD;
+&#xD;
+	Console.ForegroundColor = ConsoleColor.Magenta;&#xD;
+&#xD;
+&#xD;
+	Console.ForegroundColor = ConsoleColor.White;&#xD;
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/Shortcut/@EntryValue">format_print</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/Text/@EntryValue">Console.Write("\t");</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D6FC616E93B702479F4CC3D2E3BAFEAA/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Description/@EntryValue">Create simple ef method</s:String>
+	
+	
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Field/=Test/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Field/=Test/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">8.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Shortcut/@EntryValue">ef_method</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=E0C8D2EB2C0E844280742DAB53C57D23/Text/@EntryValue">public void $Test$()&#xD;
+{&#xD;
+	using var context = new AnimalContext();&#xD;
+&#xD;
+	$END$&#xD;
+&#xD;
+	Console.ForegroundColor = ConsoleColor.Magenta;&#xD;
+&#xD;
+&#xD;
+	Console.ForegroundColor = ConsoleColor.White;&#xD;
+}</s:String></wpf:ResourceDictionary>

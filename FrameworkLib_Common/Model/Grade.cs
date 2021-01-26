@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FrameworkLib_Common.NewFolder1
+namespace FrameworkLib_Common.Model
 {
     public class Grade
     {

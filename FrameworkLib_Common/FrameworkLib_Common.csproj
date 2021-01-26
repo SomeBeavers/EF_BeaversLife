@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <Nullable>enable</Nullable>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -57,21 +58,20 @@
   <ItemGroup>
     <Compile Include="AnimalContext.cs" />
     <Compile Include="Model\Beaver.cs" />
-    <Compile Include="NewFolder1\Animal.cs" />
-    <Compile Include="NewFolder1\AnimalClub.cs" />
-    <Compile Include="NewFolder1\AnimalLocation.cs" />
-    <Compile Include="NewFolder1\Beaver.cs" />
-    <Compile Include="NewFolder1\Club.cs" />
-    <Compile Include="NewFolder1\Consequence.cs" />
-    <Compile Include="NewFolder1\Crow.cs" />
-    <Compile Include="NewFolder1\Deer.cs" />
-    <Compile Include="NewFolder1\Drawback.cs" />
-    <Compile Include="NewFolder1\Food.cs" />
-    <Compile Include="NewFolder1\Grade.cs" />
-    <Compile Include="NewFolder1\Job.cs" />
-    <Compile Include="NewFolder1\JobDrawback.cs" />
-    <Compile Include="NewFolder1\Location.cs" />
-    <Compile Include="NewFolder1\MapToQuery.cs" />
+    <Compile Include="Model\Animal.cs" />
+    <Compile Include="Model\AnimalClub.cs" />
+    <Compile Include="Model\AnimalLocation.cs" />
+    <Compile Include="Model\Club.cs" />
+    <Compile Include="Model\Consequence.cs" />
+    <Compile Include="Model\Crow.cs" />
+    <Compile Include="Model\Deer.cs" />
+    <Compile Include="Model\Drawback.cs" />
+    <Compile Include="Model\Food.cs" />
+    <Compile Include="Model\Grade.cs" />
+    <Compile Include="Model\Job.cs" />
+    <Compile Include="Model\JobDrawback.cs" />
+    <Compile Include="Model\Location.cs" />
+    <Compile Include="Model\MapToQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

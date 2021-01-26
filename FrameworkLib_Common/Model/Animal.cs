@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Net;
 
-namespace FrameworkLib_Common.NewFolder1
+namespace FrameworkLib_Common.Model
 {
     //[Table("Animals")]
     public class Animal
@@ -21,14 +21,16 @@ namespace FrameworkLib_Common.NewFolder1
         public virtual ICollection<Grade>? Grades { get; set; }
         public virtual Job Job { get; set; } = null!;
         public int? JobId { get; set; }
-        public virtual Food Food
-        {
-            get => _food;
-            set => _food = value;
-        }
+
+        public virtual Food Food { get; set; } = null!;
+        //public virtual Food Food
+        //{
+        //    get => _food;
+        //    set => _food = value;
+        //}
 
         // Translates to string in db so Include is not needed.
-        public IPAddress IpAddress { get; set; } = null!;
+        public string IpAddress { get; set; } = null!;
 
         //public JsonDocument? Passport { get; set; }
 

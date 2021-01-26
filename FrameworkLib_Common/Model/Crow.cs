@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace FrameworkLib_Common.NewFolder1
+namespace FrameworkLib_Common.Model
 {
     //[Table("Crow")]
     public class Crow : Animal

@@ -1,11 +1,8 @@
 ﻿namespace FrameworkLib_Common.Model
 {
     //[Table("Beaver")]
-    public class Beaver 
-        //: Animal
+    public class Beaver : Animal
     {
-
-        public int BeaverId { get; set; }
         public FluffinessEnum Fluffiness { get; set; }
         public int Size { get; set; }
         public override string ToString()
