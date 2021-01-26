@@ -21,8 +21,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
     - name: Install dependencies
       run: dotnet restore
+    - name: Restore NuGet Packages
+      run: nuget restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
