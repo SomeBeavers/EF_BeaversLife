@@ -53,12 +53,12 @@ namespace CoreLib_Common
             if (!optionsBuilder.IsConfigured)
             {
                 // TODO: fix connection property
-                //optionsBuilder.UseSqlServer("Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;"+
-                //                            "MultipleActiveResultSets=True");
-                optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
-                                            "MultipleActiveResultSets=True"
-                    //, b=> b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
-                );
+                optionsBuilder.UseSqlServer("Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;"+
+                                            "MultipleActiveResultSets=True");
+                //optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
+                //                            "MultipleActiveResultSets=True"
+                //    //, b=> b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
+                //);
                 optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
                 optionsBuilder.AddInterceptors(new MySaveChangesInterceptor());
             }
