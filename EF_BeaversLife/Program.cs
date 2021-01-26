@@ -2,7 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using CoreLib_Common;
 using CoreLib_Common.Model;
 using EF_BeaversLife.Queries;
@@ -12,33 +15,54 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EF_BeaversLife
 {
+    // TODO [for me]: use ef_method template to generate simple ef method
+    // TODO [for me]: use format_print to paste Console.Write("\t");
     internal class Program
     {
-        private static void Main(string[] args)
+        private static async Task Main()
         {
-            SeedDB();
+            SeedDb();
 
             Console.ForegroundColor = ConsoleColor.Green;
             ExecuteQueries();
+            await ExecuteQueriesAsync();
 
             Console.ForegroundColor = ConsoleColor.White;
 
             using var context = new AnimalContext();
 
-            context.Database.EnsureDeleted();
+            //context.Database.EnsureDeleted();
         }
 
         private static void ExecuteQueries()
         {
-            new UseMapToQuery().MapToQuery1();
-            new UseMix().PrintTest();
-            new UseMix().PrintTest2();
+            //new UseSplitQuery().UseSplitQuery1();
+            //new UseSplitQuery().UseSplitQuery2();
+
+            //new UseTVF().UseTVF1();
+
+            //new UseMapToQuery().MapToQuery1();
+            //new UseMix().PrintTest();
+            //new UseMix().PrintTest2();
+            // new UseMix().PrintTest3();
+            //new UseMix().PrintTest4();
+
+            //new UseInclude().UseFilteredInclude1();
+            //new UseInclude().UseFilteredInclude2();
+
+            //new UseAsEnumerable().UseAsEnumerable1();
+            //new UseAsEnumerable().UseAsEnumerable2();
+
+            //new UseRawSql().UseRawSql1();
+            //new UseRawSql().UseRawSql2("Pizza");
         }
 
-        // TODO [for me]: use ef_method template to generate simple ef method
+        private static async Task ExecuteQueriesAsync()
+        {
+            await new UseLinq().UseLinq1();
+        }
 
-
-        private static void SeedDB()
+        private static void SeedDb()
         {
             using var context = new AnimalContext();
 
@@ -46,7 +70,7 @@ namespace EF_BeaversLife
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(
-                    $"Saved {args.EntitiesSavedCount} changes for {((DbContext) sender).Database.GetConnectionString()}");
+                    $"Saved {args.EntitiesSavedCount} changes for {((DbContext) sender)?.Database.GetConnectionString()}");
                 Console.ForegroundColor = ConsoleColor.White;
             };
 
@@ -60,35 +84,40 @@ namespace EF_BeaversLife
                 Name = "SomeBeavers1",
                 Age = 27,
                 Fluffiness = FluffinessEnum.VeryFluffy,
-                Size = 15
+                Size = 15,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var beaver2 = new Beaver
             {
                 Name = "SomeBeavers2",
                 Age = 26,
                 Fluffiness = FluffinessEnum.Fluffy,
-                Size = 14
+                Size = 14,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var beaver3 = new Beaver
             {
                 Name = "SomeBeavers3",
                 Age = 25,
                 Fluffiness = FluffinessEnum.NotFluffy,
-                Size = 13
+                Size = 13,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var beaver4 = new Beaver
             {
                 Name = "SomeBeavers4",
                 Age = 24,
                 Fluffiness = FluffinessEnum.Fluffy,
-                Size = 12
+                Size = 12,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var beaver5 = new Beaver
             {
                 Name = "SomeBeavers5",
                 Age = 23,
                 Fluffiness = FluffinessEnum.VeryFluffy,
-                Size = 11
+                Size = 11,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
 
             var crow1 = new Crow
@@ -96,84 +125,97 @@ namespace EF_BeaversLife
                 Name = "Crowly",
                 Age = 5,
                 Color = "black",
-                Size = 1
+                Size = 1,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow2 = new Crow
             {
                 Name = "Crowly1",
                 Age = 5,
                 Color = "black",
-                Size = 1
+                Size = 1,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow3 = new Crow
             {
                 Name = "Crowly2",
                 Age = 22,
                 Color = "black",
-                Size = 4
+                Size = 4,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow4 = new Crow
             {
                 Name = "Crowly3",
                 Age = 50,
                 Color = "white",
-                Size = 10
+                Size = 10,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow5 = new Crow
             {
                 Name = "Crowly4",
                 Age = 5,
                 Color = "pink",
-                Size = 1
+                Size = 1,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
 
             var deer1 = new Deer
             {
                 Name = "Dasher",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer2 = new Deer
             {
                 Name = "Dancer",
                 Age = 2,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer3 = new Deer
             {
                 Name = "Prancer",
                 Age = 1,
-                Horns = false
+                Horns = false,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer4 = new Deer
             {
                 Name = "Vixen",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer5 = new Deer
             {
                 Name = "Comet",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer6 = new Deer
             {
                 Name = "Cupid",
                 Age = 1,
-                Horns = false
+                Horns = false,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer7 = new Deer
             {
                 Name = "Donder ",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer8 = new Deer
             {
                 Name = "Blitzen",
                 Age = 1,
-                Horns = true
+                Horns = true,
+                IpAddress = IPAddress.Parse("127.0.0.1")
             };
 
             context.Beavers.Add(beaver1);
@@ -207,15 +249,15 @@ namespace EF_BeaversLife
                 Animals = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5, crow4},
                 Locations = new List<Location>
                 {
-                    new()
+                    new Location
                     {
                         Address = "North America"
                     },
-                    new()
+                    new Location
                     {
                         Address = "Canada"
                     },
-                    new()
+                    new Location
                     {
                         Address = "Russia"
                     }
@@ -228,7 +270,7 @@ namespace EF_BeaversLife
                 Animals = new List<Animal> {crow1, crow2, crow3, crow4, crow5},
                 Locations = new List<Location>
                 {
-                    new()
+                    new Location
                     {
                         Address = "Westeros"
                     }
@@ -246,7 +288,7 @@ namespace EF_BeaversLife
                 },
                 Locations = new List<Location>
                 {
-                    new()
+                    new Location
                     {
                         Address = "North Pole"
                     }
@@ -783,6 +825,8 @@ namespace EF_BeaversLife
             #endregion
 
             context.SaveChanges();
+
+            context.Database.ExecuteSqlRaw(File.ReadAllText(".\\BD\\CreateTVF.sql"));
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class Consequence
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         public override string ToString()
         {

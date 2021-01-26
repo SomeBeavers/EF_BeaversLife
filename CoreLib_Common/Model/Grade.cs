@@ -10,8 +10,8 @@ namespace CoreLib_Common.Model
         public int Id { get; set; }
         public double? TheGrade { get; set; }
 
-        public virtual Club Club { get; set; }
-        public virtual Animal Animal { get; set; }
+        public virtual Club Club { get; set; } = null!;
+        public virtual Animal Animal { get; set; } = null!;
 
         public override string ToString()
         {

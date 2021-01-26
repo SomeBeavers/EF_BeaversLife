@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreLib_Common.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -10,23 +11,30 @@ namespace CoreLib_Common
     {
         #region Tables
 
-        public DbSet<Animal> Animals { get; set; }
-        public DbSet<Beaver> Beavers { get; set; }
-        public DbSet<Crow> Crows { get; set; }
-        public DbSet<Deer> Deers { get; set; }
-        public DbSet<Club> Clubs { get; set; }
-        public DbSet<Grade> Grades { get; set; }
-        public DbSet<Job> Jobs { get; set; }
-        public DbSet<Drawback> Drawbacks { get; set; }
-        public DbSet<JobDrawback> JobDrawbacks { get; set; }
-        public DbSet<Food> Food { get; set; }
-        public DbSet<NormalFood> NormalFood { get; set; }
-        public DbSet<VeganFood> VeganFood { get; set; }
-        public DbSet<MapToQuery> MapToQuery { get; set; }
+        public DbSet<Animal> Animals { get; set; } = null!;
+        public DbSet<Beaver> Beavers { get; set; } = null!;
+        public DbSet<Crow> Crows { get; set; } = null!;
+        public DbSet<Deer> Deers { get; set; } = null!;
+        public DbSet<Club> Clubs { get; set; } = null!;
+        public DbSet<Grade> Grades { get; set; } = null!;
+        public DbSet<Job> Jobs { get; set; } = null!;
+        public DbSet<Drawback> Drawbacks { get; set; } = null!;
+        public DbSet<JobDrawback> JobDrawbacks { get; set; } = null!;
+        public DbSet<Food> Food { get; set; } = null!;
+        public DbSet<NormalFood> NormalFood { get; set; } = null!;
+        public DbSet<VeganFood> VeganFood { get; set; } = null!;
+
+        public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 
         // Property bags
         public DbSet<Dictionary<string, object>> Products => Set<Dictionary<string, object>>("Product");
         public DbSet<Dictionary<string, object>> Categories => Set<Dictionary<string, object>>("Category");
+
+        public IQueryable<AnimalLocation> GetAnimalLocation(
+            int animalId)
+        {
+            return FromExpression(() => GetAnimalLocation(animalId));
+        }
 
         #endregion
 
@@ -45,10 +53,12 @@ namespace CoreLib_Common
             if (!optionsBuilder.IsConfigured)
             {
                 // TODO: fix connection property
-                optionsBuilder.UseSqlServer("Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;"+
-                                            "MultipleActiveResultSets=True");
-                //optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;"+
+                //optionsBuilder.UseSqlServer("Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;"+
                 //                            "MultipleActiveResultSets=True");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
+                                            "MultipleActiveResultSets=True"
+                    //, b=> b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
+                );
                 optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
                 optionsBuilder.AddInterceptors(new MySaveChangesInterceptor());
             }
@@ -66,19 +76,19 @@ namespace CoreLib_Common
 
             // Many-to-many
             modelBuilder.Entity<Animal>()
-                        .HasMany(a => a.Clubs)
-                        .WithMany(c => c.Animals)
-                        .UsingEntity<AnimalClub>(
-                            c => c.HasOne(c => c.Club)
-                                  .WithMany().HasForeignKey(c => c.ClubId),
-                            a => a.HasOne(a => a.Animal)
-                                  .WithMany().HasForeignKey(a => a.AnimalId),
-                            j =>
-                            {
-                                j.Property(pt => pt.PublicationDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
-                                j.HasKey(t => new {t.AnimalId, t.ClubId});
-                            }
-                        )
+                .HasMany(a => a.Clubs)
+                .WithMany(c => c.Animals)
+                .UsingEntity<AnimalClub>(
+                    c => c.HasOne(animalClub => animalClub.Club)
+                        .WithMany().HasForeignKey(animalClub => animalClub.ClubId),
+                    a => a.HasOne(animalClub => animalClub.Animal)
+                        .WithMany().HasForeignKey(animalClub => animalClub.AnimalId),
+                    j =>
+                    {
+                        j.Property(pt => pt.PublicationDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        j.HasKey(t => new {t.AnimalId, t.ClubId});
+                    }
+                )
                 ;
 
             modelBuilder.Entity<Grade>(entity =>
@@ -142,6 +152,10 @@ namespace CoreLib_Common
                     cons => { cons.Property(c => c.Name).IsRequired(); });
                 drawback.Navigation(d => d.Consequence).IsRequired();
             });
+
+            // Table-valued functions
+            modelBuilder.Entity(typeof(AnimalLocation)).HasNoKey();
+            modelBuilder.HasDbFunction(() => GetAnimalLocation(default));
         }
     }
 }
