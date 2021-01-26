@@ -23,6 +23,8 @@ jobs:
         dotnet-version: 5.0.x
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Install dependencies
       run: dotnet restore
     - name: Restore NuGet Packages
