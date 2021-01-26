@@ -61,6 +61,9 @@ namespace CoreLib_Common
                 //);
                 optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
                 optionsBuilder.AddInterceptors(new MySaveChangesInterceptor());
+                
+                // TODO: uncomment to use lazy loading.
+                //optionsBuilder.UseLazyLoadingProxies();
             }
         }
 
