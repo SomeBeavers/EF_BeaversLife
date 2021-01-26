@@ -5,7 +5,7 @@
         public int JobId { get; set; }
         public int DrawbackId { get; set; }
 
-        public Job Job { get; set; } = null!;
-        public Drawback Drawback { get; set; } = null!;
+        public virtual Job Job { get; set; } = null!;
+        public virtual Drawback Drawback { get; set; } = null!;
     }
 }
