@@ -73,5 +73,67 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        public void UseStringInInclude1()
+        {
+            using var context = new AnimalContext();
+
+            var animals = context.Animals.Include("Clubs").Include("Grades");
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+                if (animal.Clubs != null)
+                    foreach (var club in animal.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
+                    }
+                if (animal.Grades != null)
+                    foreach (var grade in animal.Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public void UseStringInInclude2()
+        {
+            using var context = new AnimalContext();
+
+            var animals = context.Animals.AsQueryable();
+
+            string includeProperties = "Clubs,Grades";
+            foreach (var includePro in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                animals = animals.Include(includePro);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+                if (animal.Clubs != null)
+                    foreach (var club in animal.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
+                    }
+                if (animal.Grades != null)
+                    foreach (var grade in animal.Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
