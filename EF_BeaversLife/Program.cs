@@ -49,6 +49,8 @@ namespace EF_BeaversLife
 
             //new UseInclude().UseFilteredInclude1();
             //new UseInclude().UseFilteredInclude2();
+            //new UseInclude().UseStringInInclude1();
+            //new UseInclude().UseStringInInclude2();
 
             //new UseAsEnumerable().UseAsEnumerable1();
             //new UseAsEnumerable().UseAsEnumerable2();
@@ -59,7 +61,7 @@ namespace EF_BeaversLife
 
         private static async Task ExecuteQueriesAsync()
         {
-            await new UseLinq().UseLinq1();
+            //await new UseLinq().UseLinq1();
         }
 
         private static void SeedDb()
