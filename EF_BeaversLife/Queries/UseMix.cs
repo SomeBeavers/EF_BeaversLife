@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using CoreLib_Common;
 using Microsoft.EntityFrameworkCore;
 
@@ -156,6 +157,29 @@ namespace EF_BeaversLife.Queries
                     Console.WriteLine(grade);
                 }
             }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// Include is not needed for enum property.
+        /// </summary>
+        public async Task GetEnum()
+        {
+            using var context = new AnimalContext();
+
+            var beaver = await context.Beavers
+                .Include(G => G.Clubs)
+                .FirstOrDefaultAsync(G => G.Id == 1);
+            if (beaver == null)
+            {
+                throw new Exception("");
+            }
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            // Include is not needed
+            Console.WriteLine(beaver.Fluffiness);
 
             Console.ForegroundColor = ConsoleColor.White;
         }
