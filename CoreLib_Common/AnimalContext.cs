@@ -63,7 +63,7 @@ namespace CoreLib_Common
                 optionsBuilder.AddInterceptors(new MySaveChangesInterceptor());
                 
                 // TODO: uncomment to use lazy loading.
-                //optionsBuilder.UseLazyLoadingProxies();
+                optionsBuilder.UseLazyLoadingProxies();
             }
         }
 

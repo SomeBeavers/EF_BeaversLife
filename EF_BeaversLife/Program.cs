@@ -46,6 +46,7 @@ namespace EF_BeaversLife
             //new UseMix().PrintTest2();
             // new UseMix().PrintTest3();
             //new UseMix().PrintTest4();
+            new UseMix().OneToOne();
 
             //new UseInclude().UseFilteredInclude1();
             //new UseInclude().UseFilteredInclude2();

@@ -183,5 +183,26 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        /// 1:1 relation.
+        /// </summary>
+        public void OneToOne()
+        {
+            using var context = new AnimalContext();
+
+            var beavers = context.Beavers;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var beaver in beavers)
+            {
+                Console.WriteLine(beaver);
+                Console.Write("\t");
+                Console.WriteLine(beaver.Food);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
