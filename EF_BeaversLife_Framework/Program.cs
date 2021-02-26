@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using EF_BeaversLife_Framework.Queries;
 using FrameworkLib_Common;
 using FrameworkLib_Common.Model;
 
