@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Net;
+using System.Linq;
 
 namespace FrameworkLib_Common.Model
 {
@@ -12,7 +13,7 @@ namespace FrameworkLib_Common.Model
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int CustomIdName { get; set; }
 
         [MaxLength(128)] public string? Name { get; set; }
         public int Age { get; set; }
@@ -36,7 +37,7 @@ namespace FrameworkLib_Common.Model
 
         public override string ToString()
         {
-            return $"Animal : Id = {Id} Name = {Name} IpAddress = {IpAddress}";
+            return $"Animal : Id = {CustomIdName} Name = {Name} IpAddress = {IpAddress}";
         }
     }
 }
