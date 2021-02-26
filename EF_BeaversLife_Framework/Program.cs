@@ -32,6 +32,7 @@ namespace EF_BeaversLife_Framework
             new UseReferenceLoad().UseReferenceLoad1();
             new UseNotMapped().UseNotMapped1();
             new Mix().UseCustomIdName();
+            new UseComplexType().UseComplexType1();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -661,6 +662,11 @@ namespace EF_BeaversLife_Framework
                 Consequence = new Consequence
                 {
                     Name = "Nervousness"
+                },
+                DrawbackDetail = new DrawbackDetails
+                {
+                    DateCreated = DateTime.Now,
+                    Description = "the quality or state of being nervous"
                 }
             };
             var drawback2 = new Drawback
@@ -678,6 +684,11 @@ namespace EF_BeaversLife_Framework
                 Consequence = new Consequence
                 {
                     Name = "Teleportation to Land of Oz"
+                },
+                DrawbackDetail = new DrawbackDetails
+                {
+                    DateCreated = DateTime.Now,
+                    Description = "hallucination"
                 }
             };
             var drawback3 = new Drawback
@@ -695,6 +706,11 @@ namespace EF_BeaversLife_Framework
                 Consequence = new Consequence
                 {
                     Name = "Wet clothes"
+                },
+                DrawbackDetail = new DrawbackDetails
+                {
+                    DateCreated = DateTime.Now,
+                    Description = "cold"
                 }
             };
             var drawback4 = new Drawback
@@ -712,6 +728,11 @@ namespace EF_BeaversLife_Framework
                 Consequence = new Consequence
                 {
                     Name = "Sadness"
+                },
+                DrawbackDetail = new DrawbackDetails
+                {
+                    DateCreated = DateTime.Now,
+                    Description = "the condition or quality of being sad"
                 }
             };
 

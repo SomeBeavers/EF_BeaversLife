@@ -1,20 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace FrameworkLib_Common.Model
 {
     public class Food
     {
         [Key]
-       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Title { get; set; } = null!;
-
-        public virtual Animal Animal { get; set; } = null!;
-        public int? AnimalId { get; set; }
-
+        public         string                 Title     { get; set; } = null!;
+        public virtual Animal                 Animal    { get; set; } = null!;
+        public         int?                   AnimalId  { get; set; }
         public virtual ICollection<Drawback>? Drawbacks { get; set; }
 
         public override string ToString()
@@ -25,6 +24,7 @@ namespace FrameworkLib_Common.Model
 
     public class NormalFood : Food
     {
+        [Required]
         public Taste Taste { get; set; }
 
         public override string ToString()
