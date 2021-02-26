@@ -24,7 +24,7 @@ namespace EF_BeaversLife_Framework
 
             Console.ForegroundColor = ConsoleColor.Green;
             ExecuteQueries();
-            await ExecuteQueriesAsync();
+           // await ExecuteQueriesAsync();
 
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -35,13 +35,14 @@ namespace EF_BeaversLife_Framework
 
         private static void ExecuteQueries()
         {
-            using var context = new AnimalContext();
+            new UseReferenceLoad().UseReferenceLoad1();
+            //using var context = new AnimalContext();
 
-            foreach (var beaver in context.Beavers/*.Include(b => b.Clubs)*/)
-            {
-                if (beaver.Clubs != null) 
-                    Console.WriteLine(beaver.Clubs.First());
-            }
+            //foreach (var beaver in context.Beavers/*.Include(b => b.Clubs)*/)
+            //{
+            //    if (beaver.Clubs != null) 
+            //        Console.WriteLine(beaver.Clubs.First());
+            //}
 
             Console.WriteLine("!! finish");
             Console.ReadLine();
