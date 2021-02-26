@@ -12,8 +12,7 @@ namespace FrameworkLib_Common.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Title { get; set; } = null!;
-
+        public         string                    Title          { get; set; } = null!;
         public virtual ICollection<JobDrawback>? JobDrawbacks   { get; set; }
         public virtual ICollection<Food>?        Foods          { get; set; }
         public virtual ICollection<Club>?        Clubs          { get; set; }

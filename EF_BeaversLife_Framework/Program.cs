@@ -33,6 +33,7 @@ namespace EF_BeaversLife_Framework
             new UseNotMapped().UseNotMapped1();
             new Mix().UseCustomIdName();
             new UseComplexType().UseComplexType1();
+            new Mix().UseInverseProperties();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -790,6 +791,19 @@ namespace EF_BeaversLife_Framework
             context.JobDrawbacks.Add(jobDrawback6);
             context.JobDrawbacks.Add(jobDrawback7);
             context.JobDrawbacks.Add(jobDrawback8);
+
+            #endregion
+
+            #region Seed Persons
+
+            var person1 = new Person
+            {
+                Name         = "BeaverPerson",
+                AnimalsLoved = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5},
+                AnimalsHated = new List<Animal> {deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8}
+            };
+
+            context.Persons.Add(person1);
 
             #endregion
 

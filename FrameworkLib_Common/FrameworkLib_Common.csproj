@@ -72,6 +72,7 @@
     <Compile Include="Model\JobDrawback.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\MapToQuery.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

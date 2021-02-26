@@ -15,13 +15,17 @@ namespace FrameworkLib_Common.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomIdName { get; set; }
 
-        [MaxLength(128)] public string? Name { get; set; }
-        public int Age { get; set; }
+        [MaxLength(128)]
+        [Index]
+        public string? Name { get; set; }
 
-        public virtual List<Club>? Clubs { get; set; }
-        public virtual ICollection<Grade>? Grades { get; set; }
-        public virtual Job Job { get; set; } = null!;
-        public int? JobId { get; set; }
+        public         int                 Age     { get; set; }
+        public virtual List<Club>?         Clubs   { get; set; }
+        public virtual ICollection<Grade>? Grades  { get; set; }
+        public virtual Job                 Job     { get; set; } = null!;
+        public         int?                JobId   { get; set; }
+        public         Person              LovedBy { get; set; }
+        public         Person              HatedBy { get; set; }
 
         public virtual Food Food { get; set; } = null!;
         //public virtual Food Food

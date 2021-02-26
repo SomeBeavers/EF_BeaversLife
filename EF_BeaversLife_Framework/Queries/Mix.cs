@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using FrameworkLib_Common;
 
@@ -23,6 +24,36 @@ namespace EF_BeaversLife_Framework.Queries
                         Console.Write("\t");
                         Console.WriteLine(club);
                     }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is needed.
+        /// </summary>
+        public void UseInverseProperties()
+        {
+            using var context = new AnimalContext();
+            var       persons = context.Persons.Include(p => p.AnimalsLoved).Include(p => p.AnimalsHated);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var person in persons)
+            {
+                Console.WriteLine(person);
+                foreach (var animalLoved in person.AnimalsLoved)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(animalLoved);
+                }
+
+                foreach (var animalHated in person.AnimalsHated)
+                {
+                    Console.Write("\t");
+                    Console.Write("\t");
+                    Console.WriteLine(animalHated);
                 }
             }
 
