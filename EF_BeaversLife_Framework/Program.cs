@@ -24,14 +24,12 @@ namespace EF_BeaversLife_Framework
             SeedDb();
 
             Console.ForegroundColor = ConsoleColor.Green;
-            ExecuteQueries();
-           // await ExecuteQueriesAsync();
+            //ExecuteQueries();
+            await ExecuteQueriesAsync();
 
             Console.ForegroundColor = ConsoleColor.White;
-
-            using var context = new AnimalContext();
-
-            //context.Database.EnsureDeleted();
+            Console.WriteLine("!! finish");
+            Console.ReadLine();
         }
 
         private static void ExecuteQueries()
@@ -44,13 +42,14 @@ namespace EF_BeaversLife_Framework
             //    if (beaver.Clubs != null) 
             //        Console.WriteLine(beaver.Clubs.First());
             //}
-
-            Console.WriteLine("!! finish");
-            Console.ReadLine();
         }
 
         private static async Task ExecuteQueriesAsync()
         {
+            var useAsync = new UseAsync();
+            await useAsync.UseAsync1();
+            await useAsync.UseAsync2();
+            await useAsync.UseAsync3();
         }
 
         private static void SeedDb()

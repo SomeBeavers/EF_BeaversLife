@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\UseAsync.cs" />
     <Compile Include="Queries\UseReferenceLoad.cs" />
   </ItemGroup>
   <ItemGroup>
