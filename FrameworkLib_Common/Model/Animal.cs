@@ -24,8 +24,8 @@ namespace FrameworkLib_Common.Model
         public virtual ICollection<Grade>? Grades  { get; set; }
         public virtual Job                 Job     { get; set; } = null!;
         public         int?                JobId   { get; set; }
-        public         Person              LovedBy { get; set; }
-        public         Person              HatedBy { get; set; }
+        public virtual Person?             LovedBy { get; set; }
+        public virtual Person?             HatedBy { get; set; }
 
         public virtual Food Food { get; set; } = null!;
         //public virtual Food Food

@@ -46,7 +46,7 @@ namespace EF_BeaversLife
             //new UseMix().PrintTest2();
             // new UseMix().PrintTest3();
             //new UseMix().PrintTest4();
-            new UseMix().OneToOne();
+            //new UseMix().OneToOne();
 
             //new UseInclude().UseFilteredInclude1();
             //new UseInclude().UseFilteredInclude2();
@@ -58,6 +58,8 @@ namespace EF_BeaversLife
 
             //new UseRawSql().UseRawSql1();
             //new UseRawSql().UseRawSql2("Pizza");
+
+            new UseInverseProperty().UseInverseProperty1();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -84,140 +86,140 @@ namespace EF_BeaversLife
 
             var beaver1 = new Beaver
             {
-                Name = "SomeBeavers1",
-                Age = 27,
+                Name       = "SomeBeavers1",
+                Age        = 27,
                 Fluffiness = FluffinessEnum.VeryFluffy,
-                Size = 15,
-                IpAddress = IPAddress.Parse("127.0.0.1")
+                Size       = 15,
+                IpAddress  = IPAddress.Parse("127.0.0.1")
             };
             var beaver2 = new Beaver
             {
-                Name = "SomeBeavers2",
-                Age = 26,
+                Name       = "SomeBeavers2",
+                Age        = 26,
                 Fluffiness = FluffinessEnum.Fluffy,
-                Size = 14,
-                IpAddress = IPAddress.Parse("127.0.0.1")
+                Size       = 14,
+                IpAddress  = IPAddress.Parse("127.0.0.1")
             };
             var beaver3 = new Beaver
             {
-                Name = "SomeBeavers3",
-                Age = 25,
+                Name       = "SomeBeavers3",
+                Age        = 25,
                 Fluffiness = FluffinessEnum.NotFluffy,
-                Size = 13,
-                IpAddress = IPAddress.Parse("127.0.0.1")
+                Size       = 13,
+                IpAddress  = IPAddress.Parse("127.0.0.1")
             };
             var beaver4 = new Beaver
             {
-                Name = "SomeBeavers4",
-                Age = 24,
+                Name       = "SomeBeavers4",
+                Age        = 24,
                 Fluffiness = FluffinessEnum.Fluffy,
-                Size = 12,
-                IpAddress = IPAddress.Parse("127.0.0.1")
+                Size       = 12,
+                IpAddress  = IPAddress.Parse("127.0.0.1")
             };
             var beaver5 = new Beaver
             {
-                Name = "SomeBeavers5",
-                Age = 23,
+                Name       = "SomeBeavers5",
+                Age        = 23,
                 Fluffiness = FluffinessEnum.VeryFluffy,
-                Size = 11,
-                IpAddress = IPAddress.Parse("127.0.0.1")
+                Size       = 11,
+                IpAddress  = IPAddress.Parse("127.0.0.1")
             };
 
             var crow1 = new Crow
             {
-                Name = "Crowly",
-                Age = 5,
-                Color = "black",
-                Size = 1,
+                Name      = "Crowly",
+                Age       = 5,
+                Color     = "black",
+                Size      = 1,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow2 = new Crow
             {
-                Name = "Crowly1",
-                Age = 5,
-                Color = "black",
-                Size = 1,
+                Name      = "Crowly1",
+                Age       = 5,
+                Color     = "black",
+                Size      = 1,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow3 = new Crow
             {
-                Name = "Crowly2",
-                Age = 22,
-                Color = "black",
-                Size = 4,
+                Name      = "Crowly2",
+                Age       = 22,
+                Color     = "black",
+                Size      = 4,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow4 = new Crow
             {
-                Name = "Crowly3",
-                Age = 50,
-                Color = "white",
-                Size = 10,
+                Name      = "Crowly3",
+                Age       = 50,
+                Color     = "white",
+                Size      = 10,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var crow5 = new Crow
             {
-                Name = "Crowly4",
-                Age = 5,
-                Color = "pink",
-                Size = 1,
+                Name      = "Crowly4",
+                Age       = 5,
+                Color     = "pink",
+                Size      = 1,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
 
             var deer1 = new Deer
             {
-                Name = "Dasher",
-                Age = 1,
-                Horns = true,
+                Name      = "Dasher",
+                Age       = 1,
+                Horns     = true,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer2 = new Deer
             {
-                Name = "Dancer",
-                Age = 2,
-                Horns = true,
+                Name      = "Dancer",
+                Age       = 2,
+                Horns     = true,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer3 = new Deer
             {
-                Name = "Prancer",
-                Age = 1,
-                Horns = false,
+                Name      = "Prancer",
+                Age       = 1,
+                Horns     = false,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer4 = new Deer
             {
-                Name = "Vixen",
-                Age = 1,
-                Horns = true,
+                Name      = "Vixen",
+                Age       = 1,
+                Horns     = true,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer5 = new Deer
             {
-                Name = "Comet",
-                Age = 1,
-                Horns = true,
+                Name      = "Comet",
+                Age       = 1,
+                Horns     = true,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer6 = new Deer
             {
-                Name = "Cupid",
-                Age = 1,
-                Horns = false,
+                Name      = "Cupid",
+                Age       = 1,
+                Horns     = false,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer7 = new Deer
             {
-                Name = "Donder ",
-                Age = 1,
-                Horns = true,
+                Name      = "Donder ",
+                Age       = 1,
+                Horns     = true,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
             var deer8 = new Deer
             {
-                Name = "Blitzen",
-                Age = 1,
-                Horns = true,
+                Name      = "Blitzen",
+                Age       = 1,
+                Horns     = true,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
 
@@ -248,19 +250,19 @@ namespace EF_BeaversLife
 
             var club1 = new Club
             {
-                Title = "TreesWorshipers",
+                Title   = "TreesWorshipers",
                 Animals = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5, crow4},
                 Locations = new List<Location>
                 {
-                    new Location
+                    new()
                     {
                         Address = "North America"
                     },
-                    new Location
+                    new()
                     {
                         Address = "Canada"
                     },
-                    new Location
+                    new()
                     {
                         Address = "Russia"
                     }
@@ -269,11 +271,11 @@ namespace EF_BeaversLife
 
             var club2 = new Club
             {
-                Title = "CornLovers",
+                Title   = "CornLovers",
                 Animals = new List<Animal> {crow1, crow2, crow3, crow4, crow5},
                 Locations = new List<Location>
                 {
-                    new Location
+                    new()
                     {
                         Address = "Westeros"
                     }
@@ -291,7 +293,7 @@ namespace EF_BeaversLife
                 },
                 Locations = new List<Location>
                 {
-                    new Location
+                    new()
                     {
                         Address = "North Pole"
                     }
@@ -309,171 +311,171 @@ namespace EF_BeaversLife
             var grade1 = new Grade
             {
                 TheGrade = 5,
-                Club = club1,
-                Animal = beaver1
+                Club     = club1,
+                Animal   = beaver1
             };
             var grade2 = new Grade
             {
                 TheGrade = 4,
-                Club = club1,
-                Animal = beaver2
+                Club     = club1,
+                Animal   = beaver2
             };
             var grade3 = new Grade
             {
                 TheGrade = 3,
-                Club = club1,
-                Animal = beaver3
+                Club     = club1,
+                Animal   = beaver3
             };
             var grade4 = new Grade
             {
                 TheGrade = 3,
-                Club = club1,
-                Animal = beaver4
+                Club     = club1,
+                Animal   = beaver4
             };
             var grade5 = new Grade
             {
                 TheGrade = 2,
-                Club = club1,
-                Animal = beaver5
+                Club     = club1,
+                Animal   = beaver5
             };
             var grade6 = new Grade
             {
                 TheGrade = 1,
-                Club = club1,
-                Animal = crow4
+                Club     = club1,
+                Animal   = crow4
             };
             var grade7 = new Grade
             {
                 TheGrade = 5,
-                Club = club2,
-                Animal = crow1
+                Club     = club2,
+                Animal   = crow1
             };
             var grade8 = new Grade
             {
                 TheGrade = 4.5,
-                Club = club2,
-                Animal = crow2
+                Club     = club2,
+                Animal   = crow2
             };
             var grade9 = new Grade
             {
                 TheGrade = 2.1,
-                Club = club2,
-                Animal = crow3
+                Club     = club2,
+                Animal   = crow3
             };
             var grade10 = new Grade
             {
                 TheGrade = 4.3,
-                Club = club2,
-                Animal = crow4
+                Club     = club2,
+                Animal   = crow4
             };
 
             var grade27 = new Grade
             {
                 TheGrade = 4.5,
-                Club = club3,
-                Animal = beaver1
+                Club     = club3,
+                Animal   = beaver1
             };
             var grade26 = new Grade
             {
                 TheGrade = 4.5,
-                Club = club3,
-                Animal = beaver2
+                Club     = club3,
+                Animal   = beaver2
             };
             var grade25 = new Grade
             {
                 TheGrade = 4.5,
-                Club = club3,
-                Animal = beaver3
+                Club     = club3,
+                Animal   = beaver3
             };
             var grade24 = new Grade
             {
                 TheGrade = 4.5,
-                Club = club3,
-                Animal = beaver4
+                Club     = club3,
+                Animal   = beaver4
             };
             var grade23 = new Grade
             {
                 TheGrade = 4.5,
-                Club = club3,
-                Animal = beaver5
+                Club     = club3,
+                Animal   = beaver5
             };
             var grade22 = new Grade
             {
                 TheGrade = 4.5,
-                Club = club3,
-                Animal = crow1
+                Club     = club3,
+                Animal   = crow1
             };
             var grade21 = new Grade
             {
                 TheGrade = 3.5,
-                Club = club3,
-                Animal = crow2
+                Club     = club3,
+                Animal   = crow2
             };
             var grade20 = new Grade
             {
                 TheGrade = 2.5,
-                Club = club3,
-                Animal = crow3
+                Club     = club3,
+                Animal   = crow3
             };
             var grade19 = new Grade
             {
                 TheGrade = 1.5,
-                Club = club3,
-                Animal = crow4
+                Club     = club3,
+                Animal   = crow4
             };
             var grade28 = new Grade
             {
                 TheGrade = 4.9,
-                Club = club3,
-                Animal = crow5
+                Club     = club3,
+                Animal   = crow5
             };
             var grade11 = new Grade
             {
                 TheGrade = 4.8,
-                Club = club3,
-                Animal = deer1
+                Club     = club3,
+                Animal   = deer1
             };
             var grade12 = new Grade
             {
                 TheGrade = 4.7,
-                Club = club3,
-                Animal = deer2
+                Club     = club3,
+                Animal   = deer2
             };
             var grade13 = new Grade
             {
                 TheGrade = 4.6,
-                Club = club3,
-                Animal = deer3
+                Club     = club3,
+                Animal   = deer3
             };
             var grade14 = new Grade
             {
                 TheGrade = 4.5,
-                Club = club3,
-                Animal = deer4
+                Club     = club3,
+                Animal   = deer4
             };
             var grade15 = new Grade
             {
                 TheGrade = 4.4,
-                Club = club3,
-                Animal = deer5
+                Club     = club3,
+                Animal   = deer5
             };
             var grade16 = new Grade
             {
                 TheGrade = 4.3,
-                Club = club3,
-                Animal = deer6
+                Club     = club3,
+                Animal   = deer6
             };
             var grade17 = new Grade
             {
                 TheGrade = 4.2,
-                Club = club3,
-                Animal = deer7
+                Club     = club3,
+                Animal   = deer7
             };
             var grade18 = new Grade
             {
                 TheGrade = 4.1,
-                Club = club3,
-                Animal = deer8
+                Club     = club3,
+                Animal   = deer8
             };
 
             context.Grades.Add(grade1);
@@ -511,7 +513,7 @@ namespace EF_BeaversLife
 
             var job1 = new Job
             {
-                Title = "Builder",
+                Title  = "Builder",
                 Salary = 1,
                 Animals = new List<Animal>
                 {
@@ -520,7 +522,7 @@ namespace EF_BeaversLife
             };
             var job2 = new Job
             {
-                Title = "Messenger",
+                Title  = "Messenger",
                 Salary = 10,
                 Animals = new List<Animal>
                 {
@@ -529,7 +531,7 @@ namespace EF_BeaversLife
             };
             var job3 = new Job
             {
-                Title = "Delivery",
+                Title  = "Delivery",
                 Salary = 100,
                 Animals = new List<Animal>
                 {
@@ -547,110 +549,110 @@ namespace EF_BeaversLife
 
             var food1 = new NormalFood
             {
-                Title = "Elm",
+                Title  = "Elm",
                 Animal = beaver1,
-                Taste = Taste.Normal
+                Taste  = Taste.Normal
             };
             var food2 = new VeganFood
             {
-                Title = "Daphne laureola",
-                Animal = beaver2,
+                Title    = "Daphne laureola",
+                Animal   = beaver2,
                 Calories = 100
             };
             var food3 = new VeganFood
             {
-                Title = "Carpinus betulus",
-                Animal = beaver3,
+                Title    = "Carpinus betulus",
+                Animal   = beaver3,
                 Calories = 1001
             };
             var food4 = new VeganFood
             {
-                Title = "Hornbeam",
-                Animal = beaver4,
+                Title    = "Hornbeam",
+                Animal   = beaver4,
                 Calories = 101
             };
             var food5 = new NormalFood
             {
-                Title = "Pizza",
+                Title  = "Pizza",
                 Animal = beaver5,
-                Taste = Taste.Excellent
+                Taste  = Taste.Excellent
             };
             var food6 = new NormalFood
             {
-                Title = "Steak",
+                Title  = "Steak",
                 Animal = crow1,
-                Taste = Taste.Excellent
+                Taste  = Taste.Excellent
             };
             var food7 = new NormalFood
             {
-                Title = "Meat",
+                Title  = "Meat",
                 Animal = crow2,
-                Taste = Taste.Good
+                Taste  = Taste.Good
             };
             var food8 = new NormalFood
             {
-                Title = "Pizza",
+                Title  = "Pizza",
                 Animal = crow3,
-                Taste = Taste.VeryGood
+                Taste  = Taste.VeryGood
             };
             var food9 = new VeganFood
             {
-                Title = "Corn",
-                Animal = crow4,
+                Title    = "Corn",
+                Animal   = crow4,
                 Calories = 1
             };
             var food10 = new NormalFood
             {
-                Title = "Pizza",
+                Title  = "Pizza",
                 Animal = crow5,
-                Taste = Taste.Normal
+                Taste  = Taste.Normal
             };
             var food11 = new VeganFood
             {
-                Title = "Pizza",
-                Animal = deer1,
+                Title    = "Pizza",
+                Animal   = deer1,
                 Calories = 10
             };
             var food12 = new VeganFood
             {
-                Title = "Pizza",
-                Animal = deer2,
+                Title    = "Pizza",
+                Animal   = deer2,
                 Calories = 10
             };
             var food13 = new VeganFood
             {
-                Title = "Pizza",
-                Animal = deer3,
+                Title    = "Pizza",
+                Animal   = deer3,
                 Calories = 10
             };
             var food14 = new VeganFood
             {
-                Title = "Pizza",
-                Animal = deer4,
+                Title    = "Pizza",
+                Animal   = deer4,
                 Calories = 10
             };
             var food15 = new VeganFood
             {
-                Title = "Pizza",
-                Animal = deer5,
+                Title    = "Pizza",
+                Animal   = deer5,
                 Calories = 10
             };
             var food16 = new VeganFood
             {
-                Title = "Pizza",
-                Animal = deer6,
+                Title    = "Pizza",
+                Animal   = deer6,
                 Calories = 10
             };
             var food17 = new NormalFood
             {
-                Title = "Elves",
+                Title  = "Elves",
                 Animal = deer7,
-                Taste = Taste.Excellent
+                Taste  = Taste.Excellent
             };
             var food18 = new VeganFood
             {
-                Title = "Pizza",
-                Animal = deer8,
+                Title    = "Pizza",
+                Animal   = deer8,
                 Calories = 10
             };
 
@@ -753,42 +755,42 @@ namespace EF_BeaversLife
 
             var jobDrawback1 = new JobDrawback
             {
-                Job = job1,
+                Job      = job1,
                 Drawback = drawback1
             };
             var jobDrawback2 = new JobDrawback
             {
-                Job = job1,
+                Job      = job1,
                 Drawback = drawback2
             };
             var jobDrawback3 = new JobDrawback
             {
-                Job = job1,
+                Job      = job1,
                 Drawback = drawback3
             };
             var jobDrawback4 = new JobDrawback
             {
-                Job = job1,
+                Job      = job1,
                 Drawback = drawback4
             };
             var jobDrawback5 = new JobDrawback
             {
-                Job = job2,
+                Job      = job2,
                 Drawback = drawback1
             };
             var jobDrawback6 = new JobDrawback
             {
-                Job = job2,
+                Job      = job2,
                 Drawback = drawback2
             };
             var jobDrawback7 = new JobDrawback
             {
-                Job = job3,
+                Job      = job3,
                 Drawback = drawback1
             };
             var jobDrawback8 = new JobDrawback
             {
-                Job = job3,
+                Job      = job3,
                 Drawback = drawback2
             };
 
@@ -809,7 +811,7 @@ namespace EF_BeaversLife
 
             var category1 = new Dictionary<string, object>
             {
-                ["Name"] = "Beverages",
+                ["Name"]   = "Beverages",
                 ["FoodId"] = food1.Id
             };
 
@@ -819,11 +821,24 @@ namespace EF_BeaversLife
 
             var product1 = new Dictionary<string, object>
             {
-                ["Name"] = "Product1",
+                ["Name"]       = "Product1",
                 ["CategoryId"] = context.Categories.First()["Id"]
             };
 
             context.Products.Add(product1);
+
+            #endregion
+
+            #region Seed Persons
+
+            var person1 = new Person
+            {
+                Name         = "BeaverPerson",
+                AnimalsLoved = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5},
+                AnimalsHated = new List<Animal> {deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8}
+            };
+
+            context.Persons.Add(person1);
 
             #endregion
 

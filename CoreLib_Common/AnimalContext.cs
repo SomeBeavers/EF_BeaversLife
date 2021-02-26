@@ -11,18 +11,19 @@ namespace CoreLib_Common
     {
         #region Tables
 
-        public DbSet<Animal> Animals { get; set; } = null!;
-        public DbSet<Beaver> Beavers { get; set; } = null!;
-        public DbSet<Crow> Crows { get; set; } = null!;
-        public DbSet<Deer> Deers { get; set; } = null!;
-        public DbSet<Club> Clubs { get; set; } = null!;
-        public DbSet<Grade> Grades { get; set; } = null!;
-        public DbSet<Job> Jobs { get; set; } = null!;
-        public DbSet<Drawback> Drawbacks { get; set; } = null!;
+        public DbSet<Person>      Persons      { get; set; } = null!;
+        public DbSet<Animal>      Animals      { get; set; } = null!;
+        public DbSet<Beaver>      Beavers      { get; set; } = null!;
+        public DbSet<Crow>        Crows        { get; set; } = null!;
+        public DbSet<Deer>        Deers        { get; set; } = null!;
+        public DbSet<Club>        Clubs        { get; set; } = null!;
+        public DbSet<Grade>       Grades       { get; set; } = null!;
+        public DbSet<Job>         Jobs         { get; set; } = null!;
+        public DbSet<Drawback>    Drawbacks    { get; set; } = null!;
         public DbSet<JobDrawback> JobDrawbacks { get; set; } = null!;
-        public DbSet<Food> Food { get; set; } = null!;
-        public DbSet<NormalFood> NormalFood { get; set; } = null!;
-        public DbSet<VeganFood> VeganFood { get; set; } = null!;
+        public DbSet<Food>        Food         { get; set; } = null!;
+        public DbSet<NormalFood>  NormalFood   { get; set; } = null!;
+        public DbSet<VeganFood>   VeganFood    { get; set; } = null!;
 
         public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 
