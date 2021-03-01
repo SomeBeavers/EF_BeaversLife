@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.DependencyResolution;
+using System.Data.Entity.Infrastructure.Pluralization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using FrameworkLib_Common.Model;
 
 namespace FrameworkLib_Common
@@ -42,6 +45,20 @@ namespace FrameworkLib_Common
 
         #endregion
 
+        /// <summary>
+        ///     Custom table name generation.
+        /// </summary>
+        private string GetTableName(Type type)
+        {
+            var pluralizationService = DbConfiguration.DependencyResolver.GetService<IPluralizationService>();
+
+            var result = pluralizationService.Pluralize(type.Name);
+
+            result = Regex.Replace(result, ".[A-Z]", m => m.Value[0] + "_" + m.Value[1]);
+
+            return result.ToLower();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // TPT
@@ -75,6 +92,11 @@ namespace FrameworkLib_Common
             modelBuilder.Entity<Animal>()
                 .HasRequired(t => t.Food)
                 .WithRequiredPrincipal(t => t.Animal);
+
+            // Add custom IsUnicode attribute.
+            modelBuilder.Properties()
+                        .Having(x => x.GetCustomAttributes(false).OfType<IsUnicode>().FirstOrDefault())
+                        .Configure((config, att) => config.IsUnicode(att.Unicode));
         }
     }
 }

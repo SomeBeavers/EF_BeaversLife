@@ -35,7 +35,21 @@ namespace EF_BeaversLife_Framework
             //new Mix().UseCustomIdName();
             //new UseComplexType().UseComplexType1();
             //new Mix().UseInverseProperties();
-            new UseIncludeWithSelect().UseIncludeWithSelect1();
+            //new UseIncludeWithSelect().UseIncludeWithSelect1();
+            //new UseInclude().UseDbQueryIncludeWithStringPath();
+            //new UseInclude().UseExtensionInclude1();
+
+            //new UseEnumeration().DbCallDueToToArray();
+            //new UseEnumeration().DbCallDueToToDictionary();
+            //new UseEnumeration().DbCallDueToToList();
+            //new UseEnumeration().DbCallDueToToList2();
+            //new UseEnumeration().DbCallDueToToList3();
+            //new UseEnumeration().DbCallDueToFirst();
+            //new UseEnumeration().DbCallDueToAny();
+            //new UseEnumeration().DbCallDueToLoad();
+            //new UseEnumeration().DbCallDueToReload();
+            //new UseLocalData().UseLocalData1();
+            new UseLocalData().UseLocalData2();
         }
 
         private static async Task ExecuteQueriesAsync()

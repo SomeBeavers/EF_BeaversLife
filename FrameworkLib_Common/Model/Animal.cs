@@ -17,6 +17,7 @@ namespace FrameworkLib_Common.Model
 
         [MaxLength(128)]
         [Index]
+        [IsUnicode(true)]
         public string? Name { get; set; }
 
         public         int                 Age     { get; set; }

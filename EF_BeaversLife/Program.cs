@@ -59,6 +59,12 @@ namespace EF_BeaversLife
             //new UseRawSql().UseRawSql2("Pizza");
 
             //new UseInverseProperty().UseInverseProperty1();
+
+            //new UseEnumeration().DbCallDueToToArray();
+            //new UseEnumeration().DbCallDueToToDictionary();
+
+            //new UseEnumeration().DbCallDueToToList2();
+            //new UseEnumeration().DbCallDueToToList3();
         }
 
         private static async Task ExecuteQueriesAsync()

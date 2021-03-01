@@ -13,10 +13,10 @@ namespace FrameworkLib_Common.Model
         public string Name { get; set; } = null!;
 
         [InverseProperty("LovedBy")]
-        public virtual List<Animal> AnimalsLoved { get; set; }
+        public virtual List<Animal>? AnimalsLoved { get; set; }
 
         [InverseProperty("HatedBy")]
-        public virtual List<Animal> AnimalsHated { get; set; }
+        public virtual List<Animal>? AnimalsHated { get; set; }
 
         public override string ToString()
         {

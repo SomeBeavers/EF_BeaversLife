@@ -60,7 +60,10 @@
     <Compile Include="Queries\Mix.cs" />
     <Compile Include="Queries\UseAsync.cs" />
     <Compile Include="Queries\UseComplexType.cs" />
+    <Compile Include="Queries\UseEnumeration.cs" />
+    <Compile Include="Queries\UseInclude.cs" />
     <Compile Include="Queries\UseIncludeWithSelect.cs" />
+    <Compile Include="Queries\UseLocalData.cs" />
     <Compile Include="Queries\UseNotMapped.cs" />
     <Compile Include="Queries\UseReferenceLoad.cs" />
   </ItemGroup>
