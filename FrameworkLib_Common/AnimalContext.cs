@@ -9,13 +9,13 @@ namespace FrameworkLib_Common
     {
         #region Tables
 
-        public DbSet<Person>      Persons      { get; set; } = null!;
+        public IDbSet<Person>     Persons      { get; set; } = null!;
         public DbSet<Animal>      Animals      { get; set; } = null!;
         public DbSet<Beaver>      Beavers      { get; set; } = null!;
         public DbSet<Crow>        Crows        { get; set; } = null!;
         public DbSet<Deer>        Deers        { get; set; } = null!;
         public DbSet<Club>        Clubs        { get; set; } = null!;
-        public DbSet<Grade>       Grades       { get; set; } = null!;
+        public DbSet<Grade>       Grades       => Set<Grade>();
         public DbSet<Job>         Jobs         { get; set; } = null!;
         public DbSet<Drawback>    Drawbacks    { get; set; } = null!;
         public DbSet<JobDrawback> JobDrawbacks { get; set; } = null!;

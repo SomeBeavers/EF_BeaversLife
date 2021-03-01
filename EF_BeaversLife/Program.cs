@@ -8,7 +8,6 @@ using System.Net;
 using System.Threading.Tasks;
 using CoreLib_Common;
 using CoreLib_Common.Model;
-using EF_BeaversLife.Queries;
 using Microsoft.EntityFrameworkCore;
 
 #endregion
@@ -59,7 +58,7 @@ namespace EF_BeaversLife
             //new UseRawSql().UseRawSql1();
             //new UseRawSql().UseRawSql2("Pizza");
 
-            new UseInverseProperty().UseInverseProperty1();
+            //new UseInverseProperty().UseInverseProperty1();
         }
 
         private static async Task ExecuteQueriesAsync()

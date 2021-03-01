@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Threading.Tasks;
 using EF_BeaversLife_Framework.Queries;
@@ -29,11 +30,12 @@ namespace EF_BeaversLife_Framework
 
         private static void ExecuteQueries()
         {
-            new UseReferenceLoad().UseReferenceLoad1();
-            new UseNotMapped().UseNotMapped1();
-            new Mix().UseCustomIdName();
-            new UseComplexType().UseComplexType1();
-            new Mix().UseInverseProperties();
+            //new UseReferenceLoad().UseReferenceLoad1();
+            //new UseNotMapped().UseNotMapped1();
+            //new Mix().UseCustomIdName();
+            //new UseComplexType().UseComplexType1();
+            //new Mix().UseInverseProperties();
+            new UseIncludeWithSelect().UseIncludeWithSelect1();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -225,15 +227,18 @@ namespace EF_BeaversLife_Framework
                 {
                     new()
                     {
-                        Address = "North America"
+                        Address            = "North America",
+                        GeographicLocation = DbGeography.FromText("POINT(-122 47)")
                     },
                     new()
                     {
-                        Address = "Canada"
+                        Address            = "Canada",
+                        GeographicLocation = DbGeography.FromText("POINT(122 40)")
                     },
                     new()
                     {
-                        Address = "Russia"
+                        Address            = "Russia",
+                        GeographicLocation = DbGeography.FromText("POINT(1 1)")
                     }
                 }
             };
@@ -246,7 +251,8 @@ namespace EF_BeaversLife_Framework
                 {
                     new()
                     {
-                        Address = "Westeros"
+                        Address            = "Westeros",
+                        GeographicLocation = DbGeography.FromText("POINT(00 00)")
                     }
                 }
             };
@@ -264,7 +270,8 @@ namespace EF_BeaversLife_Framework
                 {
                     new()
                     {
-                        Address = "North Pole"
+                        Address            = "North Pole",
+                        GeographicLocation = DbGeography.FromText("POINT(9 9)")
                     }
                 }
             };
