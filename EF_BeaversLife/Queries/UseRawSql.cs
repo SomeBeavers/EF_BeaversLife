@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CoreLib_Common;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,7 @@ namespace EF_BeaversLife.Queries
             using var context = new AnimalContext();
 
             var foods = context.Food.FromSqlRaw("select * from Food where Title = {0}", "Pizza")
-                    .Include(food => food.Animal)
+                               .Include(food => food.Animal)
                 ;
 
             Console.ForegroundColor = ConsoleColor.Magenta;

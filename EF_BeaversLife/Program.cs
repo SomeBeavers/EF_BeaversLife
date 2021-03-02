@@ -8,14 +8,15 @@ using System.Net;
 using System.Threading.Tasks;
 using CoreLib_Common;
 using CoreLib_Common.Model;
+using EF_BeaversLife.Queries;
 using Microsoft.EntityFrameworkCore;
 
 #endregion
 
 namespace EF_BeaversLife
 {
-    // TODO [for me]: use ef_method template to generate simple ef method
-    // TODO [for me]: use format_print to paste Console.Write("\t");
+    // NOTE [for me]: use ef_method template to generate simple ef method
+    // NOTE [for me]: use format_print to paste Console.Write("\t");
     internal class Program
     {
         private static async Task Main()
@@ -65,6 +66,9 @@ namespace EF_BeaversLife
 
             //new UseEnumeration().DbCallDueToToList2();
             //new UseEnumeration().DbCallDueToToList3();
+
+            //new UseRawSql().UseRawSql1();
+            new UseInclude().UseIncludeMultilevel();
         }
 
         private static async Task ExecuteQueriesAsync()

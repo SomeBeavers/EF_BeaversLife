@@ -28,7 +28,7 @@ namespace FrameworkLib_Common.Model
         public virtual Person?             LovedBy { get; set; }
         public virtual Person?             HatedBy { get; set; }
 
-        public virtual Food Food { get; set; } = null!;
+        public virtual Food? Food { get; set; } = null!;
         //public virtual Food Food
         //{
         //    get => _food;

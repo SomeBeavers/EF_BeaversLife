@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace FrameworkLib_Common.Model
 {
@@ -13,9 +15,9 @@ namespace FrameworkLib_Common.Model
         public string Title { get; set; } = null!;
         public NotMappedText LocalizedText { get; set; } = null!;
 
-        public virtual ICollection<Animal>? Animals { get; set; }
-        public virtual ICollection<Location> Locations { get; set; } = null!;
-        public virtual ICollection<Grade> Grades { get; set; } = null!;
+        public virtual ICollection<Animal>?   Animals   { get; set; }
+        public virtual ICollection<Location>? Locations { get; set; }
+        public virtual ICollection<Grade>     Grades    { get; set; } = null!;
         public virtual ICollection<Drawback>? Drawbacks { get; set; }
 
         public override string ToString()

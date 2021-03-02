@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace CoreLib_Common.Model
 {
@@ -12,8 +14,8 @@ namespace CoreLib_Common.Model
 
         public string Title { get; set; } = null!;
 
-        public virtual Animal Animal { get; set; } = null!;
-        public int? AnimalId { get; set; }
+        public virtual Animal? Animal   { get; set; }
+        public         int?    AnimalId { get; set; }
 
         public virtual ICollection<Drawback>? Drawbacks { get; set; }
 

@@ -32,7 +32,7 @@ namespace CoreLib_Common.Model
         ICollection<Club>? Clubs { get; set; }
     }
 
-    // TODO: ComplexType are not supported in Core
+    // NOTE: ComplexType are not supported in Core
     //[ComplexType]
     //public class DrawbackDetails
     //{

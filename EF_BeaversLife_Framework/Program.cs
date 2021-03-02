@@ -10,8 +10,8 @@ using FrameworkLib_Common.Model;
 
 namespace EF_BeaversLife_Framework
 {
-    // TODO [for me]: use ef_method template to generate simple ef method
-    // TODO [for me]: use format_print to paste Console.Write("\t");
+    // NOTE [for me]: use ef_method template to generate simple ef method
+    // NOTE [for me]: use format_print to paste Console.Write("\t");
     internal class Program
     {
         private static async Task Main()
@@ -53,15 +53,21 @@ namespace EF_BeaversLife_Framework
             //new Mix().UseFind3();
 
             //new UseLocalData().UseLocalData3();
-            new UseEnumeration().DbCallDueToLoad2();
+            //new UseEnumeration().DbCallDueToLoad2();
+            //new UseNoTracking().UseNoTracking1();
+
+            //new UseIncludeWithSelect().UseIncludeMultilevel();
+            new UseCollectionReferenceLoad().UseCollectionWithFiltersLoad();
         }
 
         private static async Task ExecuteQueriesAsync()
         {
-            var useAsync = new UseAsync();
-            await useAsync.UseAsync1();
-            await useAsync.UseAsync2();
-            await useAsync.UseAsync3();
+            //var useAsync = new UseAsync();
+            //await useAsync.UseAsync1();
+            //await useAsync.UseAsync2();
+            //await useAsync.UseAsync3();
+
+            await new UseInclude().UseStringIncludeWithWhere1();
         }
 
         private static void SeedDb()
