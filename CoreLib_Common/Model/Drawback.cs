@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace CoreLib_Common.Model
 {
-    public class Drawback
+    public class Drawback : IDrawback
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,6 +24,12 @@ namespace CoreLib_Common.Model
         {
             return $"Drawback : Id = {Id} Title = {Title}";
         }
+    }
+
+    public interface IDrawback
+    {
+        int                Id    { get; set; }
+        ICollection<Club>? Clubs { get; set; }
     }
 
     // TODO: ComplexType are not supported in Core

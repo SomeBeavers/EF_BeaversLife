@@ -59,5 +59,76 @@ namespace EF_BeaversLife_Framework.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        ///     Include is needed.
+        /// </summary>
+        public void UseFind1()
+        {
+            using var context = new AnimalContext();
+            var       deer1   = context.Deers.Find(11);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(deer1);
+
+            if (deer1?.Clubs != null)
+            {
+                foreach (var club in deer1.Clubs)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(club);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is needed.
+        /// </summary>
+        public void UseFind2()
+        {
+            using var context = new AnimalContext();
+            var       deers   = context.Deers.Include(deer => deer.Clubs);
+            var       deer1   = context.Deers.Find(11);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(deer1);
+
+            if (deer1?.Clubs != null)
+            {
+                foreach (var club in deer1.Clubs)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(club);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is NOT needed.
+        /// </summary>
+        public void UseFind3()
+        {
+            using var context = new AnimalContext();
+            var       deers   = context.Deers.Include(deer => deer.Clubs).ToList();
+            var       deer1   = context.Deers.Find(11);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(deer1);
+
+            if (deer1?.Clubs != null)
+            {
+                foreach (var club in deer1.Clubs)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(club);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

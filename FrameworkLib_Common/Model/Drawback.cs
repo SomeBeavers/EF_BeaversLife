@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FrameworkLib_Common.Model
 {
-    public class Drawback
+    public class Drawback : IDrawback
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,6 +23,12 @@ namespace FrameworkLib_Common.Model
         {
             return $"Drawback : Id = {Id} Title = {Title}";
         }
+    }
+
+    public interface IDrawback
+    {
+        int                Id    { get; set; }
+        ICollection<Club>? Clubs { get; set; }
     }
 
     /// <summary>

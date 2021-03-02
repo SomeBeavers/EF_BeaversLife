@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using CoreLib_Common;
+using CoreLib_Common.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace EF_BeaversLife.Queries
@@ -21,7 +22,7 @@ namespace EF_BeaversLife.Queries
                                          .Include(x => x.Grades)
                                          .Include(x => x.Job)
                                          .ThenInclude(j => j.JobDrawbacks)
-                                         .ThenInclude(jd => jd.Drawback)
+                                         .ThenInclude<Beaver, JobDrawback, Drawback>(jd => jd.Drawback)
                                          .Include(x => x.Food)
                                          .ThenInclude(x => x.Drawbacks)
                                          // other
@@ -200,6 +201,77 @@ namespace EF_BeaversLife.Queries
                 Console.WriteLine(beaver);
                 Console.Write("\t");
                 Console.WriteLine(beaver.Food);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is needed.
+        /// </summary>
+        public void UseFind1()
+        {
+            using var context = new AnimalContext();
+            var       deer1   = context.Deers.Find(11);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(deer1);
+
+            if (deer1?.Clubs != null)
+            {
+                foreach (var club in deer1.Clubs)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(club);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is needed.
+        /// </summary>
+        public void UseFind2()
+        {
+            using var context = new AnimalContext();
+            var       deers   = context.Deers.Include(deer => deer.Clubs);
+            var       deer1   = context.Deers.Find(11);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(deer1);
+
+            if (deer1?.Clubs != null)
+            {
+                foreach (var club in deer1.Clubs)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(club);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is NOT needed.
+        /// </summary>
+        public void UseFind3()
+        {
+            using var context = new AnimalContext();
+            var       deers   = context.Deers.Include(deer => deer.Clubs).ToList();
+            var       deer1   = context.Deers.Find(11);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(deer1);
+
+            if (deer1?.Clubs != null)
+            {
+                foreach (var club in deer1.Clubs)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(club);
+                }
             }
 
             Console.ForegroundColor = ConsoleColor.White;

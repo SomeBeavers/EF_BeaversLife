@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreLib_Common;
 using CoreLib_Common.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace EF_BeaversLife.Queries
 {
@@ -95,6 +96,31 @@ namespace EF_BeaversLife.Queries
                         Console.Write("\t");
                         Console.Write("\t");
                         Console.WriteLine(hatedAnimal);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is needed.
+        /// </summary>
+        public void UseLocalData3()
+        {
+            using var context = new AnimalContext();
+            context.Animals.Load();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in context.Animals.Local)
+            {
+                Console.WriteLine(animal);
+                if (animal.Clubs != null)
+                {
+                    foreach (var club in animal.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
                     }
                 }
             }

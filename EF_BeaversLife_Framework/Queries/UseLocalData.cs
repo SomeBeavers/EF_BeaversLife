@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using FrameworkLib_Common;
 using FrameworkLib_Common.Model;
@@ -16,7 +17,7 @@ namespace EF_BeaversLife_Framework.Queries
             using var context = new AnimalContext();
             context.Persons.Add(new Person
             {
-                Name         = "BeaverPerson",
+                Name         = "CrowPerson",
                 AnimalsLoved = new List<Animal> {context.Crows.First()},
                 AnimalsHated = new List<Animal> {context.Deers.First()}
             });
@@ -51,7 +52,7 @@ namespace EF_BeaversLife_Framework.Queries
             using var context = new AnimalContext();
             context.Persons.Add(new Person
             {
-                Name         = "BeaverPerson",
+                Name         = "CrowPerson",
                 AnimalsLoved = new List<Animal> {context.Crows.First()},
                 AnimalsHated = new List<Animal> {context.Deers.First()}
             });
@@ -95,6 +96,31 @@ namespace EF_BeaversLife_Framework.Queries
                         Console.Write("\t");
                         Console.Write("\t");
                         Console.WriteLine(hatedAnimal);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is needed.
+        /// </summary>
+        public void UseLocalData3()
+        {
+            using var context = new AnimalContext();
+            context.Animals.Load();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in context.Animals.Local)
+            {
+                Console.WriteLine(animal);
+                if (animal.Clubs != null)
+                {
+                    foreach (var club in animal.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
                     }
                 }
             }

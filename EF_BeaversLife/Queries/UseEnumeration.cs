@@ -179,5 +179,56 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        ///     Include is NOT needed.
+        /// </summary>
+        public void DbCallDueToFindAndLoad()
+        {
+            using var context = new AnimalContext();
+            var       animal  = context.Animals.Find(1);
+            context.Entry(animal).Collection(a => a.Grades).Query().Where(grade => grade.TheGrade > 4.0).Load();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(animal);
+            if (animal is {Grades: { }})
+            {
+                foreach (var grade in animal.Grades)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(grade);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        ///     Include is needed.
+        /// </summary>
+        public void DbCallDueToLoad2()
+        {
+            using var context = new AnimalContext();
+            context.Drawbacks
+                   .Include(d => d.Clubs)
+                   .Load();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var drawback in context.ChangeTracker.Entries<IDrawback>())
+            {
+                Console.WriteLine(drawback.Entity);
+
+                if (drawback.Entity.Clubs != null)
+                {
+                    foreach (var club in drawback.Entity.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

@@ -49,7 +49,11 @@ namespace EF_BeaversLife_Framework
             //new UseEnumeration().DbCallDueToLoad();
             //new UseEnumeration().DbCallDueToReload();
             //new UseLocalData().UseLocalData1();
-            new UseLocalData().UseLocalData2();
+            //new UseLocalData().UseLocalData2();
+            //new Mix().UseFind3();
+
+            //new UseLocalData().UseLocalData3();
+            new UseEnumeration().DbCallDueToLoad2();
         }
 
         private static async Task ExecuteQueriesAsync()
