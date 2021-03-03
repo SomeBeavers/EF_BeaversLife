@@ -16,7 +16,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EF_BeaversLife
 {
     // NOTE [for me]: use ef_method template to generate simple ef method
-    // NOTE [for me]: use format_print to paste Console.Write("\t");
+    // NOTE [for me]: use print_format to paste Console.Write("\t");
     internal class Program
     {
         private static async Task Main()
