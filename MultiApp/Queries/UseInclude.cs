@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CoreLib_Common;
-using CoreLib_Common.Model;
+using CoreMultiLib;
+using CoreMultiLib.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace EF_BeaversLife.Queries
@@ -15,7 +15,8 @@ namespace EF_BeaversLife.Queries
 
             var clubs = context.Clubs
                                .Include(club => club.Animals.Where(animal => animal.Name.Contains("Beaver")))
-                               .ThenInclude(animal => animal.Grades.Where(grade => grade.TheGrade > 4))
+                               .ThenInclude(animal =>
+                                   animal.Grades.Where(grade => grade.TheGrade > 4))
                                .Include(club => club.Animals.Where(animal => animal.Name.Contains("Beaver")))
                                .ThenInclude(a => a.Food).ToList();
 

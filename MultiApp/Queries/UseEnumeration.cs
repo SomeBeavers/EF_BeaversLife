@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using CoreLib_Common;
-using CoreLib_Common.Model;
+using CoreMultiLib;
+using CoreMultiLib.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace EF_BeaversLife.Queries

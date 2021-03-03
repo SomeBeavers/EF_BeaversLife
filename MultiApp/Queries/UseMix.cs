@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using CoreLib_Common;
-using CoreLib_Common.Model;
+using CoreMultiLib;
+using CoreMultiLib.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace EF_BeaversLife.Queries
@@ -12,7 +12,7 @@ namespace EF_BeaversLife.Queries
         public void PrintTest()
         {
             using var context = new AnimalContext();
-            var unused = context.Clubs;
+            var       unused  = context.Clubs;
 
             try
             {
@@ -65,6 +65,7 @@ namespace EF_BeaversLife.Queries
                 Console.WriteLine(firstBeaver.Job);
 
                 if (firstBeaver.Job.JobDrawbacks != null)
+                {
                     foreach (var drawback in firstBeaver.Job.JobDrawbacks)
                     {
                         Console.Write("\t");
@@ -78,6 +79,7 @@ namespace EF_BeaversLife.Queries
 
                         Console.WriteLine(drawback.Drawback.Consequence);
                     }
+                }
 
                 Console.Write("\t");
 
@@ -146,7 +148,7 @@ namespace EF_BeaversLife.Queries
 
             // ReSharper disable once StringCompareToIsCultureSpecific
             var clubs = context.Clubs.OrderBy(club => club.Title.CompareTo("CornLovers") == 0).ThenBy(club => club.Id)
-                .Include(club => club.Grades);
+                               .Include(club => club.Grades);
 
             Console.ForegroundColor = ConsoleColor.Magenta;
             foreach (var club in clubs)
@@ -163,15 +165,15 @@ namespace EF_BeaversLife.Queries
         }
 
         /// <summary>
-        /// Include is not needed for enum property.
+        ///     Include is not needed for enum property.
         /// </summary>
         public async Task GetEnum()
         {
             using var context = new AnimalContext();
 
             var beaver = await context.Beavers
-                .Include(G => G.Clubs)
-                .FirstOrDefaultAsync(G => G.Id == 1);
+                                      .Include(G => G.Clubs)
+                                      .FirstOrDefaultAsync(G => G.Id == 1);
             if (beaver == null)
             {
                 throw new Exception("");
@@ -186,7 +188,7 @@ namespace EF_BeaversLife.Queries
         }
 
         /// <summary>
-        /// 1:1 relation.
+        ///     1:1 relation.
         /// </summary>
         public void OneToOne()
         {
