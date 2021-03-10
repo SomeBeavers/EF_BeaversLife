@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Threading.Tasks;
 using CoreLib_Common;
 using CoreLib_Common.Model;
 using Microsoft.EntityFrameworkCore;
@@ -69,6 +70,93 @@ namespace EF_BeaversLife.Queries
                                 Console.Write("\t");
                                 Console.WriteLine(animal);
                             }
+                        }
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481553
+        /// Include is needed.
+        /// </summary>
+        public static async Task RSRP_481553()
+        {
+            await using var context = new AnimalContext();
+            var crows = context.Crows
+                //.Include(c => c.Grades)
+                ;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            await crows.ForEachAsync(crow =>
+            {
+                Console.WriteLine(crow);
+                if (crow.Grades != null)
+                {
+                    foreach (var grade in crow.Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
+                }
+            });
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481553
+        /// Include is needed.
+        /// </summary>
+        public static void RSRP_481553_Part2()
+        {
+            using var context   = new AnimalContext();
+            var drawbacks = context.Drawbacks
+                //.Include(d => d.Clubs)
+                //.ThenInclude(c => c.Animals)
+                ;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var drawback in drawbacks)
+            {
+                Console.WriteLine(drawback);
+                drawback.Clubs?.ToList().ForEach(club =>
+                {
+                    Console.Write("\t");
+                    if (club.Animals != null)
+                    {
+                        Console.WriteLine(club.Animals.Count);
+                    }
+                });
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481591
+        /// Include is NOT needed as variable is reassigned.
+        /// </summary>
+        public void RSRP_481591()
+        {
+            using var context = new AnimalContext();
+            var       food    = context.Food;
+            food = null;
+
+            //food = context.Food;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            if (food != null)
+            {
+                foreach (var food1 in food)
+                {
+                    Console.WriteLine(food1);
+                    if (food1.Drawbacks != null)
+                    {
+                        foreach (var drawback in food1.Drawbacks)
+                        {
                         }
                     }
                 }
