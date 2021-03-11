@@ -24,6 +24,7 @@ namespace CoreLib_Common
         public DbSet<Food>        Food         { get; set; } = null!;
         public DbSet<NormalFood>  NormalFood   { get; set; } = null!;
         public DbSet<VeganFood>   VeganFood    { get; set; } = null!;
+        public DbSet<Elf>         Elves        { get; set; } = null!;
 
         public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace CoreLib_Common.Model
 {
-    public class Food
+    public abstract class Food
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

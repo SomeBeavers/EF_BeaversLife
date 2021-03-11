@@ -68,7 +68,9 @@ namespace EF_BeaversLife
             //new UseEnumeration().DbCallDueToToList3();
 
             //new UseRawSql().UseRawSql1();
-            new UseInclude().UseIncludeMultilevel();
+            //new UseInclude().UseIncludeMultilevel();
+
+            new Issues().RSRP_481581_2();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -848,6 +850,66 @@ namespace EF_BeaversLife
             };
 
             context.Persons.Add(person1);
+
+            #endregion
+
+            #region Seed Elves
+
+            var elf1 = new Elf
+            {
+                Name = "Alabaster Snowball",
+                Deer = deer1
+            };
+            var elf2 = new Elf
+            {
+                Name = "Bushy Evergreen",
+                Deer = deer1
+            };
+            var elf3 = new Elf
+            {
+                Name = "Pepper Minstix",
+                Deer = deer2
+            };
+            var elf4 = new Elf
+            {
+                Name = "Shinny Upatree",
+                Deer = deer3
+            };
+            var elf5 = new Elf
+            {
+                Name = "Sugarplum Mary",
+                Deer = deer4
+            };
+            var elf6 = new Elf
+            {
+                Name = "Wunorse Openslae",
+                Deer = deer5
+            };
+            var elf7 = new Elf
+            {
+                Name = "Grinch",
+                Deer = deer6
+            };
+            var elf8 = new Elf
+            {
+                Name = "Legolas",
+                Deer = deer7
+            };
+            var elf9 = new Elf
+            {
+                Name = "Iorveth",
+                Deer = deer8
+            };
+
+            context.Elves.Add(elf1);
+            context.Elves.Add(elf2);
+            context.Elves.Add(elf3);
+            context.Elves.Add(elf4);
+            context.Elves.Add(elf5);
+            context.Elves.Add(elf6);
+            context.Elves.Add(elf7);
+            context.Elves.Add(elf8);
+            context.Elves.Add(elf9);
 
             #endregion
 

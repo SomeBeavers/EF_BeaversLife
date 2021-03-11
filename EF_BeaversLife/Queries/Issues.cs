@@ -164,6 +164,150 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481595
+        /// </summary>
+        public void RSRP_481595()
+        {
+            using var context = new AnimalContext();
+            var       food    = context.Food ?? null;
+            //var       food    = (context.Food ?? null)!;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var food1 in food)
+            {
+                Console.WriteLine(food1);
+                List<Drawback> drawbacks = (food1.Drawbacks?.ToList() ?? null)!;
+
+                if (drawbacks != null)
+                {
+                    foreach (var drawback in drawbacks)
+                    {
+                        if (drawback.Clubs != null)
+                        {
+                            foreach (var club in drawback.Clubs)
+                            {
+                                Console.Write("\t");
+                                Console.WriteLine(club);
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481554
+        /// </summary>
+        public void RSRP_481554()
+        {
+            using var context     = new AnimalContext();
+            using var transaction = context.Database.BeginTransaction();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var normalFood in context.NormalFood)
+            {
+                Console.WriteLine(normalFood);
+                if (normalFood.Drawbacks != null)
+                {
+                    foreach (var drawback in normalFood.Drawbacks)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(drawback);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+            transaction.Commit();
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481577
+        /// </summary>
+        public void RSRP_481577()
+        {
+            using var context = new AnimalContext();
+            var beavers = context.Beavers.Include(beaver =>
+                beaver.Grades.Where(grade => grade.TheGrade >= 4.0).OrderByDescending(grade => grade.TheGrade).Take(1));
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var beaver in beavers)
+            {
+                Console.WriteLine(beaver);
+                if (beaver.Grades != null)
+                {
+                    foreach (var grade in beaver.Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481581
+        /// </summary>
+        public void RSRP_481581()
+        {
+            using var          context    = new AnimalContext();
+            IQueryable<Animal> animals    = context.Deers.AsQueryable();
+            var                newAnimals = animals;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in newAnimals)
+            {
+                Console.WriteLine(animal);
+                if (animal.Grades != null)
+                {
+                    foreach (var grade in (animal).Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481581
+        /// Include is needed.
+        /// </summary>
+        public void RSRP_481581_2()
+        {
+            using var          context    = new AnimalContext();
+            IQueryable<Animal> animals = context.Deers.AsQueryable()
+                //.Include(d => d.Elves)
+                ;
+            var                newAnimals = animals;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in newAnimals)
+            {
+                Console.WriteLine(animal);
+
+                var elves = ((Deer) animal).Elves;
+                if (elves != null)
+                {
+                    foreach (var elf in elves)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(elf);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 
     public static class Ext
