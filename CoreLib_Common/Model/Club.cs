@@ -13,10 +13,11 @@ namespace CoreLib_Common.Model
         public string Title { get; set; } = null!;
         public NotMappedText LocalizedText { get; set; } = null!;
 
-        public virtual ICollection<Animal>? Animals { get; set; }
-        public virtual ICollection<Location> Locations { get; set; } = null!;
-        public virtual ICollection<Grade> Grades { get; set; } = null!;
-        public virtual ICollection<Drawback>? Drawbacks { get; set; }
+        public virtual ICollection<Animal>?         Animals         { get; set; }
+        public virtual ICollection<Location>        Locations       { get; set; } = null!;
+        public virtual ICollection<Grade>           Grades          { get; set; } = null!;
+        public virtual ICollection<Drawback>?       Drawbacks       { get; set; }
+        public virtual ICollection<AdditionalInfo>? AdditionalInfos { get; set; }
 
         public override string ToString()
         {

@@ -12,7 +12,7 @@ namespace CoreLib_Common.Model
     [Index(nameof(Name), IsUnique = true)]
     public class Animal
     {
-        private Food _food = null!;
+        private Food? _food = null!;
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -29,7 +29,7 @@ namespace CoreLib_Common.Model
         public virtual Person?             HatedBy { get; set; }
 
         [BackingField(nameof(_food))]
-        public virtual Food Food
+        public virtual Food? Food
         {
             get => _food;
             set => _food = value;
@@ -44,5 +44,16 @@ namespace CoreLib_Common.Model
         {
             return $"Animal : Id = {Id} Name = {Name} IpAddress = {IpAddress}";
         }
+    }
+
+    public class AnimalClub
+    {
+        public int AnimalId { get; set; }
+        public int ClubId   { get; set; }
+
+        public virtual Animal Animal { get; set; } = null!;
+        public virtual Club   Club   { get; set; } = null!;
+
+        public DateTime PublicationDate { get; set; }
     }
 }

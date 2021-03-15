@@ -112,7 +112,7 @@ namespace EF_BeaversLife.Queries
         /// </summary>
         public static void RSRP_481553_Part2()
         {
-            using var context   = new AnimalContext();
+            using var context = new AnimalContext();
             var drawbacks = context.Drawbacks
                 //.Include(d => d.Clubs)
                 //.ThenInclude(c => c.Animals)
@@ -284,11 +284,11 @@ namespace EF_BeaversLife.Queries
         /// </summary>
         public void RSRP_481581_2()
         {
-            using var          context    = new AnimalContext();
+            using var context = new AnimalContext();
             IQueryable<Animal> animals = context.Deers.AsQueryable()
                 //.Include(d => d.Elves)
                 ;
-            var                newAnimals = animals;
+            var newAnimals = animals;
 
             Console.ForegroundColor = ConsoleColor.Magenta;
             foreach (var animal in newAnimals)
@@ -353,7 +353,7 @@ namespace EF_BeaversLife.Queries
             var       animals = context.Animals;
 
             // start comment
-            var       grades  = context.Entry(animals.Single(a => a.Id == 1)).Collection(a => a.Grades);
+            var grades = context.Entry(animals.Single(a => a.Id == 1)).Collection(a => a.Grades);
             grades.Load();
             // end comment
 
@@ -415,11 +415,619 @@ namespace EF_BeaversLife.Queries
             using var     context        = new AnimalContext();
             DbSet<Beaver> contextBeavers = context.Beavers;
 
-            // DEXP-581354
+            var beaversList = contextBeavers.ToList();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var beaver in beaversList)
+            {
+            }
+
+            for (int i = 0; i < beaversList.Count; i++)
+            {
+                Console.WriteLine(beaversList[i]);
+
+                for (int j = 0; j < beaversList[i]?.Clubs?.Count; j++)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(beaversList[i].Clubs[j]);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481545
+        /// </summary>
+        public void RSRP_481545()
+        {
+            using var context = new AnimalContext();
+
+            var deers     = context.Deers;
+            var deersList = deers.ToList();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var deer in deersList)
+            {
+                Console.WriteLine(deer);
+
+                if (deer.Clubs != null)
+                {
+                    foreach (var club in deer.Clubs)
+                    {
+                        if (club.Drawbacks != null)
+                        {
+                            foreach (var drawback in club.Drawbacks)
+                            {
+                                if (drawback.Foods != null)
+                                {
+                                    foreach (var food in drawback.Foods)
+                                    {
+                                        Console.WriteLine(food);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481514
+        /// </summary>
+        public void RSRP_481514()
+        {
+            using var context = new AnimalContext();
+            var       animals = context.Animals.Include(a => a.Grades).ToList();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            var gradesCount = animals[0].Grades?.Count;
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481519
+        /// </summary>
+        public void RSRP_481519()
+        {
+            using var context = new AnimalContext();
+            var drawbacks = context.Drawbacks.Include(d => d.Clubs)
+                                   .ThenInclude(c => c.Animals)
+                                   .ThenInclude(a => a.Food)
+                                   .ThenInclude(f => f.Drawbacks);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var drawback in drawbacks)
+            {
+                try
+                {
+                    var foodDrawbacks = drawback?.Clubs?.First(club => club.Id        > 2)
+                                                .Animals?.First(animal => animal.Food != null)
+                                                .Food?.Drawbacks;
+                    if (foodDrawbacks != null)
+                    {
+                        foreach (var foodDrawback in foodDrawbacks)
+                        {
+                            Console.WriteLine(foodDrawback.JobDrawbacks);
+                            Console.WriteLine(foodDrawback.Title);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481512
+        /// </summary>
+        public void RSRP_481512()
+        {
+            using var context = new AnimalContext();
+            var       animals = context.Animals.Where(a => a.Grades.Count(x => x.TheGrade > 3) > 0);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+
+                if (animal.Grades != null)
+                {
+                    foreach (var grade in animal.Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481544
+        /// </summary>
+        public void RSRP_481544()
+        {
+            using var context = new AnimalContext();
+            var beavers = context.Beavers
+                                 .Include(b => b.Clubs).ThenInclude(c => c.Animals)
+                                 .Include(b => b.Clubs).ThenInclude(g => g.Drawbacks);
+            var localBeavers = beavers.ToList();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var beaver in localBeavers)
+            {
+                Console.WriteLine(beaver);
+
+                if (beaver.Clubs != null)
+                {
+                    foreach (var club in beaver.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
+
+                        foreach (var grade in club.Grades)
+                        {
+                            Console.Write("\t");
+                            Console.Write("\t");
+                            Console.WriteLine(grade);
+
+                            if (grade.Animal.Grades != null)
+                            {
+                                foreach (var animalGrade in grade.Animal.Grades)
+                                {
+                                    Console.Write("\t");
+                                    Console.Write("\t");
+                                    Console.Write("\t");
+
+                                    Console.WriteLine(animalGrade);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481565
+        /// </summary>
+        public void RSRP_481565()
+        {
+            using var context = new AnimalContext();
+            var       animals = context.Animals;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                foreach (var club in animal.Clubs)
+                {
+                    foreach (var drawback in club.Drawbacks)
+                    {
+                        foreach (var food in drawback.Foods)
+                        {
+                        }
+
+                        foreach (var drawbackClub in drawback.Clubs)
+                        {
+                        }
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481721
+        /// </summary>
+        public void RSRP_481721()
+        {
+            using (var context = new AnimalContext())
+            {
+                var clubs     = context.Clubs;
+                var firstClub = clubs.First();
+                context.Entry(firstClub).Collection(c => c.Drawbacks).Load();
+            }
+
+            using (var context = new AnimalContext())
+            {
+                var drawbacks = context.Drawbacks.Include(d => d.JobDrawbacks);
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                foreach (var drawback in drawbacks)
+                {
+                    Console.WriteLine(drawback);
+
+                    foreach (JobDrawback jobDrawback in drawback.JobDrawbacks)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(jobDrawback);
+                    }
+                }
+
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481722
+        /// </summary>
+        public void RSRP_481722()
+        {
+            using var context = new AnimalContext();
+            var foods = context.Food
+                               .Include(f => f.Drawbacks)
+                               .ThenInclude(d => d.Clubs)
+                               .ThenInclude(c => c.Animals)
+                               .ThenInclude(g => g.Grades)
+                               .Include(f => f.Drawbacks)
+                //.ThenInclude(d => d.Clubs)
+                //.ThenInclude(c => c.AdditionalInfos)
+                ;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var food in foods)
+            {
+                foreach (var drawback in food.Drawbacks)
+                {
+                    foreach (var club in drawback.Clubs)
+                    {
+                        foreach (var animal in club.Animals)
+                        {
+                            foreach (var grade in animal.Grades)
+                            {
+                                Console.WriteLine(grade);
+
+                                foreach (var club1 in grade.Animal.Clubs)
+                                {
+                                    if (club1.AdditionalInfos != null)
+                                    {
+                                        foreach (var additionalInfo in club1.AdditionalInfos)
+                                        {
+                                            Console.Write("\t");
+                                            Console.WriteLine(additionalInfo);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481520
+        /// </summary>
+        public void RSRP_481520(AnimalContext context)
+        {
+            var animals = context.Animals;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+                var drawbacks = animal.Food?.Drawbacks;
+
+                if (drawbacks != null)
+                {
+                    foreach (var drawback in drawbacks)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(drawback);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481734
+        /// </summary>
+        public void RSRP_481734(AnimalContext context, DbSet<Club> clubs)
+        {
+            var contextClubs = clubs;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var club in contextClubs)
+            {
+                Console.WriteLine(club);
+                if (club.Drawbacks != null)
+                {
+                    foreach (var drawback in club.Drawbacks)
+                    {
+                        if (drawback.Foods != null)
+                        {
+                            foreach (var food in drawback.Foods)
+                            {
+                                Console.Write("\t");
+                                Console.WriteLine(food);
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481736
+        /// </summary>
+        public void RSRP_481736(AnimalContext context, DbSet<Club> clubs)
+        {
+            var animals = context?.Animals.Include($"Clubs");
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+                foreach (var club in animal.Clubs)
+                {
+                    foreach (var grade in club.Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481531
+        /// </summary>
+        public async Task RSRP_481531()
+        {
+            using var context = new AnimalContext();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            await foreach (var drawback in context.Drawbacks)
+            {
+                Console.WriteLine(drawback);
+                if (drawback.Clubs != null)
+                {
+                    foreach (var club in drawback.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
+                    }
+                }
+            }
+
+            await foreach (var animal in context.Animals.AsAsyncEnumerable())
+            {
+                foreach (var grade in animal.Grades)
+                {
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481516
+        /// </summary>
+        public void RSRP_481516()
+        {
+            using var context = new AnimalContext();
+            var       animal  = context.Animals.FirstOrDefault();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var club in animal.Clubs)
+            {
+                Console.WriteLine(club);
+                foreach (var drawback in club.Drawbacks)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(drawback);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481516
+        /// </summary>
+        public static void RSRP_481516_2()
+        {
+            using var context = new AnimalContext();
+            var       animals = context.Animals.ToList();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+                foreach (var club in animal.Clubs)
+                {
+                    foreach (var drawback in club.Drawbacks)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(drawback);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481516
+        /// </summary>
+        public static async Task RSRP_481516_3(AnimalContext context)
+        {
+            var additionalInfos = await context.AdditionalInfos.ToListAsync();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var additionalInfo in additionalInfos)
+            {
+                Console.WriteLine(additionalInfo);
+                foreach (var club in additionalInfo.Clubs)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(club);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481578
+        /// </summary>
+        public void RSRP_481578()
+        {
+            using var          context = new AnimalContext();
+            IQueryable<Animal> animals = context.Animals;
+            animals = context.Animals.Include(a => a.Grades);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+
+                foreach (var grade in animal.Grades)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(grade);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481538
+        /// </summary>
+        public void RSRP_481538()
+        {
+            using var context = new AnimalContext();
+            var       clubs   = context.Clubs;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var club in context.Clubs)
+            {
+                Console.WriteLine(club);
+
+                foreach (var location in club.Locations)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(location);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481644
+        /// </summary>
+        public void RSRP_481644()
+        {
+            using var context = new AnimalContext();
+
+            var animals = context.Animals;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal.Job.JobDrawbacks.FirstOrDefault()?.Drawback.Clubs.FirstOrDefault()?.Grades
+                                        .Count);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481701
+        /// </summary>
+        public void RSRP_481701()
+        {
+            using var context = new AnimalContext();
+            var drawbacks = context.Drawbacks.Include(item => item.Clubs).ThenInclude(item => item.Animals)
+                                   .ThenInclude(item => item.Grades);
 
 
             Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var drawback in drawbacks)
+            {
+                Console.WriteLine(drawback?.Clubs?.FirstOrDefault()?.Animals?.FirstOrDefault()?.Grades?.Count);
+            }
 
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481645
+        /// </summary>
+        public void RSRP_481645()
+        {
+            using var context   = new AnimalContext();
+            var       drawbacks = context.Drawbacks;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var drawback in drawbacks)
+            {
+                try
+                {
+                    var animalsHated = drawback?.Clubs?.First(c => c.Locations.Count > 1)
+                                               .Animals?.First(a => a.LovedBy        != null)
+                                               .LovedBy?.AnimalsHated;
+                    foreach (var animal in animalsHated)
+                    {
+                        Console.WriteLine(animal);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public delegate IQueryable<Club> AddIncludeDelegate(IQueryable<Club> value);
+
+        public IQueryable<Club> clubsField;
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481532
+        /// </summary>
+        public void RSRP_481532(AnimalContext context)
+        {
+            clubsField = context.Clubs;
+
+            AddIncludeDelegate addInclude = delegate(IQueryable<Club> val)
+            {
+                return val.Include(item => item.Animals);
+            };
+
+            clubsField = addInclude(clubsField);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var club in clubsField)
+            {
+                for (var i = 0; i < club.Animals.Count; i++)
+                {
+                    Console.WriteLine(i);
+                }
+            }
 
             Console.ForegroundColor = ConsoleColor.White;
         }

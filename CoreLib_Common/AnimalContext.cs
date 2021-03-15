@@ -11,20 +11,21 @@ namespace CoreLib_Common
     {
         #region Tables
 
-        public DbSet<Person>      Persons      { get; set; } = null!;
-        public DbSet<Animal>      Animals      { get; set; } = null!;
-        public DbSet<Beaver>      Beavers      { get; set; } = null!;
-        public DbSet<Crow>        Crows        { get; set; } = null!;
-        public DbSet<Deer>        Deers        { get; set; } = null!;
-        public DbSet<Club>        Clubs        { get; set; } = null!;
-        public DbSet<Grade>       Grades       { get; set; } = null!;
-        public DbSet<Job>         Jobs         { get; set; } = null!;
-        public DbSet<Drawback>    Drawbacks    { get; set; } = null!;
-        public DbSet<JobDrawback> JobDrawbacks { get; set; } = null!;
-        public DbSet<Food>        Food         { get; set; } = null!;
-        public DbSet<NormalFood>  NormalFood   { get; set; } = null!;
-        public DbSet<VeganFood>   VeganFood    { get; set; } = null!;
-        public DbSet<Elf>         Elves        { get; set; } = null!;
+        public DbSet<Person>         Persons         { get; set; } = null!;
+        public DbSet<Animal>         Animals         { get; set; } = null!;
+        public DbSet<Beaver>         Beavers         { get; set; } = null!;
+        public DbSet<Crow>           Crows           { get; set; } = null!;
+        public DbSet<Deer>           Deers           { get; set; } = null!;
+        public DbSet<Club>           Clubs           { get; set; } = null!;
+        public DbSet<Grade>          Grades          { get; set; } = null!;
+        public DbSet<Job>            Jobs            { get; set; } = null!;
+        public DbSet<Drawback>       Drawbacks       { get; set; } = null!;
+        public DbSet<JobDrawback>    JobDrawbacks    { get; set; } = null!;
+        public DbSet<Food>           Food            { get; set; } = null!;
+        public DbSet<NormalFood>     NormalFood      { get; set; } = null!;
+        public DbSet<VeganFood>      VeganFood       { get; set; } = null!;
+        public DbSet<Elf>            Elves           { get; set; } = null!;
+        public DbSet<AdditionalInfo> AdditionalInfos { get; set; } = null!;
 
         public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 
@@ -97,6 +98,19 @@ namespace CoreLib_Common
                         j.HasKey(t => new {t.AnimalId, t.ClubId});
                     }
                 )
+                ;
+
+            // Many-to-many
+            modelBuilder.Entity<AdditionalInfo>()
+                        .HasMany(a => a.Clubs)
+                        .WithMany(c => c.AdditionalInfos)
+                        .UsingEntity<AdditionalInfoClub>(
+                            c => c.HasOne(additionalInfoClub => additionalInfoClub.Club)
+                                  .WithMany().HasForeignKey(additionalInfoClub => additionalInfoClub.ClubId),
+                            a => a.HasOne(additionalInfoClub => additionalInfoClub.AdditionalInfo)
+                                  .WithMany().HasForeignKey(animalClub => animalClub.AdditionalInfoId),
+                            j => { j.HasKey(t => new {t.AdditionalInfoId, t.ClubId}); }
+                        )
                 ;
 
             modelBuilder.Entity<Grade>(entity =>

@@ -70,7 +70,7 @@ namespace EF_BeaversLife
             //new UseRawSql().UseRawSql1();
             //new UseInclude().UseIncludeMultilevel();
 
-            new Issues().RSRP_481581_2();
+            new Issues().RSRP_481722();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -910,6 +910,30 @@ namespace EF_BeaversLife
             context.Elves.Add(elf7);
             context.Elves.Add(elf8);
             context.Elves.Add(elf9);
+
+            #endregion
+
+            #region Seed AdditionaInfos
+
+            var additionalInfo1 = new AdditionalInfo()
+            {
+                Clubs   = new List<Club>() {club1, club2, club3},
+                Comment = "Best club ever"
+            };
+            var additionalInfo2 = new AdditionalInfo()
+            {
+                Clubs   = new List<Club>() {club1, club2},
+                Comment = "Evolution club"
+            };
+            var additionalInfo3 = new AdditionalInfo()
+            {
+                Clubs   = new List<Club>() {club1},
+                Comment = "Original club"
+            };
+
+            context.AdditionalInfos.Add(additionalInfo1);
+            context.AdditionalInfos.Add(additionalInfo2);
+            context.AdditionalInfos.Add(additionalInfo3);
 
             #endregion
 
