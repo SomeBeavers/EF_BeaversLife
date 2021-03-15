@@ -308,6 +308,121 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481557
+        /// </summary>
+        public void RSRP_481557()
+        {
+            using var context   = new AnimalContext();
+            var       drawbacks = context.Drawbacks;
+            var       first     = drawbacks.First();
+            context.Entry(first).Collection(d => d.Clubs).Load();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var drawback in drawbacks)
+            {
+                Console.WriteLine(drawback);
+                if (drawback.Clubs != null)
+                {
+                    foreach (var club in drawback.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
+
+                        foreach (var grade in club.Grades)
+                        {
+                            Console.Write("\t");
+                            Console.Write("\t");
+
+                            Console.WriteLine(grade);
+                        }
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481559
+        /// </summary>
+        public void RSRP_481559()
+        {
+            using var context = new AnimalContext();
+            var       animals = context.Animals;
+
+            // start comment
+            var       grades  = context.Entry(animals.Single(a => a.Id == 1)).Collection(a => a.Grades);
+            grades.Load();
+            // end comment
+
+            // uncomment
+            //context.Entry(animals.Single(a => a.Id == 1)).Collection(a => a.Grades).Query().Load();
+
+            var count = grades.Query().Count();
+            Console.WriteLine(count);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal);
+                if (animal.Grades != null)
+                {
+                    foreach (var grade in animal.Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481502
+        /// </summary>
+        public void RSRP_481502(bool boolParameter = false)
+        {
+            using var     context = new AnimalContext();
+            DbSet<Person> persons = context.Persons;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            if (boolParameter)
+            {
+                // uncomment
+                //persons.Include(p => p.AnimalsLoved);
+                //persons.Include(p => p.AnimalsHated);
+            }
+
+            if (boolParameter)
+            {
+                foreach (var person in persons)
+                {
+                    Console.WriteLine(person.AnimalsLoved.Count);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481543
+        /// </summary>
+        public void RSRP_481543()
+        {
+            using var     context        = new AnimalContext();
+            DbSet<Beaver> contextBeavers = context.Beavers;
+
+            // DEXP-581354
+
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 
     public static class Ext
