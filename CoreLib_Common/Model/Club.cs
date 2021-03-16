@@ -4,7 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoreLib_Common.Model
 {
-    public class Club
+    public interface IClub
+    {
+        int                          Id              { get; set; }
+        string                       Title           { get; set; }
+        NotMappedText                LocalizedText   { get; set; }
+        ICollection<Animal>?         Animals         { get; set; }
+        ICollection<Grade>           Grades          { get; set; }
+        ICollection<Drawback>?       Drawbacks       { get; set; }
+        ICollection<AdditionalInfo>? AdditionalInfos { get; set; }
+    }
+
+    public class Club : IClub
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

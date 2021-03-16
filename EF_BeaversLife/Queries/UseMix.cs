@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreLib_Common;
@@ -271,6 +272,33 @@ namespace EF_BeaversLife.Queries
                 {
                     Console.Write("\t");
                     Console.WriteLine(club);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// Include is needed.
+        /// </summary>
+        public void UseIClubInterface()
+        {
+            using var context = new AnimalContext();
+
+            IEnumerable<IClub> clubs = context.Clubs.AsQueryable();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (IClub club in clubs)
+            {
+                Console.WriteLine(club);
+
+                if (club.Drawbacks != null)
+                {
+                    foreach (var drawback in club.Drawbacks)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(drawback);
+                    }
                 }
             }
 
