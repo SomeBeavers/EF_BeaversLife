@@ -70,7 +70,9 @@ namespace EF_BeaversLife
             //new UseRawSql().UseRawSql1();
             //new UseInclude().UseIncludeMultilevel();
 
-            new Issues().RSRP_481722();
+            //new Issues().RSRP_481722();
+
+            new UseProjection().UseProjection2();
         }
 
         private static async Task ExecuteQueriesAsync()

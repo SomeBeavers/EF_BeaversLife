@@ -48,5 +48,27 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        /// Include is NOT needed.
+        /// </summary>
+        public void UseProjection2()
+        {
+            using var context = new AnimalContext();
+
+            var drawbacks = context.Drawbacks.Select(x => new
+            {
+                Id               = x.Id,
+                Consequence_Name = x.Consequence.Name
+            }).ToList();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var drawback in drawbacks)
+            {
+                Console.WriteLine(drawback.Consequence_Name);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
