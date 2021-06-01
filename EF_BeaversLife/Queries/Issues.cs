@@ -671,7 +671,7 @@ namespace EF_BeaversLife.Queries
                                .ThenInclude(d => d.Clubs)
                                .ThenInclude(c => c.Animals)
                                .ThenInclude(g => g.Grades)
-                               .Include(f => f.Drawbacks)
+                //.Include(f => f.Drawbacks)
                 //.ThenInclude(d => d.Clubs)
                 //.ThenInclude(c => c.AdditionalInfos)
                 ;
