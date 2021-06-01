@@ -21,7 +21,7 @@ namespace EF_BeaversLife
     {
         private static async Task Main()
         {
-            SeedDb();
+            //SeedDb();
 
             Console.ForegroundColor = ConsoleColor.Green;
             ExecuteQueries();
@@ -73,7 +73,7 @@ namespace EF_BeaversLife
             //new Issues().RSRP_481722();
 
             //new UseProjection().UseProjection2();
-            new UseDisabledLazyLoading().AlreadyUsedProperty();
+            new UseDisabledLazyLoading().Test();
         }
 
         private static async Task ExecuteQueriesAsync()
