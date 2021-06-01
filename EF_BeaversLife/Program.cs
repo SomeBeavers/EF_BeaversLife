@@ -73,7 +73,6 @@ namespace EF_BeaversLife
             //new Issues().RSRP_481722();
 
             //new UseProjection().UseProjection2();
-            new UseDisabledLazyLoading().Test();
         }
 
         private static async Task ExecuteQueriesAsync()
