@@ -69,7 +69,7 @@ namespace CoreLib_Common
                 //optionsBuilder.UseLazyLoadingProxies();
                 //optionsBuilder.UseLazyLoadingProxies(true);
 
-                optionsBuilder.UseLazyLoadingProxies(false);
+                //optionsBuilder.UseLazyLoadingProxies(false);
             }
         }
 
