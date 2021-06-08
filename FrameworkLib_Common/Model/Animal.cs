@@ -21,7 +21,7 @@ namespace FrameworkLib_Common.Model
         public string? Name { get; set; }
 
         public         int                 Age     { get; set; }
-        public         List<Club>?         Clubs   { get; set; }
+        public virtual List<Club>?         Clubs   { get; set; }
         public virtual ICollection<Grade>? Grades  { get; set; }
         public virtual Job                 Job     { get; set; } = null!;
         public         int?                JobId   { get; set; }
