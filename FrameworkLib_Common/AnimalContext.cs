@@ -40,8 +40,8 @@ namespace FrameworkLib_Common
         {
             // NOTE: `true` to enable lazy loading
             // NOTE: when `true` disable for specific property by making it not virtual.
-            Configuration.LazyLoadingEnabled = false;
-            this.Database.Log                = Console.Write;
+            //Configuration.LazyLoadingEnabled = true;
+            this.Database.Log = Console.Write;
         }
 
         #endregion

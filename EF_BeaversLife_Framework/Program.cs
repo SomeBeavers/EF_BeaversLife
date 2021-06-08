@@ -57,7 +57,7 @@ namespace EF_BeaversLife_Framework
             //new UseNoTracking().UseNoTracking1();
 
             //new UseIncludeWithSelect().UseIncludeMultilevel();
-            new Mix().UseCustomIdName();
+            new Mix().UseFind1();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -67,7 +67,7 @@ namespace EF_BeaversLife_Framework
             //await useAsync.UseAsync2();
             //await useAsync.UseAsync3();
 
-            await new UseInclude().UseStringIncludeWithWhere1();
+            //await new UseInclude().UseStringIncludeWithWhere1();
         }
 
         private static void SeedDb()

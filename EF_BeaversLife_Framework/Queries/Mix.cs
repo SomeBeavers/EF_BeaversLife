@@ -7,6 +7,10 @@ namespace EF_BeaversLife_Framework.Queries
 {
     public class Mix
     {
+        /// <summary>
+        /// Clubs <-> Animals relation is not virtual.
+        /// To turn off lazy loading for a particular property, do not make it virtual.
+        /// </summary>
         public void UseCustomIdName()
         {
             using var context = new AnimalContext();
