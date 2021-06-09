@@ -6,6 +6,9 @@ namespace EF_BeaversLife.Queries
 {
     public class DeleteMe
     {
+        /// <summary>
+        /// Include is NOT needed.
+        /// </summary>
         public void DeleteMe1()
         {
             using var context = new AnimalContext();
