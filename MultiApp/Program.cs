@@ -68,7 +68,8 @@ namespace EF_BeaversLife
             //new UseEnumeration().DbCallDueToToList3();
 
             //new UseRawSql().UseRawSql1();
-            new UseInclude().UseIncludeMultilevel();
+            //new UseInclude().UseIncludeMultilevel();
+            new Preprocessor().Preprocessor1();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -853,7 +854,7 @@ namespace EF_BeaversLife
 
             context.SaveChanges();
 
-            context.Database.ExecuteSqlRaw(File.ReadAllText(".\\BD\\CreateTVF.sql"));
+            //context.Database.ExecuteSqlRaw(File.ReadAllText(".\\BD\\CreateTVF.sql"));
         }
     }
 }
