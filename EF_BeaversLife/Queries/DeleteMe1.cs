@@ -62,5 +62,32 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DeleteMe3()
+        {
+            using var context = new AnimalContext();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var food in context.Food)
+            {
+                Console.WriteLine(food);
+
+                foreach (var club in food.Animal.Clubs)
+                {
+                }
+
+                foreach (var drawback in food.Drawbacks)
+                {
+                    var consequence = drawback.Consequence;
+                    var drawback1   = drawback.JobDrawbacks.First().Job;
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
