@@ -69,7 +69,7 @@ namespace EF_BeaversLife
 
             //new UseRawSql().UseRawSql1();
             //new UseInclude().UseIncludeMultilevel();
-            new Preprocessor().Preprocessor1();
+            new DeleteMe().DeleteMe1();
         }
 
         private static async Task ExecuteQueriesAsync()

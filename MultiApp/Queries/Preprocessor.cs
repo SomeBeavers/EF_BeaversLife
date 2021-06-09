@@ -7,7 +7,7 @@ namespace EF_BeaversLife.Queries
     public class Preprocessor
     {
         /// <summary>
-        /// 
+        /// Include is needed.
         /// </summary>
         public void Preprocessor1()
         {
@@ -47,13 +47,16 @@ namespace EF_BeaversLife.Queries
         }
 
         /// <summary>
-        /// 
+        /// Include is needed.
         /// </summary>
         public void Preprocessor2()
         {
             using var context = new AnimalContext();
 
-            var animals = context.Animals;
+            var animals = context.Animals
+                //.Include(item => item.Job)
+                //.Include(item => item.Clubs)
+                ;
 
             Console.ForegroundColor = ConsoleColor.Magenta;
 #if NET5_0
