@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CoreLib_Common;
+using CoreLib_Common.Model;
 
 namespace EF_BeaversLife.Queries
 {
@@ -84,6 +85,33 @@ namespace EF_BeaversLife.Queries
                 {
                     var consequence = drawback.Consequence;
                     var drawback1   = drawback.JobDrawbacks.First().Job;
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// Include is needed.
+        /// </summary>
+        public void DeleteMe4()
+        {
+            using var context = new AnimalContext();
+
+            var beavers = context.Set<Beaver>();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var beaver in beavers)
+            {
+                Console.WriteLine(beaver);
+
+                if (beaver.Clubs != null)
+                {
+                    foreach (var club in beaver.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
+                    }
                 }
             }
 

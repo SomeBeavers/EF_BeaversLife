@@ -73,6 +73,7 @@ namespace EF_BeaversLife
             //new Issues().RSRP_481722();
 
             //new UseProjection().UseProjection2();
+            new DeleteMe1().DeleteMe4();
         }
 
         private static async Task ExecuteQueriesAsync()
