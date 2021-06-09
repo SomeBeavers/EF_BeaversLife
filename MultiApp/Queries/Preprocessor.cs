@@ -45,5 +45,30 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Preprocessor2()
+        {
+            using var context = new AnimalContext();
+
+            var animals = context.Animals;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+#if NET5_0
+            foreach (var animal in animals)
+            {
+                var animalJob = animal.Job;
+            }
+#else
+            foreach (var animal in animals)
+            {
+                var animalJob = animal.Clubs;
+            }
+#endif
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
