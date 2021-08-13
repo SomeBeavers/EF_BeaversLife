@@ -32,7 +32,7 @@ namespace EF_BeaversLife.Queries
             using var context = new AnimalContext();
 
             var foods = context.Food.FromSqlInterpolated($"select * from Food where Title = {pizza}")
-                    .Include(food => food.Animal)
+                               .Include(food => food.Animal)
                 ;
 
             Console.ForegroundColor = ConsoleColor.Magenta;

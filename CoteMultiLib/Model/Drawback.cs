@@ -14,10 +14,11 @@ namespace CoreMultiLib.Model
 
         public string Title { get; set; } = null!;
 
-        public virtual ICollection<JobDrawback>? JobDrawbacks   { get; set; }
-        public virtual ICollection<Food>?        Foods          { get; set; }
-        public virtual ICollection<Club>?        Clubs          { get; set; }
-        public virtual Consequence               Consequence    { get; set; } = null!;
+        public virtual ICollection<JobDrawback>? JobDrawbacks { get; set; }
+        public virtual ICollection<Food>?        Foods        { get; set; }
+        public virtual ICollection<Club>?        Clubs        { get; set; }
+
+        public virtual Consequence Consequence { get; set; } = null!;
         //public         DrawbackDetails           DrawbackDetail { get; set; } = null!;
 
         public override string ToString()

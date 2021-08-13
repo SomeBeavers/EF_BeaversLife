@@ -18,8 +18,8 @@ namespace EF_BeaversLife.Queries
             context.Persons.Add(new Person
             {
                 Name         = "BeaverPerson",
-                AnimalsLoved = new List<Animal> {context.Crows.First()},
-                AnimalsHated = new List<Animal> {context.Deers.First()}
+                AnimalsLoved = new List<Animal> { context.Crows.First() },
+                AnimalsHated = new List<Animal> { context.Deers.First() }
             });
 
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -53,8 +53,8 @@ namespace EF_BeaversLife.Queries
             context.Persons.Add(new Person
             {
                 Name         = "BeaverPerson",
-                AnimalsLoved = new List<Animal> {context.Crows.First()},
-                AnimalsHated = new List<Animal> {context.Deers.First()}
+                AnimalsLoved = new List<Animal> { context.Crows.First() },
+                AnimalsHated = new List<Animal> { context.Deers.First() }
             });
 
             Console.ForegroundColor = ConsoleColor.Magenta;

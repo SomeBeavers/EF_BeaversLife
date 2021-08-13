@@ -191,7 +191,7 @@ namespace EF_BeaversLife.Queries
 
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine(animal);
-            if (animal is {Grades: { }})
+            if (animal is { Grades: { } })
             {
                 foreach (var grade in animal.Grades)
                 {

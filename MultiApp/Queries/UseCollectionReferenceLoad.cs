@@ -83,7 +83,7 @@ namespace EF_BeaversLife.Queries
                    .Load();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
-            if (food is {Drawbacks: { }})
+            if (food is { Drawbacks: { } })
             {
                 foreach (var drawback in food.Drawbacks)
                 {
@@ -109,7 +109,7 @@ namespace EF_BeaversLife.Queries
                    .Load();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
-            if (food is {Drawbacks: { }})
+            if (food is { Drawbacks: { } })
             {
                 foreach (var drawback in food.Drawbacks)
                 {

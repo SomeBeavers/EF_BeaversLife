@@ -18,7 +18,9 @@ namespace CoreMultiLib.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [MaxLength(128)] public string? Name { get; set; }
+        [MaxLength(128)]
+        public string? Name { get; set; }
+
         public int Age { get; set; }
 
         public virtual List<Club>?         Clubs   { get; set; }

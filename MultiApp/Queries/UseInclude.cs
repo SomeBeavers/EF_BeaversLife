@@ -94,6 +94,7 @@ namespace EF_BeaversLife.Queries
                         Console.Write("\t");
                         Console.WriteLine(club);
                     }
+
                 if (animal.Grades != null)
                     foreach (var grade in animal.Grades)
                     {
@@ -112,7 +113,8 @@ namespace EF_BeaversLife.Queries
             var animals = context.Animals.AsQueryable();
 
             string includeProperties = "Clubs,Grades";
-            foreach (var includePro in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var includePro in includeProperties.Split(new char[] { ',' },
+                StringSplitOptions.RemoveEmptyEntries))
             {
                 animals = animals.Include(includePro);
             }
@@ -128,6 +130,7 @@ namespace EF_BeaversLife.Queries
                         Console.Write("\t");
                         Console.WriteLine(club);
                     }
+
                 if (animal.Grades != null)
                     foreach (var grade in animal.Grades)
                     {
@@ -154,7 +157,7 @@ namespace EF_BeaversLife.Queries
                 Console.Write("\t");
                 Console.WriteLine(animal.Food);
 
-                if (animal.Food is {Drawbacks: { }})
+                if (animal.Food is { Drawbacks: { } })
                 {
                     foreach (var drawback in animal.Food.Drawbacks)
                     {
@@ -183,7 +186,7 @@ namespace EF_BeaversLife.Queries
                 Console.Write("\t");
                 Console.WriteLine(animal.Food);
 
-                if (animal.Food is {Drawbacks: { }})
+                if (animal.Food is { Drawbacks: { } })
                 {
                     foreach (var drawback in animal.Food.Drawbacks)
                     {

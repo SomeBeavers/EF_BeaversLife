@@ -85,7 +85,7 @@ namespace EF_BeaversLife
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(
-                    $"Saved {args.EntitiesSavedCount} changes for {((DbContext) sender)?.Database.GetConnectionString()}");
+                    $"Saved {args.EntitiesSavedCount} changes for {((DbContext)sender)?.Database.GetConnectionString()}");
                 Console.ForegroundColor = ConsoleColor.White;
             };
 
@@ -261,7 +261,7 @@ namespace EF_BeaversLife
             var club1 = new Club
             {
                 Title   = "TreesWorshipers",
-                Animals = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5, crow4},
+                Animals = new List<Animal> { beaver1, beaver2, beaver3, beaver4, beaver5, crow4 },
                 Locations = new List<Location>
                 {
                     new()
@@ -282,7 +282,7 @@ namespace EF_BeaversLife
             var club2 = new Club
             {
                 Title   = "CornLovers",
-                Animals = new List<Animal> {crow1, crow2, crow3, crow4, crow5},
+                Animals = new List<Animal> { crow1, crow2, crow3, crow4, crow5 },
                 Locations = new List<Location>
                 {
                     new()
@@ -844,8 +844,8 @@ namespace EF_BeaversLife
             var person1 = new Person
             {
                 Name         = "BeaverPerson",
-                AnimalsLoved = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5},
-                AnimalsHated = new List<Animal> {deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8}
+                AnimalsLoved = new List<Animal> { beaver1, beaver2, beaver3, beaver4, beaver5 },
+                AnimalsHated = new List<Animal> { deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8 }
             };
 
             context.Persons.Add(person1);

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CoreMultiLib
 {
-    public class AnimalContext: DbContext
+    public class AnimalContext : DbContext
     {
         #region Tables
 
@@ -28,7 +28,7 @@ namespace CoreMultiLib
         public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 
         // Property bags
-        public DbSet<Dictionary<string, object>> Products => Set<Dictionary<string, object>>("Product");
+        public DbSet<Dictionary<string, object>> Products   => Set<Dictionary<string, object>>("Product");
         public DbSet<Dictionary<string, object>> Categories => Set<Dictionary<string, object>>("Category");
 
         public IQueryable<AnimalLocation> GetAnimalLocation(
@@ -54,8 +54,9 @@ namespace CoreMultiLib
             if (!optionsBuilder.IsConfigured)
             {
                 // TODO: fix connection property
-                optionsBuilder.UseSqlServer("Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;"+
-                                            "MultipleActiveResultSets=True");
+                optionsBuilder.UseSqlServer(
+                    "Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;" +
+                    "MultipleActiveResultSets=True");
                 //optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
                 //                            "MultipleActiveResultSets=True"
                 //    //, b=> b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
@@ -83,19 +84,19 @@ namespace CoreMultiLib
 
             // Many-to-many
             modelBuilder.Entity<Animal>()
-                .HasMany(a => a.Clubs)
-                .WithMany(c => c.Animals)
-                .UsingEntity<AnimalClub>(
-                    c => c.HasOne(animalClub => animalClub.Club)
-                        .WithMany().HasForeignKey(animalClub => animalClub.ClubId),
-                    a => a.HasOne(animalClub => animalClub.Animal)
-                        .WithMany().HasForeignKey(animalClub => animalClub.AnimalId),
-                    j =>
-                    {
-                        j.Property(pt => pt.PublicationDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
-                        j.HasKey(t => new {t.AnimalId, t.ClubId});
-                    }
-                )
+                        .HasMany(a => a.Clubs)
+                        .WithMany(c => c.Animals)
+                        .UsingEntity<AnimalClub>(
+                            c => c.HasOne(animalClub => animalClub.Club)
+                                  .WithMany().HasForeignKey(animalClub => animalClub.ClubId),
+                            a => a.HasOne(animalClub => animalClub.Animal)
+                                  .WithMany().HasForeignKey(animalClub => animalClub.AnimalId),
+                            j =>
+                            {
+                                j.Property(pt => pt.PublicationDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                                j.HasKey(t => new { t.AnimalId, t.ClubId });
+                            }
+                        )
                 ;
 
             modelBuilder.Entity<Grade>(entity =>

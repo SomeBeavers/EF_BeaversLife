@@ -13,7 +13,7 @@ namespace EF_BeaversLife.Queries
             using var context = new AnimalContext();
 
             var clubs = context.Clubs.Include(c => c.Drawbacks).IncludeGradesAndAnimal();
-            
+
             Console.ForegroundColor = ConsoleColor.Magenta;
 
             foreach (var club in clubs)

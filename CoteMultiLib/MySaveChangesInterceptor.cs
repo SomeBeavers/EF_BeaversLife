@@ -10,7 +10,7 @@ namespace CoreMultiLib
     public class MySaveChangesInterceptor : SaveChangesInterceptor
     {
         public override InterceptionResult<int> SavingChanges(
-            DbContextEventData eventData,
+            DbContextEventData      eventData,
             InterceptionResult<int> result)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -20,9 +20,9 @@ namespace CoreMultiLib
         }
 
         public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
-            DbContextEventData eventData,
+            DbContextEventData      eventData,
             InterceptionResult<int> result,
-            CancellationToken cancellationToken = new CancellationToken())
+            CancellationToken       cancellationToken = new CancellationToken())
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Saving changes for {eventData.Context.Database.GetConnectionString()}");

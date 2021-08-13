@@ -15,7 +15,7 @@ namespace EF_BeaversLife.Queries
             using var context = new AnimalContext();
 
             var animals = context.Animals.AsSplitQuery().Include(f => f.Clubs).ThenInclude(a => a.Grades).Take(1)
-                .ToList();
+                                 .ToList();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
 
@@ -47,10 +47,10 @@ namespace EF_BeaversLife.Queries
             using var context = new AnimalContext();
 
             var animals = context.Animals.AsSplitQuery().Select(a => new
-                {
-                    a.Name, a.Clubs
-                }).Take(1)
-                .ToList();
+                                 {
+                                     a.Name, a.Clubs
+                                 }).Take(1)
+                                 .ToList();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
 

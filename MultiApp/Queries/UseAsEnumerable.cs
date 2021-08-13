@@ -16,8 +16,8 @@ namespace EF_BeaversLife.Queries
             using var context = new AnimalContext();
 
             var drawbacks = context.Drawbacks.Include(d => d.Clubs).Where(d => d.Clubs.Count > 2)
-                .AsEnumerable()
-                .Where(drawback => IsLongTitle(drawback));
+                                   .AsEnumerable()
+                                   .Where(drawback => IsLongTitle(drawback));
 
             Console.ForegroundColor = ConsoleColor.Magenta;
             foreach (var drawback in drawbacks)
@@ -42,10 +42,10 @@ namespace EF_BeaversLife.Queries
             using var context = new AnimalContext();
 
             var grades = context.Grades
-                .Include(grade => grade.Animal)
-                .AsEnumerable()
-                // use IsBeaver method
-                .Where(grade => IsAcceptable(grade)).Where(grade => grade.Animal is Beaver);
+                                .Include(grade => grade.Animal)
+                                .AsEnumerable()
+                                // use IsBeaver method
+                                .Where(grade => IsAcceptable(grade)).Where(grade => grade.Animal is Beaver);
 
             Console.ForegroundColor = ConsoleColor.Magenta;
             foreach (var grade in grades)

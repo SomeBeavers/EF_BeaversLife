@@ -23,12 +23,12 @@ namespace CoreMultiLib.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string Title { get; set; } = null!;
+        public string        Title         { get; set; } = null!;
         public NotMappedText LocalizedText { get; set; } = null!;
 
-        public virtual ICollection<Animal>? Animals { get; set; }
-        public virtual ICollection<Location> Locations { get; set; } = null!;
-        public virtual ICollection<Grade> Grades { get; set; } = null!;
+        public virtual ICollection<Animal>?   Animals   { get; set; }
+        public virtual ICollection<Location>  Locations { get; set; } = null!;
+        public virtual ICollection<Grade>     Grades    { get; set; } = null!;
         public virtual ICollection<Drawback>? Drawbacks { get; set; }
 
         public override string ToString()
