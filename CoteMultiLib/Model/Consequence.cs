@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Linq;
 
-namespace CoreMultiLib.Model;
-
-public class Consequence
+namespace CoreMultiLib.Model
 {
-    public string Name { get; set; } = null!;
-
-    public override string ToString()
+    public class Consequence
     {
-        return $"Consequence : Name = {Name}";
+        public string Name { get; set; } = null!;
+
+        public override string ToString()
+        {
+            return $"Consequence : Name = {Name}";
+        }
     }
 }

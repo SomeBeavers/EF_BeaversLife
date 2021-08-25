@@ -2,34 +2,35 @@
 using CoreLib_Common;
 using CoreLib_Common.Model;
 
-namespace EF_BeaversLife.Queries;
-
-public class UseSet
+namespace EF_BeaversLife.Queries
 {
-    /// <summary>
-    /// Include is needed.
-    /// </summary>
-    public void UseSet1()
+    public class UseSet
     {
-        using var context = new AnimalContext();
-
-        var beavers = context.Set<Beaver>();
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        foreach (var beaver in beavers)
+        /// <summary>
+        /// Include is needed.
+        /// </summary>
+        public void UseSet1()
         {
-            Console.WriteLine(beaver);
+            using var context = new AnimalContext();
 
-            if (beaver.Clubs != null)
+            var beavers = context.Set<Beaver>();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var beaver in beavers)
             {
-                foreach (var club in beaver.Clubs)
+                Console.WriteLine(beaver);
+
+                if (beaver.Clubs != null)
                 {
-                    Console.Write("\t");
-                    Console.WriteLine(club);
+                    foreach (var club in beaver.Clubs)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(club);
+                    }
                 }
             }
-        }
 
-        Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

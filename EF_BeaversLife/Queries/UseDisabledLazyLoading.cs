@@ -2,48 +2,49 @@
 using System.Linq;
 using CoreLib_Common;
 
-namespace EF_BeaversLife.Queries;
-
-public class UseDisabledLazyLoading
+namespace EF_BeaversLife.Queries
 {
-    /// <summary>
-    /// Include is needed.
-    /// </summary>
-    public void OneToOneRelation()
+    public class UseDisabledLazyLoading
     {
-        using var context = new AnimalContext();
-
-        var food = context.Food;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        foreach (var f in food)
+        /// <summary>
+        /// Include is needed.
+        /// </summary>
+        public void OneToOneRelation()
         {
-            var animal = f.Animal;
-            Console.WriteLine(animal);
+            using var context = new AnimalContext();
+
+            var food = context.Food;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var f in food)
+            {
+                var animal = f.Animal;
+                Console.WriteLine(animal);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        Console.ForegroundColor = ConsoleColor.White;
-    }
-
-    /// <summary>
-    /// Include is NOT needed.
-    /// </summary>
-    public void AlreadyUsedProperty()
-    {
-        using var context = new AnimalContext();
-
-        var animals = context.Animals.ToList();
-        var food    = context.Food;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        foreach (var f in food)
+        /// <summary>
+        /// Include is NOT needed.
+        /// </summary>
+        public void AlreadyUsedProperty()
         {
-            Console.WriteLine(f);
-            var animal = f.Animal;
-            Console.Write("\t");
-            Console.WriteLine(animal);
-        }
+            using var context = new AnimalContext();
 
-        Console.ForegroundColor = ConsoleColor.White;
+            var animals = context.Animals.ToList();
+            var food    = context.Food;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var f in food)
+            {
+                Console.WriteLine(f);
+                var animal = f.Animal;
+                Console.Write("\t");
+                Console.WriteLine(animal);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

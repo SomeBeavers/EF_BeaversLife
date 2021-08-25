@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Linq;
 
-namespace CoreMultiLib.Model;
-
-// Table-valued functions
-public class AnimalLocation
+namespace CoreMultiLib.Model
 {
-    public string Name    { get; set; } = null!;
-    public string Address { get; set; } = null!;
-
-    public override string ToString()
+    // Table-valued functions
+    public class AnimalLocation
     {
-        return $"AnimalLocation : Name = {Name} Address = {Address}";
+        public string Name    { get; set; } = null!;
+        public string Address { get; set; } = null!;
+
+        public override string ToString()
+        {
+            return $"AnimalLocation : Name = {Name} Address = {Address}";
+        }
     }
 }

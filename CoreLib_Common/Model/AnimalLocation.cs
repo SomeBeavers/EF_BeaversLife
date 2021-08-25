@@ -1,13 +1,14 @@
-﻿namespace CoreLib_Common.Model;
-
-// Table-valued functions
-public class AnimalLocation
+﻿namespace CoreLib_Common.Model
 {
-    public string Name    { get; set; } = null!;
-    public string Address { get; set; } = null!;
-
-    public override string ToString()
+    // Table-valued functions
+    public class AnimalLocation
     {
-        return $"AnimalLocation : Name = {Name} Address = {Address}";
+        public string Name    { get; set; } = null!;
+        public string Address { get; set; } = null!;
+
+        public override string ToString()
+        {
+            return $"AnimalLocation : Name = {Name} Address = {Address}";
+        }
     }
 }

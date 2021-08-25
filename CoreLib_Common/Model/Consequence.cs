@@ -1,11 +1,12 @@
-﻿namespace CoreLib_Common.Model;
-
-public class Consequence
+﻿namespace CoreLib_Common.Model
 {
-    public string Name { get; set; } = null!;
-
-    public override string ToString()
+    public class Consequence
     {
-        return $"Consequence : Name = {Name}";
+        public string Name { get; set; } = null!;
+
+        public override string ToString()
+        {
+            return $"Consequence : Name = {Name}";
+        }
     }
 }

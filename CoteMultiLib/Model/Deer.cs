@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Linq;
 
-namespace CoreMultiLib.Model;
-
-//[Table("Deer")]
-public class Deer : Animal
+namespace CoreMultiLib.Model
 {
-    public bool Horns { get; set; }
-
-    public override string ToString()
+    //[Table("Deer")]
+    public class Deer : Animal
     {
-        return @$"{base.ToString()} Deer : Horns = {this.Horns}";
+        public bool Horns { get; set; }
+
+        public override string ToString()
+        {
+            return @$"{base.ToString()} Deer : Horns = {this.Horns}";
+        }
     }
 }

@@ -3,35 +3,36 @@ using System.Linq;
 using CoreMultiLib;
 using Microsoft.EntityFrameworkCore;
 
-namespace EF_BeaversLife.Queries;
-
-public class UseNoTracking
+namespace EF_BeaversLife.Queries
 {
-    /// <summary>
-    ///     Include is needed cause entities are not tracked in context.
-    /// </summary>
-    public void UseNoTracking1()
+    public class UseNoTracking
     {
-        using var context = new AnimalContext();
-        var       crows   = context.Crows.Include(crow => crow.Grades).AsNoTracking().ToList();
-
-        crows = context.Crows.ToList();
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        foreach (var crow in crows)
+        /// <summary>
+        ///     Include is needed cause entities are not tracked in context.
+        /// </summary>
+        public void UseNoTracking1()
         {
-            Console.WriteLine(crow);
+            using var context = new AnimalContext();
+            var       crows   = context.Crows.Include(crow => crow.Grades).AsNoTracking().ToList();
 
-            if (crow.Grades != null)
+            crows = context.Crows.ToList();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var crow in crows)
             {
-                foreach (var grade in crow.Grades)
+                Console.WriteLine(crow);
+
+                if (crow.Grades != null)
                 {
-                    Console.Write("\t");
-                    Console.WriteLine(grade);
+                    foreach (var grade in crow.Grades)
+                    {
+                        Console.Write("\t");
+                        Console.WriteLine(grade);
+                    }
                 }
             }
-        }
 
-        Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CoreLib_Common.Model;
-
-//[Table("Deer")]
-public class Deer : Animal
+namespace CoreLib_Common.Model
 {
-    public bool Horns { get; set; }
-
-    public virtual ICollection<Elf>? Elves { get; set; }
-
-    public override string ToString()
+    //[Table("Deer")]
+    public class Deer : Animal
     {
-        return @$"{base.ToString()} Deer : Horns = {this.Horns}";
+        public bool Horns { get; set; }
+
+        public virtual ICollection<Elf>? Elves { get; set; }
+
+        public override string ToString()
+        {
+            return @$"{base.ToString()} Deer : Horns = {this.Horns}";
+        }
     }
 }

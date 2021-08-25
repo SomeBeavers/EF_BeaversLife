@@ -1,16 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace CoreLib_Common.Model;
-
-[Owned]
-public class Location
+namespace CoreLib_Common.Model
 {
-    public string Address { get; set; } = null!;
-
-    public virtual Club Club { get; set; } = null!;
-
-    public override string ToString()
+    [Owned]
+    public class Location
     {
-        return $@"Location: Address = {Address}";
+        public string Address { get; set; } = null!;
+
+        public virtual Club Club { get; set; } = null!;
+
+        public override string ToString()
+        {
+            return $@"Location: Address = {Address}";
+        }
     }
 }

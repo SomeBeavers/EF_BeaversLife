@@ -2,75 +2,76 @@
 using CoreMultiLib;
 using Microsoft.EntityFrameworkCore;
 
-namespace EF_BeaversLife.Queries;
-
-public class Preprocessor
+namespace EF_BeaversLife.Queries
 {
-    /// <summary>
-    /// Include is needed.
-    /// </summary>
-    public void Preprocessor1()
+    public class Preprocessor
     {
-        using var context = new AnimalContext();
-
-        var clubs = context.Clubs;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-
-        foreach (var club in clubs)
+        /// <summary>
+        /// Include is needed.
+        /// </summary>
+        public void Preprocessor1()
         {
-            Console.WriteLine(club);
+            using var context = new AnimalContext();
 
-            foreach (var grade in club.Grades)
+            var clubs = context.Clubs;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var club in clubs)
             {
-                Console.Write("\t");
-                Console.WriteLine(grade);
+                Console.WriteLine(club);
+
+                foreach (var grade in club.Grades)
+                {
+                    Console.Write("\t");
+                    Console.WriteLine(grade);
 
 #if !NET5_0
-                if (grade?.Animal?.Job?.JobDrawbacks != null)
-                {
-                    foreach (var drawback in grade.Animal.Job.JobDrawbacks)
+                    if (grade?.Animal?.Job?.JobDrawbacks != null)
                     {
-                        Console.Write("\t");
-                        Console.Write("\t");
-                        Console.WriteLine(drawback.Drawback);
+                        foreach (var drawback in grade.Animal.Job.JobDrawbacks)
+                        {
+                            Console.Write("\t");
+                            Console.Write("\t");
+                            Console.WriteLine(drawback.Drawback);
+                        }
                     }
-                }
 #endif
 #if NET5_0
                     var clubLocations = grade.Club.Locations;
 #endif
+                }
             }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        Console.ForegroundColor = ConsoleColor.White;
-    }
+        /// <summary>
+        /// Include is needed.
+        /// </summary>
+        public void Preprocessor2()
+        {
+            using var context = new AnimalContext();
 
-    /// <summary>
-    /// Include is needed.
-    /// </summary>
-    public void Preprocessor2()
-    {
-        using var context = new AnimalContext();
+            var animals = context.Animals
+                //.Include(item => item.Job)
+                //.Include(item => item.Clubs)
+                ;
 
-        var animals = context.Animals
-            //.Include(item => item.Job)
-            //.Include(item => item.Clubs)
-            ;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.Magenta;
 #if NET5_0
             foreach (var animal in animals)
             {
                 var animalJob = animal.Job;
             }
 #else
-        foreach (var animal in animals)
-        {
-            var animalJob = animal.Clubs;
-        }
+            foreach (var animal in animals)
+            {
+                var animalJob = animal.Clubs;
+            }
 #endif
 
-        Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

@@ -1,17 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CoreLib_Common.Model;
-
-//[Table("Crow")]
-public class Crow : Animal
+namespace CoreLib_Common.Model
 {
-    public string Color { get; set; } = null!;
-
-    [NotMapped]
-    public int Size { get; set; }
-
-    public override string ToString()
+    //[Table("Crow")]
+    public class Crow : Animal
     {
-        return @$"{base.ToString()} Crow : Color = {this.Color} Size = {this.Size} (cause [NotMapped])";
+        public string Color { get; set; } = null!;
+
+        [NotMapped]
+        public int Size { get; set; }
+
+        public override string ToString()
+        {
+            return @$"{base.ToString()} Crow : Color = {this.Color} Size = {this.Size} (cause [NotMapped])";
+        }
     }
 }

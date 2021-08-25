@@ -1,28 +1,29 @@
 ﻿using System;
 using CoreMultiLib;
 
-namespace EF_BeaversLife.Queries;
-
-// ReSharper disable once InconsistentNaming
-public class UseTVF
+namespace EF_BeaversLife.Queries
 {
     // ReSharper disable once InconsistentNaming
-    public void UseTVF1()
+    public class UseTVF
     {
-        using var context = new AnimalContext();
-
-        var animals = context.Animals;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        foreach (var animal in animals)
+        // ReSharper disable once InconsistentNaming
+        public void UseTVF1()
         {
-            var animalLocations = context.GetAnimalLocation(animal.Id);
-            foreach (var location in animalLocations)
-            {
-                Console.WriteLine(location);
-            }
-        }
+            using var context = new AnimalContext();
 
-        Console.ForegroundColor = ConsoleColor.White;
+            var animals = context.Animals;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var animal in animals)
+            {
+                var animalLocations = context.GetAnimalLocation(animal.Id);
+                foreach (var location in animalLocations)
+                {
+                    Console.WriteLine(location);
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

@@ -1,25 +1,26 @@
 ﻿using System;
 using CoreMultiLib;
 
-namespace EF_BeaversLife.Queries;
-
-public class UseNotMapped
+namespace EF_BeaversLife.Queries
 {
-    /// <summary>
-    ///     Include is not needed.
-    /// </summary>
-    public void UseNotMapped1()
+    public class UseNotMapped
     {
-        using var context = new AnimalContext();
-        var       clubs   = context.Clubs;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-
-        foreach (var club in clubs)
+        /// <summary>
+        ///     Include is not needed.
+        /// </summary>
+        public void UseNotMapped1()
         {
-            Console.WriteLine(club.LocalizedText);
-        }
+            using var context = new AnimalContext();
+            var       clubs   = context.Clubs;
 
-        Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var club in clubs)
+            {
+                Console.WriteLine(club.LocalizedText);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

@@ -2,26 +2,27 @@
 using CoreLib_Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace EF_BeaversLife.Queries;
-
-public class UseMapToQuery
+namespace EF_BeaversLife.Queries
 {
-    public void MapToQuery1()
+    public class UseMapToQuery
     {
-        using var context = new AnimalContext();
-
-        var mapToQueries = context.MapToQuery.Include(x => x.Club);
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-
-        foreach (var mapToQuery in mapToQueries)
+        public void MapToQuery1()
         {
-            Console.WriteLine(mapToQuery);
-            Console.Write("\t");
-            Console.WriteLine(mapToQuery.Club);
-        }
+            using var context = new AnimalContext();
 
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine();
+            var mapToQueries = context.MapToQuery.Include(x => x.Club);
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            foreach (var mapToQuery in mapToQueries)
+            {
+                Console.WriteLine(mapToQuery);
+                Console.Write("\t");
+                Console.WriteLine(mapToQuery.Club);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+        }
     }
 }

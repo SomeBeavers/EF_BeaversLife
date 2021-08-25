@@ -3,47 +3,48 @@ using System.Linq;
 using CoreLib_Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace EF_BeaversLife.Queries;
-
-public class UseRawSql
+namespace EF_BeaversLife.Queries
 {
-    public void UseRawSql1()
+    public class UseRawSql
     {
-        using var context = new AnimalContext();
-
-        var foods = context.Food.FromSqlRaw("select * from Food where Title = {0}", "Pizza")
-                           .Include(food => food.Animal)
-            ;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        foreach (var food in foods)
+        public void UseRawSql1()
         {
-            Console.WriteLine(food);
+            using var context = new AnimalContext();
 
-            Console.Write("\t");
-            Console.WriteLine(food.Animal);
+            var foods = context.Food.FromSqlRaw("select * from Food where Title = {0}", "Pizza")
+                               .Include(food => food.Animal)
+                ;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var food in foods)
+            {
+                Console.WriteLine(food);
+
+                Console.Write("\t");
+                Console.WriteLine(food.Animal);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        Console.ForegroundColor = ConsoleColor.White;
-    }
-
-    public void UseRawSql2(string pizza)
-    {
-        using var context = new AnimalContext();
-
-        var foods = context.Food.FromSqlInterpolated($"select * from Food where Title = {pizza}")
-                           .Include(food => food.Animal)
-            ;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        foreach (var food in foods)
+        public void UseRawSql2(string pizza)
         {
-            Console.WriteLine(food);
+            using var context = new AnimalContext();
 
-            Console.Write("\t");
-            Console.WriteLine(food.Animal);
+            var foods = context.Food.FromSqlInterpolated($"select * from Food where Title = {pizza}")
+                               .Include(food => food.Animal)
+                ;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var food in foods)
+            {
+                Console.WriteLine(food);
+
+                Console.Write("\t");
+                Console.WriteLine(food.Animal);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
-
-        Console.ForegroundColor = ConsoleColor.White;
     }
 }
