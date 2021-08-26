@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Net;
-using Microsoft.EntityFrameworkCore;
-
-namespace CoreMultiLib.Model
+﻿namespace CoreMultiLib.Model
 {
     //[Table("Animals")]
     [Index(nameof(Name), IsUnique = true)]

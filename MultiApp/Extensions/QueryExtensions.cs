@@ -1,9 +1,4 @@
-﻿using System;
-using CoreMultiLib.Model;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-
-namespace EF_BeaversLife.Extensions
+﻿namespace EF_BeaversLife.Extensions
 {
     public static class QueryExtensions
     {

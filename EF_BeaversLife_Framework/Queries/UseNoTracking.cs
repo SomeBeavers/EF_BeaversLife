@@ -1,9 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using FrameworkLib_Common;
-
-namespace EF_BeaversLife_Framework.Queries
+﻿namespace EF_BeaversLife_Framework.Queries
 {
     public class UseNoTracking
     {

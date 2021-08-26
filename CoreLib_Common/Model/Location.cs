@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace CoreLib_Common.Model
+﻿namespace CoreLib_Common.Model
 {
     [Owned]
     public class Location

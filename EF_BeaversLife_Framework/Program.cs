@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Spatial;
-using System.Linq;
-using System.Threading.Tasks;
-using EF_BeaversLife_Framework.Queries;
-using FrameworkLib_Common;
-using FrameworkLib_Common.Model;
-
-
-namespace EF_BeaversLife_Framework
+﻿namespace EF_BeaversLife_Framework
 {
     // NOTE [for me]: use ef_method template to generate simple ef method
     // NOTE [for me]: use format_print to paste Console.Write("\t");

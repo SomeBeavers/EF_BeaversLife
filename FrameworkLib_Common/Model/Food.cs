@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
-namespace FrameworkLib_Common.Model
+﻿namespace FrameworkLib_Common.Model
 {
     public class Food
     {

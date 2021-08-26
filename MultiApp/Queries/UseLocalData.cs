@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CoreMultiLib;
-using CoreMultiLib.Model;
-using Microsoft.EntityFrameworkCore;
-
-namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries
 {
     public class UseLocalData
     {

@@ -1,19 +1,4 @@
-﻿#region test
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using CoreLib_Common;
-using CoreLib_Common.Model;
-using EF_BeaversLife.Queries;
-using Microsoft.EntityFrameworkCore;
-
-#endregion
-
-namespace EF_BeaversLife
+﻿namespace EF_BeaversLife
 {
     // NOTE [for me]: use ef_method template to generate simple ef method
     // NOTE [for me]: use print_format to paste Console.Write("\t");

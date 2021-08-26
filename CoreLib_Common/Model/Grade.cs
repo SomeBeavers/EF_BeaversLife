@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace CoreLib_Common.Model
+﻿namespace CoreLib_Common.Model
 {
     public class Grade
     {

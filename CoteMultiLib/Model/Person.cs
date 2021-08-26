@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-
-namespace CoreMultiLib.Model
+﻿namespace CoreMultiLib.Model
 {
     public class Person
     {

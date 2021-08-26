@@ -1,10 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using FrameworkLib_Common;
-using FrameworkLib_Common.Model;
-
-namespace EF_BeaversLife_Framework.Queries
+﻿namespace EF_BeaversLife_Framework.Queries
 {
     public class UseEnumeration
     {

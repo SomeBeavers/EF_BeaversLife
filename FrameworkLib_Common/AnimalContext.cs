@@ -1,12 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure.DependencyResolution;
-using System.Data.Entity.Infrastructure.Pluralization;
-using System.Linq;
-using System.Text.RegularExpressions;
-using FrameworkLib_Common.Model;
-
-namespace FrameworkLib_Common
+﻿namespace FrameworkLib_Common
 {
     public class AnimalContext: DbContext
     {

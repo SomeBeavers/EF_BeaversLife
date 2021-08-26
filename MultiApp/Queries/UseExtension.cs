@@ -1,10 +1,4 @@
-﻿using System;
-using EF_BeaversLife.Extensions;
-using System.Linq;
-using CoreMultiLib;
-using Microsoft.EntityFrameworkCore;
-
-namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries
 {
     public class UseExtension
     {

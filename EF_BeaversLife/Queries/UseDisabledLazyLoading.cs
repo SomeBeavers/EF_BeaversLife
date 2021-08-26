@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using CoreLib_Common;
-
-namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries
 {
     public class UseDisabledLazyLoading
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-
-namespace CoreLib_Common.Model
+﻿namespace CoreLib_Common.Model
 {
     public class Elf
     {

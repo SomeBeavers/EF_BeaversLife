@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CoreLib_Common.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-
-namespace CoreLib_Common
+﻿namespace CoreLib_Common
 {
     public class AnimalContext : DbContext
     {

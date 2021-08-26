@@ -1,7 +1,4 @@
-﻿using System;
-using CoreMultiLib;
-
-namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries
 {
     // ReSharper disable once InconsistentNaming
     public class UseTVF

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace CoreMultiLib.Model
+﻿namespace CoreMultiLib.Model
 {
     //[Table("Beaver")]
     public class Beaver : Animal

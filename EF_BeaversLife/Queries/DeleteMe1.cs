@@ -1,9 +1,4 @@
-﻿using System;
-using System.Linq;
-using CoreLib_Common;
-using CoreLib_Common.Model;
-
-namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries
 {
     public class DeleteMe1
     {

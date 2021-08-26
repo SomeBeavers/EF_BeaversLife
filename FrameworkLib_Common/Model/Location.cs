@@ -1,8 +1,4 @@
-﻿using System;
-using System.Data.Entity.Spatial;
-using System.Linq;
-
-namespace FrameworkLib_Common.Model
+﻿namespace FrameworkLib_Common.Model
 {
     public class Location
     {

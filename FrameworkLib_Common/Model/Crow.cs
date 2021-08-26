@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace FrameworkLib_Common.Model
+﻿namespace FrameworkLib_Common.Model
 {
     //[Table("Crow")]
     public class Crow : Animal

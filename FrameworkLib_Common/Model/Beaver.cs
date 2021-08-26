@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
-namespace FrameworkLib_Common.Model
+﻿namespace FrameworkLib_Common.Model
 {
     //[Table("Beaver")]
     public class Beaver : Animal

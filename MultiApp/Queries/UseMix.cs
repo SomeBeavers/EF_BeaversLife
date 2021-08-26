@@ -1,11 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using CoreMultiLib;
-using CoreMultiLib.Model;
-using Microsoft.EntityFrameworkCore;
-
-namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries
 {
     public class UseMix
     {

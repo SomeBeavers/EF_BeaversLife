@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace FrameworkLib_Common.Model
+﻿namespace FrameworkLib_Common.Model
 {
     public class Job
     {

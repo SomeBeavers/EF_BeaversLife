@@ -1,8 +1,4 @@
-﻿using System;
-using CoreMultiLib;
-using Microsoft.EntityFrameworkCore;
-
-namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries
 {
     public class DeleteMe
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-
-namespace CoreMultiLib.Model
+﻿namespace CoreMultiLib.Model
 {
     [Owned]
     public class Location

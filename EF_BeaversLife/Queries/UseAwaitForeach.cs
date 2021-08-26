@@ -1,7 +1,4 @@
-﻿using System;
-using CoreLib_Common;
-
-namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries
 {
     public class UseAwaitForeach
     {
