@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CoreLib_Common\CoreLib_Common.csproj" />
+    <ProjectReference Include="..\CoreLib_Common\MSSQL_Core_Lib.csproj" />
   </ItemGroup>
 
 </Project>

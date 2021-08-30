@@ -77,9 +77,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FrameworkLib_Common\FrameworkLib_Common.csproj">
+    <ProjectReference Include="..\FrameworkLib_Common\MSSQL_Framework_Lib.csproj">
       <Project>{4b00e9ce-fe51-4222-aded-755e83f0cb70}</Project>
-      <Name>FrameworkLib_Common</Name>
+      <Name>MSSQL_Framework_Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
