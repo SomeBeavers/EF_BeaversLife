@@ -964,9 +964,9 @@
         }
 
         /// <summary>
-        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481645
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-486233
         /// </summary>
-        public void RSRP_481645_new()
+        public void RSRP_486233()
         {
             using var context = new AnimalContext();
             var drawbacks = context.Drawbacks
