@@ -966,18 +966,53 @@
         /// <summary>
         /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481645
         /// </summary>
+        public void RSRP_481645_new()
+        {
+            using var context = new AnimalContext();
+            var drawbacks = context.Drawbacks
+                                         //.Include(d => d.Clubs)
+                                         //.ThenInclude(c => c.Animals)
+                                         //.ThenInclude(a => a.LovedBy)
+                                         //.ThenInclude(lb => lb.AnimalsHated)
+                                            .First()
+                ;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            try
+            {
+                var animalsHated = drawbacks?.Clubs?.First(c => c.Locations.Count > 1)
+                                           .Animals?.First(a => a.LovedBy != null)
+                                           .LovedBy?.AnimalsHated;
+                foreach (var animal in animalsHated)
+                {
+                    Console.WriteLine(animal);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        /// <summary>
+        /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481645
+        /// </summary>
         public void RSRP_481645()
         {
             using var context   = new AnimalContext();
             var       drawbacks = context.Drawbacks;
 
             Console.ForegroundColor = ConsoleColor.Magenta;
+
             foreach (var drawback in drawbacks)
             {
                 try
                 {
                     var animalsHated = drawback?.Clubs?.First(c => c.Locations.Count > 1)
-                                               .Animals?.First(a => a.LovedBy        != null)
+                                               .Animals?.First(a => a.LovedBy != null)
                                                .LovedBy?.AnimalsHated;
                     foreach (var animal in animalsHated)
                     {

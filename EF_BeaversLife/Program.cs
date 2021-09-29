@@ -58,7 +58,8 @@
             //new Issues().RSRP_481722();
 
             //new UseProjection().UseProjection2();
-            new DeleteMe1().DeleteMe4();
+            //new DeleteMe1().DeleteMe4();
+            new EF_BeaversLife.Queries.Issues().RSRP_481645_new();
         }
 
         private static async Task ExecuteQueriesAsync()
@@ -164,6 +165,14 @@
                 Size      = 1,
                 IpAddress = IPAddress.Parse("127.0.0.1")
             };
+            var crow6_no_club = new Crow
+            {
+                Name      = "Crowly_no_club",
+                Age       = 51,
+                Color     = "purple",
+                Size      = 100,
+                IpAddress = IPAddress.Parse("127.0.0.1")
+            };
 
             var deer1 = new Deer
             {
@@ -233,6 +242,7 @@
             context.Crows.Add(crow3);
             context.Crows.Add(crow4);
             context.Crows.Add(crow5);
+            context.Crows.Add(crow6_no_club);
 
             context.Deers.Add(deer1);
             context.Deers.Add(deer2);
@@ -838,6 +848,14 @@
             };
 
             context.Persons.Add(person1);
+            var person2 = new Person
+            {
+                Name         = "BeaverPerson2",
+                AnimalsLoved = new List<Animal> {beaver1, beaver2, beaver3, beaver4, beaver5},
+                AnimalsHated = new List<Animal> { crow6_no_club }
+            };
+
+            context.Persons.Add(person2);
 
             #endregion
 
