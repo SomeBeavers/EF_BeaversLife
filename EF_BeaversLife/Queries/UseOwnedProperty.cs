@@ -2,6 +2,10 @@
 
 public class UseOwnedProperty
 {
+    /// <summary>
+    /// drawback.OwnsOne(d => d.Consequence,
+    /// Include is not needed.
+    /// </summary>
     public void OwnedViaFluentAPI()
     {
         using var context = new AnimalContext();
