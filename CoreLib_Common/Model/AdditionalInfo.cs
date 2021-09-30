@@ -15,6 +15,21 @@
             return $@"AdditionalInfo: Id = {Id} Comment = {Comment}";
         }
     }
+    public class AdditionalInfo2
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        public string? Comment { get; set; }
+
+        public virtual ICollection<Club>? Clubs { get; set; }
+
+        public override string ToString()
+        {
+            return $@"AdditionalInfo: Id = {Id} Comment = {Comment}";
+        }
+    }
 
     public class AdditionalInfoClub
     {

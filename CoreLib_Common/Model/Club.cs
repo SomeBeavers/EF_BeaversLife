@@ -25,6 +25,7 @@
         public virtual ICollection<Grade>           Grades          { get; set; } = null!;
         public virtual ICollection<Drawback>?       Drawbacks       { get; set; }
         public virtual ICollection<AdditionalInfo>? AdditionalInfos { get; set; }
+        public virtual ICollection<AdditionalInfo2>? AdditionalInfos2 { get; set; }
 
         public override string ToString()
         {

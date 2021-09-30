@@ -915,7 +915,7 @@
             {
                 Console.WriteLine(club);
 
-                foreach (var location in club.Locations)
+                foreach (var location in club.AdditionalInfos2)
                 {
                     Console.Write("\t");
                     Console.WriteLine(location);
