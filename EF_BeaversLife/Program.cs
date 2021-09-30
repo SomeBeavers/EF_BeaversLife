@@ -60,7 +60,8 @@
             //new UseProjection().UseProjection2();
             //new DeleteMe1().DeleteMe4();
             //new EF_BeaversLife.Queries.Issues().RSRP_481645_new();
-            new DeleteMe2().Test();
+            //new DeleteMe2().Test();
+            new UseNoTracking().UseNoTracking1();
         }
 
         private static async Task ExecuteQueriesAsync()

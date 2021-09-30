@@ -7,7 +7,7 @@
         NotMappedText                LocalizedText   { get; set; }
         ICollection<Animal>?         Animals         { get; set; }
         ICollection<Grade>           Grades          { get; set; }
-        ICollection<Drawback>?       Drawbacks       { get; set; }
+        string[]                     Drawbacks       { get; set; }
         ICollection<AdditionalInfo>? AdditionalInfos { get; set; }
     }
 
@@ -24,6 +24,7 @@
         public virtual ICollection<Location>        Locations       { get; set; } = null!;
         public virtual ICollection<Grade>           Grades          { get; set; } = null!;
         public virtual ICollection<Drawback>?       Drawbacks       { get; set; }
+        string[] IClub.                             Drawbacks       { get; set; }
         public virtual ICollection<AdditionalInfo>? AdditionalInfos { get; set; }
 
         public override string ToString()

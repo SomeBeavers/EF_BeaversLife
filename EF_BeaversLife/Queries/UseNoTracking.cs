@@ -8,9 +8,9 @@
         public void UseNoTracking1()
         {
             using var context = new AnimalContext();
-            var       crows   = context.Crows.Include(crow => crow.Grades).AsNoTracking().ToList();
+            context.Crows.Include(crow => crow.Grades).AsNoTracking().ToList();
 
-            crows = context.Crows.ToList();
+            var crows = context.Crows.ToList();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
             foreach (var crow in crows)
