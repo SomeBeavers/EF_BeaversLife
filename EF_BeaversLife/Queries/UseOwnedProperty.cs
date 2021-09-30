@@ -1,11 +1,8 @@
 ﻿namespace EF_BeaversLife.Queries;
 
-public class DeleteMe2
+public class UseOwnedProperty
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public void Test()
+    public void OwnedViaFluentAPI()
     {
         using var context = new AnimalContext();
 
