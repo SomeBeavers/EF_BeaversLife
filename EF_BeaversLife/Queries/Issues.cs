@@ -919,7 +919,13 @@
                 {
                     Console.Write("\t");
                     Console.WriteLine(location);
+
+                    foreach (var animal in location.Animals)
+                    {
+
+                    }
                 }
+
             }
 
             Console.ForegroundColor = ConsoleColor.White;
