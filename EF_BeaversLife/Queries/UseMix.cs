@@ -1,4 +1,6 @@
-﻿namespace EF_BeaversLife.Queries
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+
+namespace EF_BeaversLife.Queries
 {
     public class UseMix
     {
@@ -276,6 +278,7 @@
         public void UseIClubInterface()
         {
             using var context = new AnimalContext();
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 
             IEnumerable<IClub> clubs = context.Clubs.AsQueryable();
 

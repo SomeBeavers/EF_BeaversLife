@@ -47,7 +47,8 @@
             //new UseNoTracking().UseNoTracking1();
 
             //new UseIncludeWithSelect().UseIncludeMultilevel();
-            new Mix().UseFind1();
+            //new Mix().UseFind1();
+            new UseInclude().UseDbQueryIncludeWithStringPath();
         }
 
         private static async Task ExecuteQueriesAsync()

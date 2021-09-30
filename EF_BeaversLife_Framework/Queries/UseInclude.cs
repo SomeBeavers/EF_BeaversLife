@@ -7,13 +7,13 @@
         /// </summary>
         public void UseDbQueryIncludeWithStringPath()
         {
-            using var context  = new AnimalContext();
+            using var context = new AnimalContext();
             var foodList = context.VeganFood
-                                  .Include("Drawbacks").Include("Animal.Grades")
+                //.Include("Drawbacks").Include("Animal.Grades")
                 ;
 
             Console.ForegroundColor = ConsoleColor.Magenta;
-            foreach (var food in foodList)
+            foreach (var food in foodList.Include("Drawbacks").Include())
             {
                 Console.WriteLine(food);
 
@@ -43,6 +43,7 @@
             }
 
             Console.ForegroundColor = ConsoleColor.White;
+
         }
 
         /// <summary>
