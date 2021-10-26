@@ -4,26 +4,27 @@
     {
         #region Tables
 
-        public DbSet<Person>         Persons         { get; set; } = null!;
-        public DbSet<Animal>         Animals         { get; set; } = null!;
-        public DbSet<Beaver>         Beavers         { get; set; } = null!;
-        public DbSet<Crow>           Crows           { get; set; } = null!;
-        public DbSet<Deer>           Deers           { get; set; } = null!;
-        public DbSet<Club>           Clubs           { get; set; } = null!;
-        public DbSet<Grade>          Grades          { get; set; } = null!;
-        public DbSet<Job>            Jobs            { get; set; } = null!;
-        public DbSet<Drawback>       Drawbacks       { get; set; } = null!;
-        public DbSet<JobDrawback>    JobDrawbacks    { get; set; } = null!;
-        public DbSet<Food>           Food            { get; set; } = null!;
-        public DbSet<NormalFood>     NormalFood      { get; set; } = null!;
-        public DbSet<VeganFood>      VeganFood       { get; set; } = null!;
-        public DbSet<Elf>            Elves           { get; set; } = null!;
+        public DbSet<Person> Persons { get; set; } = null!;
+        public DbSet<Animal> Animals { get; set; } = null!;
+        public DbSet<Beaver> Beavers { get; set; } = null!;
+        public DbSet<Crow> Crows { get; set; } = null!;
+        public DbSet<Deer> Deers { get; set; } = null!;
+        public DbSet<Club> Clubs { get; set; } = null!;
+        public DbSet<Grade> Grades { get; set; } = null!;
+        public DbSet<Job> Jobs { get; set; } = null!;
+        public DbSet<Drawback> Drawbacks { get; set; } = null!;
+        public DbSet<JobDrawback> JobDrawbacks { get; set; } = null!;
+        public DbSet<Food> Food { get; set; } = null!;
+        public DbSet<NormalFood> NormalFood { get; set; } = null!;
+        public DbSet<VeganFood> VeganFood { get; set; } = null!;
+        public DbSet<Elf> Elves { get; set; } = null!;
         public DbSet<AdditionalInfo> AdditionalInfos { get; set; } = null!;
+        public DbSet<AdditionalInfoDetailed> AdditionalInfoDetailed { get; set; } = null!;
 
         public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 
         // Property bags
-        public DbSet<Dictionary<string, object>> Products   => Set<Dictionary<string, object>>("Product");
+        public DbSet<Dictionary<string, object>> Products => Set<Dictionary<string, object>>("Product");
         public DbSet<Dictionary<string, object>> Categories => Set<Dictionary<string, object>>("Category");
 
         public IQueryable<AnimalLocation> GetAnimalLocation(
@@ -49,13 +50,13 @@
             if (!optionsBuilder.IsConfigured)
             {
                 // TODO: fix connection property
-                optionsBuilder.UseSqlServer(
-                    "Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;" +
-                    "MultipleActiveResultSets=True");
-                //optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
-                //                            "MultipleActiveResultSets=True"
-                //    //, b=> b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
-                //);
+                //optionsBuilder.UseSqlServer(
+                //    "Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;" +
+                //    "MultipleActiveResultSets=True");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
+                                            "MultipleActiveResultSets=True"
+                //, b=> b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
+                );
                 optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
                 optionsBuilder.AddInterceptors(new MySaveChangesInterceptor());
 
@@ -94,18 +95,18 @@
                         )
                 ;
 
-            // Many-to-many
-            modelBuilder.Entity<AdditionalInfo>()
-                        .HasMany(a => a.Clubs)
-                        .WithMany(c => c.AdditionalInfos)
-                        .UsingEntity<AdditionalInfoClub>(
-                            c => c.HasOne(additionalInfoClub => additionalInfoClub.Club)
-                                  .WithMany().HasForeignKey(additionalInfoClub => additionalInfoClub.ClubId),
-                            a => a.HasOne(additionalInfoClub => additionalInfoClub.AdditionalInfo)
-                                  .WithMany().HasForeignKey(animalClub => animalClub.AdditionalInfoId),
-                            j => { j.HasKey(t => new { t.AdditionalInfoId, t.ClubId }); }
-                        )
-                ;
+            //// Many-to-many
+            //modelBuilder.Entity<AdditionalInfo>()
+            //            .HasMany(a => a.Clubs)
+            //            .WithMany(c => c.AdditionalInfos)
+            //            .UsingEntity<AdditionalInfoClub>(
+            //                c => c.HasOne(additionalInfoClub => additionalInfoClub.Club)
+            //                      .WithMany().HasForeignKey(additionalInfoClub => additionalInfoClub.ClubId),
+            //                a => a.HasOne(additionalInfoClub => additionalInfoClub.AdditionalInfo)
+            //                      .WithMany().HasForeignKey(animalClub => animalClub.AdditionalInfoId),
+            //                j => { j.HasKey(t => new { t.AdditionalInfoId, t.ClubId }); }
+            //            )
+            //    ;
 
             modelBuilder.Entity<Grade>(entity =>
             {
@@ -119,7 +120,8 @@
             {
                 entity.HasKey(j => new
                 {
-                    j.JobId, j.DrawbackId
+                    j.JobId,
+                    j.DrawbackId
                 });
 
                 entity.HasOne(jd => jd.Job)
@@ -172,6 +174,18 @@
             // Table-valued functions
             modelBuilder.Entity(typeof(AnimalLocation)).HasNoKey();
             modelBuilder.HasDbFunction(() => GetAnimalLocation(default));
+
+            // Table splitting
+            modelBuilder.Entity<AdditionalInfoDetailed>(additionalInfoSmall =>
+            {
+                additionalInfoSmall.ToTable("AdditionalInfos");
+            });
+            modelBuilder.Entity<AdditionalInfo>(additionalInfo =>
+            {
+                additionalInfo.ToTable("AdditionalInfos");
+
+                additionalInfo.HasOne(o => o.AdditionalInfoDetailed).WithOne().HasForeignKey<AdditionalInfoDetailed>(o => o.Id);
+            });
         }
     }
 }

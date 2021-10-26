@@ -1,11 +1,11 @@
-﻿namespace EF_BeaversLife.Queries;
+﻿namespace MSSQL_Core_App.Queries;
 
-public class DeleteMe2
+internal class UseSplittedTable
 {
     /// <summary>
-    /// 
+    /// Include is needed.
     /// </summary>
-    public void Test()
+    public void UseSplittedTable1()
     {
         using var context = new AnimalContext();
 

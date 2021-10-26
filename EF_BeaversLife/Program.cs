@@ -10,7 +10,7 @@
 
             Console.ForegroundColor = ConsoleColor.Green;
             ExecuteQueries();
-            await ExecuteQueriesAsync();
+            //await ExecuteQueriesAsync();
 
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -925,17 +925,29 @@
             var additionalInfo1 = new AdditionalInfo()
             {
                 Clubs   = new List<Club>() {club1, club2, club3},
-                Comment = "Best club ever"
+                Comment = "Best club ever",
+                AdditionalInfoDetailed = new AdditionalInfoDetailed 
+                { 
+                    DetailedSummary = "summary #1 from additional info detailed"
+                }
             };
             var additionalInfo2 = new AdditionalInfo()
             {
                 Clubs   = new List<Club>() {club1, club2},
-                Comment = "Evolution club"
+                Comment = "Evolution club",
+                AdditionalInfoDetailed = new AdditionalInfoDetailed
+                {
+                    DetailedSummary = "summary #2 from additional info detailed"
+                }
             };
             var additionalInfo3 = new AdditionalInfo()
             {
                 Clubs   = new List<Club>() {club1},
-                Comment = "Original club"
+                Comment = "Original club",
+                AdditionalInfoDetailed = new AdditionalInfoDetailed
+                {
+                    DetailedSummary = "summary #3 from additional info detailed"
+                }
             };
 
             context.AdditionalInfos.Add(additionalInfo1);
