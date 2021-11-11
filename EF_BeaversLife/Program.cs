@@ -1,4 +1,6 @@
-﻿namespace EF_BeaversLife
+﻿using MSSQL_Core_App.Queries;
+
+namespace EF_BeaversLife
 {
     // NOTE [for me]: use ef_method template to generate simple ef method
     // NOTE [for me]: use print_format to paste Console.Write("\t");
@@ -60,7 +62,7 @@
             //new UseProjection().UseProjection2();
             //new DeleteMe1().DeleteMe4();
             //new EF_BeaversLife.Queries.Issues().RSRP_481645_new();
-            new DeleteMe2().Test();
+            new UseMapToDTO().UseMapToDTO1();
         }
 
         private static async Task ExecuteQueriesAsync()
