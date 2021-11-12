@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>ef_method</Title>
+            <Shortcut>ef_method</Shortcut>
+            <Description>Code snippet for simple EF method</Description>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>Test</ID>
+                    <ToolTip>The name of the method</ToolTip>
+                    <Default>Test</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[
+/// <summary>
+/// 
+/// </summary>
+public void $Test$()
+{
+	using var context = new AnimalContext();
+
+	$end$
+
+	Console.ForegroundColor = ConsoleColor.Magenta;
+
+
+	Console.ForegroundColor = ConsoleColor.White;
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

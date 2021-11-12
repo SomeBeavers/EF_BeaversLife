@@ -27,9 +27,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MySQL", "MySQL", "{66EABDC0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Playground", "Playground", "{228D0E5C-B962-4E76-BD61-65714B4FFCD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQL_Core_Lib", "MySQL_Core_Lib\MySQL_Core_Lib.csproj", "{13A0A274-584C-4648-B0E7-AF6F61703AF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySQL_Core_Lib", "MySQL_Core_Lib\MySQL_Core_Lib.csproj", "{13A0A274-584C-4648-B0E7-AF6F61703AF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQL_Core_App", "MySQL_Core_App\MySQL_Core_App.csproj", "{1BE82023-3CB0-4B87-BB40-A2D06C40477F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySQL_Core_App", "MySQL_Core_App\MySQL_Core_App.csproj", "{1BE82023-3CB0-4B87-BB40-A2D06C40477F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeSnippets", "CodeSnippets", "{39A336DF-2299-4921-AFA5-B8C92146DC18}"
+	ProjectSection(SolutionItems) = preProject
+		ef_method.snippet = ef_method.snippet
+		ef_method_async.snippet = ef_method_async.snippet
+		print.snippet = print.snippet
+		print_format.snippet = print_format.snippet
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
