@@ -19,7 +19,7 @@
       <Version>5.0.11</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer">
-      <Version>5.0.11</Version>
+      <Version>6.0.1</Version>
     </PackageReference>
   </ItemGroup>
 
