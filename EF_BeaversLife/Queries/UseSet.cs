@@ -1,32 +1,31 @@
-﻿namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries;
+
+public class UseSet
 {
-    public class UseSet
+    /// <summary>
+    /// Include is needed.
+    /// </summary>
+    public void UseSet1()
     {
-        /// <summary>
-        /// Include is needed.
-        /// </summary>
-        public void UseSet1()
+        using var context = new AnimalContext();
+
+        var beavers = context.Set<Beaver>();
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        foreach (var beaver in beavers)
         {
-            using var context = new AnimalContext();
+            Console.WriteLine(beaver);
 
-            var beavers = context.Set<Beaver>();
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            foreach (var beaver in beavers)
+            if (beaver.Clubs != null)
             {
-                Console.WriteLine(beaver);
-
-                if (beaver.Clubs != null)
+                foreach (var club in beaver.Clubs)
                 {
-                    foreach (var club in beaver.Clubs)
-                    {
-                        Console.Write("\t");
-                        Console.WriteLine(club);
-                    }
+                    Console.Write("\t");
+                    Console.WriteLine(club);
                 }
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
+
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }

@@ -1,177 +1,176 @@
-﻿namespace EF_BeaversLife_Framework.Queries
+﻿namespace EF_BeaversLife_Framework.Queries;
+
+public class UseInclude
 {
-    public class UseInclude
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseDbQueryIncludeWithStringPath()
     {
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseDbQueryIncludeWithStringPath()
+        using var context  = new AnimalContext();
+        var foodList = context.VeganFood
+                              .Include("Drawbacks").Include("Animal.Grades")
+            ;
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        foreach (var food in foodList)
         {
-            using var context  = new AnimalContext();
-            var foodList = context.VeganFood
-                                  .Include("Drawbacks").Include("Animal.Grades")
-                ;
+            Console.WriteLine(food);
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            foreach (var food in foodList)
+            if (food.Drawbacks != null)
             {
-                Console.WriteLine(food);
-
-                if (food.Drawbacks != null)
+                foreach (var drawback in food.Drawbacks)
                 {
-                    foreach (var drawback in food.Drawbacks)
-                    {
-                        Console.Write("\t");
-                        Console.WriteLine(drawback);
-                    }
-                }
-
-                Console.Write("\t");
-                Console.Write("\t");
-                Console.WriteLine(food.Animal);
-
-                if (food.Animal?.Grades != null)
-                {
-                    foreach (var grade in food.Animal.Grades)
-                    {
-                        Console.Write("\t");
-                        Console.Write("\t");
-                        Console.Write("\t");
-                        Console.WriteLine(grade);
-                    }
+                    Console.Write("\t");
+                    Console.WriteLine(drawback);
                 }
             }
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\t");
+            Console.Write("\t");
+            Console.WriteLine(food.Animal);
+
+            if (food.Animal?.Grades != null)
+            {
+                foreach (var grade in food.Animal.Grades)
+                {
+                    Console.Write("\t");
+                    Console.Write("\t");
+                    Console.Write("\t");
+                    Console.WriteLine(grade);
+                }
+            }
         }
 
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseExtensionInclude1()
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseExtensionInclude1()
+    {
+        using var context  = new AnimalContext();
+        var foodList = context.VeganFood
+                              .Include(food => food.Drawbacks).Include(food => food.Animal.Grades)
+            ;
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        foreach (var food in foodList)
         {
-            using var context  = new AnimalContext();
-            var foodList = context.VeganFood
-                                  .Include(food => food.Drawbacks).Include(food => food.Animal.Grades)
-                ;
+            Console.WriteLine(food);
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            foreach (var food in foodList)
+            if (food.Drawbacks != null)
             {
-                Console.WriteLine(food);
-
-                if (food.Drawbacks != null)
+                foreach (var drawback in food.Drawbacks)
                 {
-                    foreach (var drawback in food.Drawbacks)
-                    {
-                        Console.Write("\t");
-                        Console.WriteLine(drawback);
-                    }
-                }
-
-                Console.Write("\t");
-                Console.Write("\t");
-                Console.WriteLine(food.Animal);
-
-                if (food.Animal?.Grades != null)
-                {
-                    foreach (var grade in food.Animal.Grades)
-                    {
-                        Console.Write("\t");
-                        Console.Write("\t");
-                        Console.Write("\t");
-                        Console.WriteLine(grade);
-                    }
+                    Console.Write("\t");
+                    Console.WriteLine(drawback);
                 }
             }
 
-            Console.ForegroundColor = ConsoleColor.White;
-        }
+            Console.Write("\t");
+            Console.Write("\t");
+            Console.WriteLine(food.Animal);
 
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseInclude1()
-        {
-            using var context = new AnimalContext();
-            var beavers = context.Beavers
-                                 .Include(b => b.Clubs)
-                                 .ToList();
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            beavers.ForEach(b =>
+            if (food.Animal?.Grades != null)
             {
-                Console.WriteLine(b);
-                if (b.Clubs != null)
+                foreach (var grade in food.Animal.Grades)
                 {
                     Console.Write("\t");
-                    Console.WriteLine(b.Clubs.Count);
-
-                    b.Clubs.ForEach(Console.WriteLine);
-                }
-            });
-
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseWhere1()
-        {
-            using var context = new AnimalContext();
-            var beavers = context.Beavers
-                                 .Where(b => b.Fluffiness == FluffinessEnum.VeryFluffy)
-                                 .Include(b => b.Clubs)
-                                 .ToList();
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            beavers.ForEach(b =>
-            {
-                Console.WriteLine(b);
-                if (b.Clubs != null)
-                {
                     Console.Write("\t");
-                    Console.WriteLine(b.Clubs.Count);
-
-                    b.Clubs.ForEach(Console.WriteLine);
+                    Console.Write("\t");
+                    Console.WriteLine(grade);
                 }
-            });
-
-            Console.ForegroundColor = ConsoleColor.White;
+            }
         }
 
-        /// <summary>
-        ///     Include is NOT needed as string Include is used.
-        /// </summary>
-        public async Task UseStringInclude1()
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseInclude1()
+    {
+        using var context = new AnimalContext();
+        var beavers = context.Beavers
+                             .Include(b => b.Clubs)
+                             .ToList();
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        beavers.ForEach(b =>
         {
-            using var context = new AnimalContext();
-            var clubs = context.Clubs
-                               .Include("Locations")
-                ;
+            Console.WriteLine(b);
+            if (b.Clubs != null)
+            {
+                Console.Write("\t");
+                Console.WriteLine(b.Clubs.Count);
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            await clubs.ForEachAsync(c => Console.WriteLine(c.Locations?.Count));
+                b.Clubs.ForEach(Console.WriteLine);
+            }
+        });
 
-            Console.ForegroundColor = ConsoleColor.White;
-        }
+        Console.ForegroundColor = ConsoleColor.White;
+    }
 
-        /// <summary>
-        ///     Include is NOT needed as string Include is used.
-        /// </summary>
-        public async Task UseStringIncludeWithWhere1()
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseWhere1()
+    {
+        using var context = new AnimalContext();
+        var beavers = context.Beavers
+                             .Where(b => b.Fluffiness == FluffinessEnum.VeryFluffy)
+                             .Include(b => b.Clubs)
+                             .ToList();
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        beavers.ForEach(b =>
         {
-            using var context = new AnimalContext();
-            var clubs = context.Clubs
-                               .Where(c => c.Title.Contains("Corn"))
-                               .Include("Locations")
-                ;
+            Console.WriteLine(b);
+            if (b.Clubs != null)
+            {
+                Console.Write("\t");
+                Console.WriteLine(b.Clubs.Count);
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            await clubs.ForEachAsync(c => Console.WriteLine(c.Locations?.Count));
+                b.Clubs.ForEach(Console.WriteLine);
+            }
+        });
 
-            Console.ForegroundColor = ConsoleColor.White;
-        }
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is NOT needed as string Include is used.
+    /// </summary>
+    public async Task UseStringInclude1()
+    {
+        using var context = new AnimalContext();
+        var clubs = context.Clubs
+                           .Include("Locations")
+            ;
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        await clubs.ForEachAsync(c => Console.WriteLine(c.Locations?.Count));
+
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is NOT needed as string Include is used.
+    /// </summary>
+    public async Task UseStringIncludeWithWhere1()
+    {
+        using var context = new AnimalContext();
+        var clubs = context.Clubs
+                           .Where(c => c.Title.Contains("Corn"))
+                           .Include("Locations")
+            ;
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        await clubs.ForEachAsync(c => Console.WriteLine(c.Locations?.Count));
+
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }

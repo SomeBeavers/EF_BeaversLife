@@ -1,97 +1,96 @@
-﻿namespace EF_BeaversLife_Framework.Queries
+﻿namespace EF_BeaversLife_Framework.Queries;
+
+public class UseIncludeWithSelect
 {
-    public class UseIncludeWithSelect
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseIncludeWithSelect1()
     {
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseIncludeWithSelect1()
+        using var context = new AnimalContext();
+        var       beavers = context.Beavers.Include(b => b.Clubs.Select(club => club.Locations));
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        foreach (var beaver in beavers)
         {
-            using var context = new AnimalContext();
-            var       beavers = context.Beavers.Include(b => b.Clubs.Select(club => club.Locations));
+            Console.WriteLine(beaver);
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            foreach (var beaver in beavers)
+            if (beaver.Clubs != null)
             {
-                Console.WriteLine(beaver);
-
-                if (beaver.Clubs != null)
+                foreach (var club in beaver.Clubs)
                 {
-                    foreach (var club in beaver.Clubs)
+                    if (club.Locations != null)
                     {
-                        if (club.Locations != null)
+                        foreach (var location in club.Locations)
                         {
-                            foreach (var location in club.Locations)
-                            {
-                                Console.Write("\t");
-                                Console.WriteLine(location);
-                            }
+                            Console.Write("\t");
+                            Console.WriteLine(location);
                         }
                     }
                 }
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        /// <summary>
-        ///     Include is not needed as string Include is used.
-        /// </summary>
-        public void UseStringIncludeMultilevel()
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is not needed as string Include is used.
+    /// </summary>
+    public void UseStringIncludeMultilevel()
+    {
+        using var context = new AnimalContext();
+        var       animals = context.Animals.Include("Food.Drawbacks");
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        foreach (var animal in animals)
         {
-            using var context = new AnimalContext();
-            var       animals = context.Animals.Include("Food.Drawbacks");
+            Console.WriteLine(animal);
+            Console.Write("\t");
+            Console.WriteLine(animal.Food);
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            foreach (var animal in animals)
+            if (animal.Food is {Drawbacks: { }})
             {
-                Console.WriteLine(animal);
-                Console.Write("\t");
-                Console.WriteLine(animal.Food);
-
-                if (animal.Food is {Drawbacks: { }})
+                foreach (var drawback in animal.Food.Drawbacks)
                 {
-                    foreach (var drawback in animal.Food.Drawbacks)
-                    {
-                        Console.Write("\t");
-                        Console.Write("\t");
-                        Console.WriteLine(drawback);
-                    }
+                    Console.Write("\t");
+                    Console.Write("\t");
+                    Console.WriteLine(drawback);
                 }
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseIncludeMultilevel()
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseIncludeMultilevel()
+    {
+        using var context = new AnimalContext();
+        var animals = context.Animals
+                             .Include(a => a.Food.Drawbacks)
+            ;
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        foreach (var animal in animals)
         {
-            using var context = new AnimalContext();
-            var animals = context.Animals
-                                 .Include(a => a.Food.Drawbacks)
-                ;
+            Console.WriteLine(animal);
+            Console.Write("\t");
+            Console.WriteLine(animal.Food);
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            foreach (var animal in animals)
+            if (animal.Food is {Drawbacks: { }})
             {
-                Console.WriteLine(animal);
-                Console.Write("\t");
-                Console.WriteLine(animal.Food);
-
-                if (animal.Food is {Drawbacks: { }})
+                foreach (var drawback in animal.Food.Drawbacks)
                 {
-                    foreach (var drawback in animal.Food.Drawbacks)
-                    {
-                        Console.Write("\t");
-                        Console.Write("\t");
-                        Console.WriteLine(drawback);
-                    }
+                    Console.Write("\t");
+                    Console.Write("\t");
+                    Console.WriteLine(drawback);
                 }
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
+
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }

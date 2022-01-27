@@ -1,15 +1,14 @@
-﻿namespace CoreLib_Common.Model
+﻿namespace CoreLib_Common.Model;
+
+//[Table("Deer")]
+public class Deer : Animal
 {
-    //[Table("Deer")]
-    public class Deer : Animal
+    public bool Horns { get; set; }
+
+    public virtual ICollection<Elf>? Elves { get; set; }
+
+    public override string ToString()
     {
-        public bool Horns { get; set; }
-
-        public virtual ICollection<Elf>? Elves { get; set; }
-
-        public override string ToString()
-        {
-            return @$"{base.ToString()} Deer : Horns = {this.Horns}";
-        }
+        return @$"{base.ToString()} Deer : Horns = {this.Horns}";
     }
 }

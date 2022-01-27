@@ -1,23 +1,22 @@
-﻿namespace FrameworkLib_Common.Model
+﻿namespace FrameworkLib_Common.Model;
+
+//[Table("Beaver")]
+public class Beaver : Animal
 {
-    //[Table("Beaver")]
-    public class Beaver : Animal
+    [Required]
+    public FluffinessEnum Fluffiness { get; set; }
+
+    public int Size { get; set; }
+
+    public override string ToString()
     {
-        [Required]
-        public FluffinessEnum Fluffiness { get; set; }
-
-        public int Size { get; set; }
-
-        public override string ToString()
-        {
-            return @$"{base.ToString()} Beaver: Fluffiness = {Fluffiness} Size = {Size}";
-        }
+        return @$"{base.ToString()} Beaver: Fluffiness = {Fluffiness} Size = {Size}";
     }
+}
 
-    public enum FluffinessEnum
-    {
-        NotFluffy,
-        Fluffy,
-        VeryFluffy
-    }
+public enum FluffinessEnum
+{
+    NotFluffy,
+    Fluffy,
+    VeryFluffy
 }

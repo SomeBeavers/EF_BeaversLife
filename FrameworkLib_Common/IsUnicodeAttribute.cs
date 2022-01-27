@@ -1,13 +1,12 @@
-﻿namespace FrameworkLib_Common
-{
-    [AttributeUsage(AttributeTargets.Property)]
-    internal class IsUnicode : Attribute
-    {
-        public IsUnicode(bool isUnicode)
-        {
-            Unicode = isUnicode;
-        }
+﻿namespace FrameworkLib_Common;
 
-        public bool Unicode { get; set; }
+[AttributeUsage(AttributeTargets.Property)]
+internal class IsUnicode : Attribute
+{
+    public IsUnicode(bool isUnicode)
+    {
+        Unicode = isUnicode;
     }
+
+    public bool Unicode { get; set; }
 }

@@ -1,15 +1,14 @@
-﻿namespace CoreLib_Common.Model
+﻿namespace CoreLib_Common.Model;
+
+[Owned]
+public class Location
 {
-    [Owned]
-    public class Location
+    public string Address { get; set; } = null!;
+
+    public virtual Club Club { get; set; } = null!;
+
+    public override string ToString()
     {
-        public string Address { get; set; } = null!;
-
-        public virtual Club Club { get; set; } = null!;
-
-        public override string ToString()
-        {
-            return $@"Location: Address = {Address}";
-        }
+        return $@"Location: Address = {Address}";
     }
 }

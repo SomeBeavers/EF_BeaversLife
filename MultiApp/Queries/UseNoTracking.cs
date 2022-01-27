@@ -1,33 +1,32 @@
-﻿namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries;
+
+public class UseNoTracking
 {
-    public class UseNoTracking
+    /// <summary>
+    ///     Include is needed cause entities are not tracked in context.
+    /// </summary>
+    public void UseNoTracking1()
     {
-        /// <summary>
-        ///     Include is needed cause entities are not tracked in context.
-        /// </summary>
-        public void UseNoTracking1()
+        using var context = new AnimalContext();
+        var       crows   = context.Crows.Include(crow => crow.Grades).AsNoTracking().ToList();
+
+        crows = context.Crows.ToList();
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        foreach (var crow in crows)
         {
-            using var context = new AnimalContext();
-            var       crows   = context.Crows.Include(crow => crow.Grades).AsNoTracking().ToList();
+            Console.WriteLine(crow);
 
-            crows = context.Crows.ToList();
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            foreach (var crow in crows)
+            if (crow.Grades != null)
             {
-                Console.WriteLine(crow);
-
-                if (crow.Grades != null)
+                foreach (var grade in crow.Grades)
                 {
-                    foreach (var grade in crow.Grades)
-                    {
-                        Console.Write("\t");
-                        Console.WriteLine(grade);
-                    }
+                    Console.Write("\t");
+                    Console.WriteLine(grade);
                 }
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
+
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }

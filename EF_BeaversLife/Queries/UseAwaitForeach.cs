@@ -1,34 +1,33 @@
-﻿namespace EF_BeaversLife.Queries
+﻿namespace EF_BeaversLife.Queries;
+
+public class UseAwaitForeach
 {
-    public class UseAwaitForeach
+    /// <summary>
+    /// Include required
+    /// </summary>
+    public async void UseAwaitForeach1()
     {
-        /// <summary>
-        /// Include required
-        /// </summary>
-        public async void UseAwaitForeach1()
-        {
-            await using var context = new AnimalContext();
+        await using var context = new AnimalContext();
 
-            await foreach (var animal in context.Animals)
-            {
-                if (animal.Clubs != null)
-                    foreach (var course in animal.Clubs)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.WriteLine();
-                    }
-            }
+        await foreach (var animal in context.Animals)
+        {
+            if (animal.Clubs != null)
+                foreach (var course in animal.Clubs)
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine();
+                }
         }
+    }
 
-        public async void UseAwaitForeach2(AnimalContext context)
+    public async void UseAwaitForeach2(AnimalContext context)
+    {
+        await foreach (var department in context.Animals.AsAsyncEnumerable())
         {
-            await foreach (var department in context.Animals.AsAsyncEnumerable())
-            {
-                if (department.Clubs != null)
-                    foreach (var course in department.Clubs)
-                    {
-                    }
-            }
+            if (department.Clubs != null)
+                foreach (var course in department.Clubs)
+                {
+                }
         }
     }
 }

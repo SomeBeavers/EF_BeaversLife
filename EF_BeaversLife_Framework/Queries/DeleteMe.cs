@@ -1,31 +1,30 @@
-﻿namespace EF_BeaversLife_Framework.Queries
+﻿namespace EF_BeaversLife_Framework.Queries;
+
+public class DeleteMe
 {
-    public class DeleteMe
+    /// <summary>
+    /// Include is needed.
+    /// </summary>
+    public void DeleteMe2()
     {
-        /// <summary>
-        /// Include is needed.
-        /// </summary>
-        public void DeleteMe2()
+        using var context = new AnimalContext();
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+
+        foreach (var deer in context.Deers)
         {
-            using var context = new AnimalContext();
+            Console.WriteLine(deer);
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            var person = deer.LovedBy;
 
-            foreach (var deer in context.Deers)
+            for (var i = deer.Job.JobDrawbacks.Count - 1; i >= 0; i--)
             {
-                Console.WriteLine(deer);
-
-                var person = deer.LovedBy;
-
-                for (var i = deer.Job.JobDrawbacks.Count - 1; i >= 0; i--)
-                {
-                    var drawback = deer.Job.JobDrawbacks.ToArray()[i].Drawback;
-                    Console.Write("\t");
-                    Console.WriteLine(drawback);
-                }
+                var drawback = deer.Job.JobDrawbacks.ToArray()[i].Drawback;
+                Console.Write("\t");
+                Console.WriteLine(drawback);
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
+
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }

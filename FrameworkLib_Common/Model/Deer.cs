@@ -1,13 +1,12 @@
-﻿namespace FrameworkLib_Common.Model
-{
-    //[Table("Deer")]
-    public class Deer : Animal
-    {
-        public bool Horns { get; set; }
+﻿namespace FrameworkLib_Common.Model;
 
-        public override string ToString()
-        {
-            return @$"{base.ToString()} Deer : Horns = {this.Horns}";
-        }
+//[Table("Deer")]
+public class Deer : Animal
+{
+    public bool Horns { get; set; }
+
+    public override string ToString()
+    {
+        return @$"{base.ToString()} Deer : Horns = {this.Horns}";
     }
 }

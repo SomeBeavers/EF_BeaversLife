@@ -1,25 +1,24 @@
-﻿namespace EF_BeaversLife_Framework.Queries
+﻿namespace EF_BeaversLife_Framework.Queries;
+
+public class UseComplexType
 {
-    public class UseComplexType
+    /// <summary>
+    ///     Include is not needed.
+    /// </summary>
+    public void UseComplexType1()
     {
-        /// <summary>
-        ///     Include is not needed.
-        /// </summary>
-        public void UseComplexType1()
+        using var context   = new AnimalContext();
+        var       drawbacks = context.Drawbacks;
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+
+        foreach (var drawback in drawbacks)
         {
-            using var context   = new AnimalContext();
-            var       drawbacks = context.Drawbacks;
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-
-            foreach (var drawback in drawbacks)
-            {
-                Console.WriteLine(drawback);
-                Console.Write("\t");
-                Console.WriteLine(drawback.DrawbackDetail);
-            }
-
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(drawback);
+            Console.Write("\t");
+            Console.WriteLine(drawback.DrawbackDetail);
         }
+
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }

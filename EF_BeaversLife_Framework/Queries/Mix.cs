@@ -1,133 +1,132 @@
-﻿namespace EF_BeaversLife_Framework.Queries
+﻿namespace EF_BeaversLife_Framework.Queries;
+
+public class Mix
 {
-    public class Mix
+    /// <summary>
+    /// Clubs <-> Animals relation is not virtual.
+    /// To turn off lazy loading for a particular property, do not make it virtual.
+    /// </summary>
+    public void UseCustomIdName()
     {
-        /// <summary>
-        /// Clubs <-> Animals relation is not virtual.
-        /// To turn off lazy loading for a particular property, do not make it virtual.
-        /// </summary>
-        public void UseCustomIdName()
+        using var context = new AnimalContext();
+        var       animals = context.Animals.Where(animal => animal.CustomIdName == 1);
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+
+        foreach (var animal in animals)
         {
-            using var context = new AnimalContext();
-            var       animals = context.Animals.Where(animal => animal.CustomIdName == 1);
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-
-            foreach (var animal in animals)
+            Console.WriteLine(animal);
+            if (animal.Clubs != null)
             {
-                Console.WriteLine(animal);
-                if (animal.Clubs != null)
-                {
-                    foreach (var club in animal.Clubs)
-                    {
-                        Console.Write("\t");
-                        Console.WriteLine(club);
-                    }
-                }
-            }
-
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseInverseProperties()
-        {
-            using var context = new AnimalContext();
-            var       persons = context.Persons.Include(p => p.AnimalsLoved).Include(p => p.AnimalsHated);
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-
-            foreach (var person in persons)
-            {
-                Console.WriteLine(person);
-                foreach (var animalLoved in person.AnimalsLoved)
-                {
-                    Console.Write("\t");
-                    Console.WriteLine(animalLoved);
-                }
-
-                foreach (var animalHated in person.AnimalsHated)
-                {
-                    Console.Write("\t");
-                    Console.Write("\t");
-                    Console.WriteLine(animalHated);
-                }
-            }
-
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseFind1()
-        {
-            using var context = new AnimalContext();
-            var       deer1   = context.Deers.Find(11);
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(deer1);
-
-            if (deer1?.Clubs != null)
-            {
-                foreach (var club in deer1.Clubs)
+                foreach (var club in animal.Clubs)
                 {
                     Console.Write("\t");
                     Console.WriteLine(club);
                 }
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
 
-        /// <summary>
-        ///     Include is needed.
-        /// </summary>
-        public void UseFind2()
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseInverseProperties()
+    {
+        using var context = new AnimalContext();
+        var       persons = context.Persons.Include(p => p.AnimalsLoved).Include(p => p.AnimalsHated);
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+
+        foreach (var person in persons)
         {
-            using var context = new AnimalContext();
-            var       deers   = context.Deers.Include(deer => deer.Clubs);
-            var       deer1   = context.Deers.Find(11);
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(deer1);
-
-            if (deer1?.Clubs != null)
+            Console.WriteLine(person);
+            foreach (var animalLoved in person.AnimalsLoved)
             {
-                foreach (var club in deer1.Clubs)
-                {
-                    Console.Write("\t");
-                    Console.WriteLine(club);
-                }
+                Console.Write("\t");
+                Console.WriteLine(animalLoved);
             }
 
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        /// <summary>
-        ///     Include is NOT needed.
-        /// </summary>
-        public void UseFind3()
-        {
-            using var context = new AnimalContext();
-            var       deers   = context.Deers.Include(deer => deer.Clubs).ToList();
-            var       deer1   = context.Deers.Find(11);
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(deer1);
-
-            if (deer1?.Clubs != null)
+            foreach (var animalHated in person.AnimalsHated)
             {
-                foreach (var club in deer1.Clubs)
-                {
-                    Console.Write("\t");
-                    Console.WriteLine(club);
-                }
+                Console.Write("\t");
+                Console.Write("\t");
+                Console.WriteLine(animalHated);
             }
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
+
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseFind1()
+    {
+        using var context = new AnimalContext();
+        var       deer1   = context.Deers.Find(11);
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine(deer1);
+
+        if (deer1?.Clubs != null)
+        {
+            foreach (var club in deer1.Clubs)
+            {
+                Console.Write("\t");
+                Console.WriteLine(club);
+            }
+        }
+
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is needed.
+    /// </summary>
+    public void UseFind2()
+    {
+        using var context = new AnimalContext();
+        var       deers   = context.Deers.Include(deer => deer.Clubs);
+        var       deer1   = context.Deers.Find(11);
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine(deer1);
+
+        if (deer1?.Clubs != null)
+        {
+            foreach (var club in deer1.Clubs)
+            {
+                Console.Write("\t");
+                Console.WriteLine(club);
+            }
+        }
+
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    /// <summary>
+    ///     Include is NOT needed.
+    /// </summary>
+    public void UseFind3()
+    {
+        using var context = new AnimalContext();
+        var       deers   = context.Deers.Include(deer => deer.Clubs).ToList();
+        var       deer1   = context.Deers.Find(11);
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine(deer1);
+
+        if (deer1?.Clubs != null)
+        {
+            foreach (var club in deer1.Clubs)
+            {
+                Console.Write("\t");
+                Console.WriteLine(club);
+            }
+        }
+
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }
