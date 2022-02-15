@@ -1,4 +1,4 @@
-﻿using MSSQL_Core_App.Queries;
+﻿using MSSQL_Core_App.UpdateDB;
 
 namespace EF_BeaversLife;
 
@@ -62,7 +62,8 @@ internal class Program
         //new UseProjection().UseProjection2();
         //new DeleteMe1().DeleteMe4();
         //new EF_BeaversLife.Queries.Issues().RSRP_481645_new();
-        new UseMapToDTO().UseMapToDTO1();
+        //new UseMapToDTO().UseMapToDTO1();
+        new AddElf().ReplaceElvesCollection();
     }
 
     private static async Task ExecuteQueriesAsync()
