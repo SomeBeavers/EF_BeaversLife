@@ -61,7 +61,7 @@ public class AnimalContext : DbContext
             //optionsBuilder.UseLazyLoadingProxies();
             //optionsBuilder.UseLazyLoadingProxies(true);
 
-            optionsBuilder.UseLazyLoadingProxies(false);
+            //optionsBuilder.UseLazyLoadingProxies(false);
         }
     }
 
