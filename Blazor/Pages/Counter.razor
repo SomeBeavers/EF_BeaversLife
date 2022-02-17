@@ -1,5 +1,5 @@
 ﻿@page "/counter"
-@using CoreLib_Common
+@using DB_First_Core_Lib.Models
 
 <h1>Counter</h1>
 
@@ -20,15 +20,13 @@
     /// </summary>
     public void Blazor1()
     {
-        using var context = new AnimalContext();
+        using var context = new AdventureWorksContext();
+        var addresses = context.Addresses;
 
-        var elves = context.Elves;
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-
-        var deer = elves.FirstOrDefault().Deer;
-
-        Console.ForegroundColor = ConsoleColor.White;
+        foreach (var address in addresses)
+        {
+            var a = address.BusinessEntityAddresses;
+        }
     }
-   
+
 }
