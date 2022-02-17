@@ -102,7 +102,7 @@ namespace EF_BeaversLife_Framework.Queries
         {
             using var context = new AnimalContext();
             var beavers = context.Beavers
-                                 .Include(b => b.Clubs)
+                                 //.Include(b => b.Clubs)
                                  .ToList();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
