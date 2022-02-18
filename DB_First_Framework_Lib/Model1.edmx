@@ -19,6 +19,15 @@
           <Property Name="AdditionalInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StudentGradeId" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'School.dbo.AdditionalTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AdditionalTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentId" Type="int" />
+        </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="CommentId" />
@@ -152,6 +161,18 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             </Principal>
             <Dependent Role="AdditionalInfos">
               <PropertyRef Name="StudentGradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdditionalTable_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="0..1" />
+          <End Role="AdditionalTable" Type="Self.AdditionalTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="AdditionalTable">
+              <PropertyRef Name="CommentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -398,6 +419,12 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <EntitySet Name="StudentGrade" EntityType="Self.StudentGrade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdditionalTable" EntityType="Self.AdditionalTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AdditionalTable].[id] AS [id], 
+    [AdditionalTable].[CommentId] AS [CommentId]
+    FROM [dbo].[AdditionalTable] AS [AdditionalTable]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Likes" EntityType="Self.Likes" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Likes].[id] AS [id], 
@@ -414,6 +441,10 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <AssociationSet Name="FK_AdditionalInfo_StudentGrade" Association="Self.FK_AdditionalInfo_StudentGrade">
             <End Role="StudentGrade" EntitySet="StudentGrade" />
             <End Role="AdditionalInfos" EntitySet="AdditionalInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdditionalTable_Comment" Association="Self.FK_AdditionalTable_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="AdditionalTable" EntitySet="AdditionalTable" />
           </AssociationSet>
           <AssociationSet Name="FK_Comment_Comment" Association="Self.FK_Comment_Comment">
             <End Role="Comment" EntitySet="Comment" />
@@ -498,6 +529,7 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <NavigationProperty Name="Comment1" Relationship="SchoolModel.FK_Comment_Comment" FromRole="Comment" ToRole="Comment1" />
           <NavigationProperty Name="Comment2" Relationship="SchoolModel.FK_Comment_Comment" FromRole="Comment1" ToRole="Comment" />
           <NavigationProperty Name="Likes" Relationship="SchoolModel.FK_Likes_Comment" FromRole="Comment" ToRole="Like" />
+          <NavigationProperty Name="AdditionalTables" Relationship="SchoolModel.FK_AdditionalTable_Comment" FromRole="Comment" ToRole="AdditionalTable" />
         </EntityType>
         <EntityType Name="CommentTag">
           <Key>
@@ -879,6 +911,11 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             <End Role="Comment" EntitySet="Comments" />
             <End Role="Like" EntitySet="Likes" />
           </AssociationSet>
+          <EntitySet Name="AdditionalTables" EntityType="SchoolModel.AdditionalTable" />
+          <AssociationSet Name="FK_AdditionalTable_Comment" Association="SchoolModel.FK_AdditionalTable_Comment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="AdditionalTable" EntitySet="AdditionalTables" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetStudentGrades_Result">
           <Property Type="Int32" Name="EnrollmentID" Nullable="false" />
@@ -925,6 +962,26 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
               <PropertyRef Name="CommentId" />
             </Principal>
             <Dependent Role="Like">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AdditionalTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentId" Type="Int32" />
+          <NavigationProperty Name="Comment" Relationship="SchoolModel.FK_AdditionalTable_Comment" FromRole="AdditionalTable" ToRole="Comment" />
+        </EntityType>
+        <Association Name="FK_AdditionalTable_Comment">
+          <End Type="SchoolModel.Comment" Role="Comment" Multiplicity="0..1" />
+          <End Type="SchoolModel.AdditionalTable" Role="AdditionalTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="AdditionalTable">
               <PropertyRef Name="CommentId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1118,6 +1175,14 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <EntitySetMapping Name="Likes">
             <EntityTypeMapping TypeName="SchoolModel.Like">
               <MappingFragment StoreEntitySet="Likes">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdditionalTables">
+            <EntityTypeMapping TypeName="SchoolModel.AdditionalTable">
+              <MappingFragment StoreEntitySet="AdditionalTable">
                 <ScalarProperty Name="CommentId" ColumnName="CommentId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

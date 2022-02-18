@@ -15,7 +15,7 @@ namespace DB_First_Framework_App
 
             foreach (Comment comment in context.Comments)
             {
-                var likes = comment.Likes;
+                var likes = comment.AdditionalTables;
                 Console.WriteLine(likes.FirstOrDefault()?.CommentId);
             }
 

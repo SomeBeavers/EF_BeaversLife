@@ -9,7 +9,7 @@ Console.WriteLine("Hello, World!");
 using var context = new AdventureWorksContext();
 
 DbSet<Address> contextAddresses = context.Addresses;
-foreach (Address contextAddress in contextAddresses.Include(item => item.BusinessEntityAddresses))
+foreach (Address contextAddress in contextAddresses)
 {
     var entityAddresses = contextAddress.BusinessEntityAddresses;
 }
