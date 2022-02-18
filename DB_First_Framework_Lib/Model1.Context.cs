@@ -20,6 +20,7 @@ namespace DB_First_Framework_Lib
         public SchoolEntities()
             : base("name=SchoolEntities")
         {
+            //Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
