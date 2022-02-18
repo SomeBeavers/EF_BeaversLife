@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 using DB_First_Framework_Lib;
@@ -14,8 +15,8 @@ namespace DB_First_Framework_App
 
             foreach (Comment comment in context.Comments)
             {
-                var tags = comment.CommentTags;
-                Console.WriteLine(tags.FirstOrDefault()?.CommentId);
+                var likes = comment.Likes;
+                Console.WriteLine(likes.FirstOrDefault()?.CommentId);
             }
 
             Console.ReadLine();

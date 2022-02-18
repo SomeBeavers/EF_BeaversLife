@@ -18,6 +18,7 @@ namespace DB_First_Framework_Lib
         public Comment()
         {
             this.CommentTags = new HashSet<CommentTag>();
+            this.Likes = new HashSet<Like>();
         }
     
         public int CommentId { get; set; }
@@ -26,5 +27,9 @@ namespace DB_First_Framework_Lib
         public virtual StudentGrade StudentGrade { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CommentTag> CommentTags { get; set; }
+        public virtual Comment Comment1 { get; set; }
+        public virtual Comment Comment2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Like> Likes { get; set; }
     }
 }

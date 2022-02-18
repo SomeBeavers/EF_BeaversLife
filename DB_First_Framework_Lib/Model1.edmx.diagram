@@ -30,6 +30,9 @@
         <AssociationConnector Association="SchoolModel.FK_OfficeAssignment_Person" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolModel.FK_StudentGrade_Student" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolModel.CourseInstructor" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_Comment_Comment" />
+        <EntityTypeShape EntityType="SchoolModel.Like" Width="1.5" PointX="12" PointY="10.875" />
+        <AssociationConnector Association="SchoolModel.FK_Likes_Comment" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -41,6 +41,7 @@ namespace DB_First_Framework_Lib
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<View_DepartmentCourseCount> View_DepartmentCourseCount { get; set; }
+        public virtual DbSet<Like> Likes { get; set; }
     
         public virtual int DeleteOfficeAssignment(Nullable<int> instructorID)
         {

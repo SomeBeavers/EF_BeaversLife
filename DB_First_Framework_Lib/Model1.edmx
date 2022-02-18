@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__EFMigrationsHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -61,6 +61,15 @@
           <Property Name="Budget" Type="money" Nullable="false" />
           <Property Name="StartDate" Type="datetime" Nullable="false" />
           <Property Name="Administrator" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'School.dbo.Likes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Likes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentId" Type="int" />
         </EntityType>
         <EntityType Name="OfficeAssignment">
           <Key>
@@ -146,6 +155,18 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Comment_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Comment1" Type="Self.Comment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="Comment1">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comment_StudentGrade_StudentGradeEnrollmentId">
           <End Role="StudentGrade" Type="Self.StudentGrade" Multiplicity="0..1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
@@ -219,6 +240,18 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             </Principal>
             <Dependent Role="CourseInstructor">
               <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Likes_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="0..1" />
+          <End Role="Likes" Type="Self.Likes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="Likes">
+              <PropertyRef Name="CommentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -365,6 +398,12 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <EntitySet Name="StudentGrade" EntityType="Self.StudentGrade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Likes" EntityType="Self.Likes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Likes].[id] AS [id], 
+    [Likes].[CommentId] AS [CommentId]
+    FROM [dbo].[Likes] AS [Likes]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_DepartmentCourseCount" EntityType="Self.View_DepartmentCourseCount" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [View_DepartmentCourseCount].[DepartmentID] AS [DepartmentID], 
@@ -375,6 +414,10 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <AssociationSet Name="FK_AdditionalInfo_StudentGrade" Association="Self.FK_AdditionalInfo_StudentGrade">
             <End Role="StudentGrade" EntitySet="StudentGrade" />
             <End Role="AdditionalInfos" EntitySet="AdditionalInfos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Comment" Association="Self.FK_Comment_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Comment1" EntitySet="Comment" />
           </AssociationSet>
           <AssociationSet Name="FK_Comment_StudentGrade_StudentGradeEnrollmentId" Association="Self.FK_Comment_StudentGrade_StudentGradeEnrollmentId">
             <End Role="StudentGrade" EntitySet="StudentGrade" />
@@ -400,6 +443,10 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             <End Role="Person" EntitySet="Person" />
             <End Role="CourseInstructor" EntitySet="CourseInstructor" />
           </AssociationSet>
+          <AssociationSet Name="FK_Likes_Comment" Association="Self.FK_Likes_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Likes" EntitySet="Likes" />
+          </AssociationSet>
           <AssociationSet Name="FK_OfficeAssignment_Person" Association="Self.FK_OfficeAssignment_Person">
             <End Role="Person" EntitySet="Person" />
             <End Role="OfficeAssignment" EntitySet="OfficeAssignment" />
@@ -421,8 +468,7 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             <End Role="StudentGrade" EntitySet="StudentGrade" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -449,6 +495,9 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <Property Name="StudentGradeEnrollmentId" Type="Int32" />
           <NavigationProperty Name="StudentGrade" Relationship="Self.FK_Comment_StudentGrade_StudentGradeEnrollmentId" FromRole="Comment" ToRole="StudentGrade" />
           <NavigationProperty Name="CommentTags" Relationship="Self.FK_CommentTag_Comment_CommentId" FromRole="Comment" ToRole="CommentTag" />
+          <NavigationProperty Name="Comment1" Relationship="SchoolModel.FK_Comment_Comment" FromRole="Comment" ToRole="Comment1" />
+          <NavigationProperty Name="Comment2" Relationship="SchoolModel.FK_Comment_Comment" FromRole="Comment1" ToRole="Comment" />
+          <NavigationProperty Name="Likes" Relationship="SchoolModel.FK_Likes_Comment" FromRole="Comment" ToRole="Like" />
         </EntityType>
         <EntityType Name="CommentTag">
           <Key>
@@ -755,17 +804,17 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             <End Role="Person" EntitySet="People" />
           </AssociationSet>
           <FunctionImport Name="DeleteOfficeAssignment">
-            <Parameter Name="InstructorID" Mode="In" Type="Int32" />
+          <Parameter Name="InstructorID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePerson">
-            <Parameter Name="PersonID" Mode="In" Type="Int32" />
+          <Parameter Name="PersonID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetDepartmentName">
             <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="Name" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetStudentGrades" ReturnType="Collection(SchoolModel.GetStudentGrades_Result)">
-            <Parameter Name="StudentID" Mode="In" Type="Int32" />
+          <Parameter Name="StudentID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="InsertOfficeAssignment" ReturnType="Collection(Binary)">
             <Parameter Name="InstructorID" Mode="In" Type="Int32" />
@@ -821,6 +870,15 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             <Parameter Name="EnrollmentDate" Mode="In" Type="DateTime" />
             <Parameter Name="Discriminator" Mode="In" Type="String" />
           </FunctionImport>
+          <AssociationSet Name="FK_Comment_Comment" Association="SchoolModel.FK_Comment_Comment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="Comment1" EntitySet="Comments" />
+          </AssociationSet>
+          <EntitySet Name="Likes" EntityType="SchoolModel.Like" />
+          <AssociationSet Name="FK_Likes_Comment" Association="SchoolModel.FK_Likes_Comment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="Like" EntitySet="Likes" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetStudentGrades_Result">
           <Property Type="Int32" Name="EnrollmentID" Nullable="false" />
@@ -839,6 +897,38 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK_Comment_Comment">
+          <End Type="SchoolModel.Comment" Role="Comment" Multiplicity="1" />
+          <End Type="SchoolModel.Comment" Role="Comment1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="Comment1">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Like">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentId" Type="Int32" />
+          <NavigationProperty Name="Comment" Relationship="SchoolModel.FK_Likes_Comment" FromRole="Like" ToRole="Comment" />
+        </EntityType>
+        <Association Name="FK_Likes_Comment">
+          <End Type="SchoolModel.Comment" Role="Comment" Multiplicity="0..1" />
+          <End Type="SchoolModel.Like" Role="Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentId" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1025,6 +1115,14 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SchoolModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="UpdateOfficeAssignment" FunctionName="SchoolModel.Store.UpdateOfficeAssignment" />
           <FunctionImportMapping FunctionImportName="UpdatePerson" FunctionName="SchoolModel.Store.UpdatePerson" />
+          <EntitySetMapping Name="Likes">
+            <EntityTypeMapping TypeName="SchoolModel.Like">
+              <MappingFragment StoreEntitySet="Likes">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
