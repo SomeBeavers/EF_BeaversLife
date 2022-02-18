@@ -57,9 +57,9 @@ class AddElf
         //    Console.WriteLine(elf);
         //}
 
-        deer = context.Deers
-            .Include(deer => deer.Elves)
-            .First();
+        deer = context.Deers.Include(item => item.Elves)
+                      //.Include(deer => deer.Elves)
+                      .First();
 
         foreach (var elf in deer.Elves)
         {

@@ -1,7 +1,22 @@
-﻿namespace EF_BeaversLife.Queries;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace EF_BeaversLife.Queries;
 
 public class DeleteMe1
 {
+    private readonly AnimalContext _context;
+
+    /// <summary>
+    /// </summary>
+    public void TestContextField()
+    {
+        DbSet<Animal> animals = _context.Animals;
+        Console.ForegroundColor = ConsoleColor.Magenta;
+
+        animals.First().Clubs.Add(null);
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
     /// <summary>
     ///     Include is needed.
     /// </summary>
