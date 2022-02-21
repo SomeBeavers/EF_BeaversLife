@@ -35,6 +35,8 @@
         <AssociationConnector Association="SchoolModel.FK_Likes_Comment" />
         <EntityTypeShape EntityType="SchoolModel.AdditionalTable" Width="1.5" PointX="12" PointY="5" />
         <AssociationConnector Association="SchoolModel.FK_AdditionalTable_Comment" />
+        <EntityTypeShape EntityType="SchoolModel.AddedInCode" Width="1.5" PointX="15" PointY="8.25" />
+        <AssociationConnector Association="SchoolModel.CommentAddedInCode" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

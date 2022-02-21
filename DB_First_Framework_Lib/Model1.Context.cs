@@ -20,7 +20,7 @@ namespace DB_First_Framework_Lib
         public SchoolEntities()
             : base("name=SchoolEntities")
         {
-            //Configuration.LazyLoadingEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -44,6 +44,7 @@ namespace DB_First_Framework_Lib
         public virtual DbSet<View_DepartmentCourseCount> View_DepartmentCourseCount { get; set; }
         public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<AdditionalTable> AdditionalTables { get; set; }
+        public virtual DbSet<AddedInCode> AddedInCodes { get; set; }
     
         public virtual int DeleteOfficeAssignment(Nullable<int> instructorID)
         {
