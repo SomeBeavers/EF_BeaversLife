@@ -530,7 +530,6 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
           <NavigationProperty Name="Comment2" Relationship="SchoolModel.FK_Comment_Comment" FromRole="Comment1" ToRole="Comment" />
           <NavigationProperty Name="Likes" Relationship="SchoolModel.FK_Likes_Comment" FromRole="Comment" ToRole="Like" />
           <NavigationProperty Name="AdditionalTables" Relationship="SchoolModel.FK_AdditionalTable_Comment" FromRole="Comment" ToRole="AdditionalTable" />
-          <NavigationProperty Name="AddedInCodes" Relationship="SchoolModel.CommentAddedInCode" FromRole="Comment" ToRole="AddedInCode" />
         </EntityType>
         <EntityType Name="CommentTag">
           <Key>
@@ -917,11 +916,6 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
             <End Role="Comment" EntitySet="Comments" />
             <End Role="AdditionalTable" EntitySet="AdditionalTables" />
           </AssociationSet>
-          <EntitySet Name="AddedInCodes" EntityType="SchoolModel.AddedInCode" />
-          <AssociationSet Name="CommentAddedInCode" Association="SchoolModel.CommentAddedInCode">
-            <End Role="Comment" EntitySet="Comments" />
-            <End Role="AddedInCode" EntitySet="AddedInCodes" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetStudentGrades_Result">
           <Property Type="Int32" Name="EnrollmentID" Nullable="false" />
@@ -991,18 +985,6 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
               <PropertyRef Name="CommentId" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <EntityType Name="AddedInCode">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CommentId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Comments" Relationship="SchoolModel.CommentAddedInCode" FromRole="AddedInCode" ToRole="Comment" />
-        </EntityType>
-        <Association Name="CommentAddedInCode">
-          <End Type="SchoolModel.Comment" Role="Comment" Multiplicity="*" />
-          <End Type="SchoolModel.AddedInCode" Role="AddedInCode" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>

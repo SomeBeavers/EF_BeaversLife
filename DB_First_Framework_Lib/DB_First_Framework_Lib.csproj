@@ -53,9 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddedInCode.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="AdditionalInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
