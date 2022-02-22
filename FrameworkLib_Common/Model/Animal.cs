@@ -1,9 +1,17 @@
 ﻿namespace FrameworkLib_Common.Model;
 
 //[Table("Animals")]
+public class ExtractedClass
+{
+    public virtual Job     Job     { get; set; } = null!;
+    public         int?    JobId   { get; set; }
+    public virtual Person? LovedBy { get; set; }
+    public virtual Person? HatedBy { get; set; }
+}
+
 public class Animal
 {
-    private Food _food = null!;
+    private          Food           _food          = null!;
 
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,10 +25,6 @@ public class Animal
     public         int                 Age     { get; set; }
     public virtual List<Club>?         Clubs   { get; set; }
     public virtual ICollection<Grade>? Grades  { get; set; }
-    public virtual Job                 Job     { get; set; } = null!;
-    public         int?                JobId   { get; set; }
-    public virtual Person?             LovedBy { get; set; }
-    public virtual Person?             HatedBy { get; set; }
 
     public virtual Food? Food { get; set; } = null!;
     //public virtual Food Food
@@ -31,6 +35,12 @@ public class Animal
 
     // Translates to string in db so Include is not needed.
     public string IpAddress { get; set; } = null!;
+
+    public ExtractedClass ExtractedClass
+    {
+        get;
+        set;
+    }
 
     //public JsonDocument? Passport { get; set; }
 

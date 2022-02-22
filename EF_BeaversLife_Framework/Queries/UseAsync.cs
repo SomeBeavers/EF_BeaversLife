@@ -69,7 +69,7 @@ public class UseAsync
 
         var animals = await (from animal in context.Animals
                                orderby animal.Name
-                               join job in context.Jobs on animal.JobId equals job.Id
+                               join job in context.Jobs on animal.ExtractedClass.JobId equals job.Id
                                select new {animal.Name, job.Title}
                                )
             .ToListAsync();

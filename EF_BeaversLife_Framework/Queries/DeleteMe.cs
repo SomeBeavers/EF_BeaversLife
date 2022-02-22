@@ -15,11 +15,11 @@ public class DeleteMe
         {
             Console.WriteLine(deer);
 
-            var person = deer.LovedBy;
+            var person = deer.ExtractedClass.LovedBy;
 
-            for (var i = deer.Job.JobDrawbacks.Count - 1; i >= 0; i--)
+            for (var i = deer.ExtractedClass.Job.JobDrawbacks.Count - 1; i >= 0; i--)
             {
-                var drawback = deer.Job.JobDrawbacks.ToArray()[i].Drawback;
+                var drawback = deer.ExtractedClass.Job.JobDrawbacks.ToArray()[i].Drawback;
                 Console.Write("\t");
                 Console.WriteLine(drawback);
             }
