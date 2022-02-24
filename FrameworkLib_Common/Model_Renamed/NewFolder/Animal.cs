@@ -20,6 +20,7 @@ public class Animal
     public         int                 Age     { get; set; }
     public virtual List<Club>?         Clubs   { get; set; }
     public virtual ICollection<Grade>? Grades  { get; set; }
+    public virtual ICollection<Grade2>? Grades2  { get; set; }
     public virtual Job                 Job     { get; set; } = null!;
     public         int?                JobId   { get; set; }
     public virtual Person?             LovedBy { get; set; }

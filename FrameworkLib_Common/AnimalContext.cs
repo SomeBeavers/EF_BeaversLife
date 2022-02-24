@@ -14,6 +14,7 @@ public class AnimalContext : DbContext
     public DbSet<Deer> Deers { get; set; } = null!;
     public DbSet<Club> Clubs { get; set; } = null!;
     public DbSet<Grade> Grades => Set<Grade>();
+    public DbSet<Grade2> Grades2 => Set<Grade2>();
     public DbSet<Job> Jobs { get; set; } = null!;
     public DbSet<Drawback> Drawbacks { get; set; } = null!;
     public DbSet<JobDrawback> JobDrawbacks { get; set; } = null!;
@@ -93,7 +94,7 @@ public class AnimalContext : DbContext
         modelBuilder.Properties()
                     .Having(x => x.GetCustomAttributes(false).OfType<IsUnicode>().FirstOrDefault())
                     .Configure((config, att) => config.IsUnicode(att.Unicode));
-       // modelBuilder.ComplexType<DrawbackDetails>();
+         modelBuilder.ComplexType<DrawbackDetails>();
         //modelBuilder.Ignore<DrawbackDetails>();
     }
 }

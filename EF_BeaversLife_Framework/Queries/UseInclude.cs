@@ -10,6 +10,7 @@ public class UseInclude
     public void UseDbQueryIncludeWithStringPath()
     {
         using var context  = new AnimalContext();
+        
         var foodList = context.VeganFood
                               .Include("Drawbacks")
                               //.Include("Animal.Grades")
@@ -35,7 +36,7 @@ public class UseInclude
 
             if (food.Animal?.Grades != null)
             {
-                foreach (var grade in food.Animal.Grades)
+                foreach (var grade in food.Animal.Grades2)
                 {
                     Console.Write("\t");
                     Console.Write("\t");
