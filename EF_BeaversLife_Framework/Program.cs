@@ -50,7 +50,7 @@ internal class Program
         //new UseNoTracking().UseNoTracking1();
 
         //new UseIncludeWithSelect().UseIncludeMultilevel();
-        new Mix().UseFind1();
+        new DeleteMe().DeleteMe2();
     }
 
     private static async Task ExecuteQueriesAsync()
@@ -824,10 +824,18 @@ internal class Program
         {
             Name = "BeaverPerson",
             AnimalsLoved = new List<Animal> { beaver1, beaver2, beaver3, beaver4, beaver5 },
-            AnimalsHated = new List<Animal> { deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8 }
+            AnimalsHated = new List<Animal> { deer1,  deer3, deer4, deer5, deer6, deer7, deer8 }
+        };
+        var person2 = new Person
+        {
+            Name = "BeaverPerson2",
+            AnimalsLoved = new List<Animal> { beaver1, beaver2, beaver3, beaver4, beaver5 },
+            AnimalsHated = new List<Animal> {  deer2, deer3, deer4, deer5, deer6, deer7, deer8 }
         };
 
         context.Persons.Add(person1);
+        context.Persons.Add(person2);
+
 
         #endregion
 

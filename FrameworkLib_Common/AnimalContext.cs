@@ -35,7 +35,7 @@ public class AnimalContext : DbContext
     {
         // NOTE: `true` to enable lazy loading
         // NOTE: when `true` disable for specific property by making it not virtual.
-        Configuration.LazyLoadingEnabled = false;
+        Configuration.LazyLoadingEnabled = true;
         this.Database.Log = Console.Write;
     }
 
@@ -93,5 +93,7 @@ public class AnimalContext : DbContext
         modelBuilder.Properties()
                     .Having(x => x.GetCustomAttributes(false).OfType<IsUnicode>().FirstOrDefault())
                     .Configure((config, att) => config.IsUnicode(att.Unicode));
+       // modelBuilder.ComplexType<DrawbackDetails>();
+        //modelBuilder.Ignore<DrawbackDetails>();
     }
 }

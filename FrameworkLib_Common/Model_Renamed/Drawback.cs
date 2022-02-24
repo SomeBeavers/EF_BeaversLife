@@ -31,7 +31,7 @@ public interface IDrawback
 /// <summary>
 ///     Properties are included in Drawback table.
 /// </summary>
-[ComplexType]
+//[ComplexType]
 public class DrawbackDetails
 {
     public DateTime? DateCreated { get; set; }

@@ -23,7 +23,12 @@ public class Animal
     public virtual Job                 Job     { get; set; } = null!;
     public         int?                JobId   { get; set; }
     public virtual Person?             LovedBy { get; set; }
-    public virtual Person?             HatedBy { get; set; }
+    public  Person?             HatedBy { get; set; }
+
+    //public virtual Location Location { get; set; }
+
+    [NotMapped]
+    public virtual Location2 Location { get; set; }
 
     public virtual Food? Food { get; set; } = null!;
     //public virtual Food Food
@@ -41,4 +46,8 @@ public class Animal
     {
         return $"Animal : Id = {CustomIdName} Name = {Name} IpAddress = {IpAddress}";
     }
+}
+
+public class Location2
+{
 }
