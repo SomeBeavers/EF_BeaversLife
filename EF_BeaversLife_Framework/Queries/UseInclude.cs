@@ -11,7 +11,7 @@ public class UseInclude
     {
         using var context  = new AnimalContext();
         var foodList = context.VeganFood
-                              //.Include("Drawbacks")
+                              .Include("Drawbacks")
                               //.Include("Animal.Grades")
             ;
 
