@@ -1,9 +1,12 @@
-﻿namespace FrameworkLib_Common.Model;
+﻿using System;
+using System.Linq;
+
+namespace FrameworkLib_Common.Model_Renamed;
 
 public class MapToQuery
 {
     public int Id { get; set; }
-    public Model.FluffinessEnum Fluffiness { get; set; }
+    public FluffinessEnum Fluffiness { get; set; }
     public int Size { get; set; }
     public virtual Club Club { get; set; } = null!;
     public virtual int ClubId { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace EF_BeaversLife_Framework.Queries;
+﻿using FrameworkLib_Common.Model_Renamed;
+
+namespace EF_BeaversLife_Framework.Queries;
 
 public class UseInclude
 {
@@ -9,7 +11,8 @@ public class UseInclude
     {
         using var context  = new AnimalContext();
         var foodList = context.VeganFood
-                              .Include("Drawbacks").Include("Animal.Grades")
+                              //.Include("Drawbacks")
+                              //.Include("Animal.Grades")
             ;
 
         Console.ForegroundColor = ConsoleColor.Magenta;

@@ -1,4 +1,7 @@
-﻿namespace FrameworkLib_Common;
+﻿using FrameworkLib_Common.Model_Renamed;
+using FrameworkLib_Common.Model_Renamed.NewFolder;
+
+namespace FrameworkLib_Common;
 
 public class AnimalContext : DbContext
 {

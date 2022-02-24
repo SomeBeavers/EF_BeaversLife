@@ -1,4 +1,7 @@
-﻿namespace FrameworkLib_Common.Model;
+﻿using System;
+using System.Linq;
+
+namespace FrameworkLib_Common.Model_Renamed;
 
 public class Consequence
 {

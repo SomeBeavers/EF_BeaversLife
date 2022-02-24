@@ -1,4 +1,7 @@
-﻿namespace EF_BeaversLife_Framework;
+﻿using FrameworkLib_Common.Model_Renamed;
+using FrameworkLib_Common.Model_Renamed.NewFolder;
+
+namespace EF_BeaversLife_Framework;
 
 // NOTE [for me]: use ef_method template to generate simple ef method
 // NOTE [for me]: use format_print to paste Console.Write("\t");

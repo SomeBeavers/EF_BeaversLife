@@ -1,4 +1,7 @@
-﻿namespace EF_BeaversLife_Framework.Queries;
+﻿using FrameworkLib_Common.Model_Renamed;
+using FrameworkLib_Common.Model_Renamed.NewFolder;
+
+namespace EF_BeaversLife_Framework.Queries;
 
 public class UseLocalData
 {

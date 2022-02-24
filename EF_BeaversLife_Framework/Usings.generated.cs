@@ -3,7 +3,7 @@ global using System.ComponentModel.DataAnnotations.Schema;
 global using System.Net;
 global using FrameworkLib_Common;
 global using System.Data.Entity;
-global using FrameworkLib_Common.Model;
+
 global using EF_BeaversLife_Framework.Queries;
 global using System.Data.Entity.Spatial;
 

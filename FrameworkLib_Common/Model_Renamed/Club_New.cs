@@ -1,4 +1,9 @@
-﻿namespace FrameworkLib_Common.Model;
+﻿using System;
+using System.Linq;
+
+using FrameworkLib_Common.Model_Renamed.NewFolder;
+
+namespace FrameworkLib_Common.Model_Renamed;
 
 public class Club
 {
@@ -6,7 +11,7 @@ public class Club
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
-    public string Title { get; set; } = null!;
+    public string        Title         { get; set; } = null!;
     public NotMappedText LocalizedText { get; set; } = null!;
 
     public virtual ICollection<Animal>?   Animals   { get; set; }
@@ -18,10 +23,4 @@ public class Club
     {
         return $@"Club: Id = {Id} Title = {Title}";
     }
-}
-
-[NotMapped]
-public class NotMappedText
-{
-    public string LocalizedText { get; set; } = null!;
 }

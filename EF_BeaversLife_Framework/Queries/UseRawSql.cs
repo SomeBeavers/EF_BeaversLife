@@ -1,4 +1,6 @@
-﻿namespace EF_BeaversLife_Framework.Queries;
+﻿using FrameworkLib_Common.Model_Renamed;
+
+namespace EF_BeaversLife_Framework.Queries;
 
 public class UseRawSql
 {

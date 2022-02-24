@@ -2,7 +2,6 @@
 global using System.ComponentModel.DataAnnotations.Schema;
 global using System.Net;
 global using System.Data.Entity;
-global using FrameworkLib_Common.Model;
 global using System.Data.Entity.Spatial;
 global using System.Data.Entity.Infrastructure.DependencyResolution;
 global using System.Data.Entity.Infrastructure.Pluralization;

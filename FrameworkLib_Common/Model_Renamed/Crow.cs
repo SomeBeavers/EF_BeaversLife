@@ -1,4 +1,9 @@
-﻿namespace FrameworkLib_Common.Model;
+﻿using System;
+using System.Linq;
+
+using FrameworkLib_Common.Model_Renamed.NewFolder;
+
+namespace FrameworkLib_Common.Model_Renamed;
 
 //[Table("Crow")]
 public class Crow : Animal
