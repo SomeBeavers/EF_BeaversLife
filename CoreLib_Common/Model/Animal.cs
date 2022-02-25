@@ -15,12 +15,15 @@ public class Animal
 
     public int Age { get; set; }
 
-    public virtual List<Club>?         Clubs   { get; set; }
-    public virtual ICollection<Grade>? Grades  { get; set; }
-    public virtual Job                 Job     { get; set; } = null!;
-    public         int?                JobId   { get; set; }
-    public virtual Person?             LovedBy { get; set; }
-    public virtual Person?             HatedBy { get; set; }
+    public virtual List<Club>?         Clubs    { get; set; }
+    public virtual ICollection<Grade>? Grades   { get; set; }
+    public virtual Job                 Job      { get; set; } = null!;
+    public         int?                JobId    { get; set; }
+    public virtual Person?             LovedBy  { get; set; }
+    public virtual Person?             HatedBy  { get; set; }
+    public virtual NewModel?           NewModel { get; set; }
+
+    public virtual NewModel2 NewModel2 { get; set; }
 
     [BackingField(nameof(_food))]
     public virtual Food? Food
@@ -38,6 +41,10 @@ public class Animal
     {
         return $"Animal : Id = {Id} Name = {Name} IpAddress = {IpAddress}";
     }
+}
+
+public class NewModel2
+{
 }
 
 public class AnimalClub

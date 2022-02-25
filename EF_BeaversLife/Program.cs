@@ -1,4 +1,6 @@
-﻿using MSSQL_Core_App.UpdateDB;
+﻿using B;
+
+using MSSQL_Core_App.UpdateDB;
 
 namespace EF_BeaversLife;
 

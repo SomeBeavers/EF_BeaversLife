@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using B;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace EF_BeaversLife.Queries;
 

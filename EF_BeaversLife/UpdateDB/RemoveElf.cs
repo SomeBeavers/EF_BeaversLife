@@ -1,4 +1,6 @@
-﻿namespace MSSQL_Core_App.UpdateDB;
+﻿using B;
+
+namespace MSSQL_Core_App.UpdateDB;
 class RemoveElf
 {
     public void RemoveElf1()

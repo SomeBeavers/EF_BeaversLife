@@ -1,4 +1,8 @@
-﻿namespace CoreLib_Common;
+﻿using A;
+
+using CoreLib_Common;
+
+namespace B;
 
 public class AnimalContext : DbContext
 {
@@ -6,6 +10,7 @@ public class AnimalContext : DbContext
 
     public DbSet<Person> Persons { get; set; } = null!;
     public DbSet<Animal> Animals { get; set; } = null!;
+    public DbSet<NewModel> NewModels { get; set; } = null!;
     public DbSet<Beaver> Beavers { get; set; } = null!;
     public DbSet<Crow> Crows { get; set; } = null!;
     public DbSet<Deer> Deers { get; set; } = null!;
@@ -20,6 +25,7 @@ public class AnimalContext : DbContext
     public DbSet<Elf> Elves { get; set; } = null!;
     public DbSet<AdditionalInfo> AdditionalInfos { get; set; } = null!;
     public DbSet<AdditionalInfoDetailed> AdditionalInfoDetailed { get; set; } = null!;
+    public DbSet<NewModel3> NewModel3 { get; set; }
 
     public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 

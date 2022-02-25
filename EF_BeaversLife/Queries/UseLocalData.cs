@@ -1,4 +1,6 @@
-﻿namespace EF_BeaversLife.Queries;
+﻿using B;
+
+namespace EF_BeaversLife.Queries;
 
 public class UseLocalData
 {

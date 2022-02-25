@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using B;
+
 using MSSQL_Core_App.DTOs;
 
 namespace MSSQL_Core_App.Queries;

@@ -1,4 +1,6 @@
-﻿namespace MSSQL_Core_App.Queries;
+﻿using B;
+
+namespace MSSQL_Core_App.Queries;
 
 internal class UseDBProperty
 {

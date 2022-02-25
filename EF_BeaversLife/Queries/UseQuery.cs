@@ -1,4 +1,6 @@
-﻿using CoreLib_Common.Model;
+﻿using B;
+
+using CoreLib_Common.Model;
 
 namespace MSSQL_Core_App.Queries;
 
