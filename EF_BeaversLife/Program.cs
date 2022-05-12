@@ -23,7 +23,7 @@ internal class Program
 
     private static void ExecuteQueries()
     {
-        //new UseSplitQuery().UseSplitQuery1();
+        new UseSplitQuery().UseSplitQuery1();
         //new UseSplitQuery().UseSplitQuery2();
 
         //new UseTVF().UseTVF1();
@@ -63,7 +63,7 @@ internal class Program
         //new DeleteMe1().DeleteMe4();
         //new EF_BeaversLife.Queries.Issues().RSRP_481645_new();
         //new UseMapToDTO().UseMapToDTO1();
-        new AddElf().ReplaceElvesCollection();
+        //new AddElf().ReplaceElvesCollection();
     }
 
     private static async Task ExecuteQueriesAsync()
