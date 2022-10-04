@@ -35,7 +35,7 @@ Public Class AnimalContext
     Protected Overrides Sub OnConfiguring(optionsBuilder As DbContextOptionsBuilder)
         If Not optionsBuilder.IsConfigured Then
             optionsBuilder.UseSqlServer(
-                "Server=unit-1019\sqlexpress;Database=BeaversLife;Trusted_Connection=True;" &
+                "Server=localhost;Database=BeaversLife;Trusted_Connection=True;" &
                 "MultipleActiveResultSets=True")
             optionsBuilder.LogTo(AddressOf Console.WriteLine, LogLevel.Information)
             optionsBuilder.AddInterceptors(New MySaveChangesInterceptor())
