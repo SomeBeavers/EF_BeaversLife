@@ -1057,6 +1057,17 @@ public class Issues
 
         Console.ForegroundColor = ConsoleColor.White;
     }
+
+    #nullable enable
+    /// <summary>
+    /// BUG: https://youtrack.jetbrains.com/issue/RSRP-481737
+    /// </summary>
+    public void RSRP_481737(AnimalContext context)
+    {
+        ICollection<Animal>? collection = context.Clubs!.First().Animals;
+
+        Console.ForegroundColor = ConsoleColor.White;
+    }
 }
 
 public static class Ext
