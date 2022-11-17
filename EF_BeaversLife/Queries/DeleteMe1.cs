@@ -136,7 +136,7 @@ public class DeleteMe1
         {
             Test = new TestDTO
             {
-                Name = w.Clubs.OrderByDescending(t => t.Title).First().Title
+                Name = w.Clubs.OrderByDescending(t => t.Title).FirstOrDefault().Title
             }
         });
 
