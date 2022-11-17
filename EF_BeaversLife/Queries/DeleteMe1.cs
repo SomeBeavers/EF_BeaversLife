@@ -127,4 +127,38 @@ public class DeleteMe1
 
         Console.ForegroundColor = ConsoleColor.White;
     }
+
+    public void DeleteMe5()
+    {
+        using var context = new AnimalContext();
+
+        var blah = context.Beavers.Include(x => x.Clubs).Where(beaver => beaver.Name != string.Empty).Select(w => new BeaverDTO
+        {
+            Test = new TestDTO
+            {
+                Name = w.Clubs.OrderByDescending(t => t.Title).First().Title
+            }
+        });
+
+
+
+        //var beavers = context.Beavers.Where(beaver => beaver.Name == "aaa").OrderByDescending(x => x.Id).FirstOrDefault().ToList();
+
+        Console.ForegroundColor = ConsoleColor.Magenta;
+
+
+        Console.WriteLine(blah.FirstOrDefault().Test.Name);
+
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+}
+
+public class TestDTO
+{
+    public string Name { get; set; }
+}
+
+public class BeaverDTO
+{
+    public TestDTO Test { get; set; }
 }
