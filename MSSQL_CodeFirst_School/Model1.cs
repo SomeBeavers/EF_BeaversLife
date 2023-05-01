@@ -28,6 +28,8 @@ namespace MSSQL_CodeFirst_School
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<AdditionalTable> AdditionalTables { get; set; }
         public virtual DbSet<Like> Likes { get; set; }
+        public virtual DbSet<Pet> Pets { get; set; }
+        //public virtual DbSet<NickName> NickNames { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -52,6 +54,10 @@ namespace MSSQL_CodeFirst_School
                 .HasMany(e => e.People)
                 .WithMany(e => e.Courses)
                 .Map(m => m.ToTable("CourseInstructor").MapLeftKey("CourseID").MapRightKey("PersonID"));
+
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.Pets)
+                .WithMany(e => e.People);
 
             modelBuilder.Entity<Department>()
                 .Property(e => e.Budget)
@@ -85,6 +91,10 @@ namespace MSSQL_CodeFirst_School
                 .WithRequired(e => e.StudentGrade)
                 .HasForeignKey(e => e.StudentGradeId)
                 .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Pet>()
+            //    .HasRequired(t => t.NickName)
+            //    .WithRequiredPrincipal(t => t.Pet);
         }
     }
 }

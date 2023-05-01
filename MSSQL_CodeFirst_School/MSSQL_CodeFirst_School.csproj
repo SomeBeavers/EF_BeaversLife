@@ -67,6 +67,14 @@
     <Compile Include="Migrations\202305011333043_InitialCreate.designer.cs">
       <DependentUpon>202305011333043_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305011451211_AddPetsTable.cs" />
+    <Compile Include="Migrations\202305011451211_AddPetsTable.designer.cs">
+      <DependentUpon>202305011451211_AddPetsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305011505540_AddNickNameTable.cs" />
+    <Compile Include="Migrations\202305011505540_AddNickNameTable.designer.cs">
+      <DependentUpon>202305011505540_AddNickNameTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.cs" />
     <Compile Include="OfficeAssignment.cs" />
@@ -86,6 +94,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202305011333043_InitialCreate.resx">
       <DependentUpon>202305011333043_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305011451211_AddPetsTable.resx">
+      <DependentUpon>202305011451211_AddPetsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305011505540_AddNickNameTable.resx">
+      <DependentUpon>202305011505540_AddNickNameTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

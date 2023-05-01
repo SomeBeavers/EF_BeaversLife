@@ -13,15 +13,28 @@ namespace MSSQL_CodeFirst_School
         {
             using (var db = new Model1())
             {
-                // Display all Blogs from the database 
-                var query = from b in db.Courses
-                            orderby b.Title
-                            select b;
+                //var query = db.Courses.OrderBy(b => b.Title);
 
-                Console.WriteLine("All blogs in the database:");
-                foreach (var item in query)
+                //foreach (var item in query)
+                //{
+                //    Console.WriteLine(item.Department.Name);
+                //    Console.WriteLine(item.OnlineCourse);
+                //    Console.WriteLine(item.People);
+                //    Console.WriteLine(item.StudentGrades);
+                //}
+
+                var persons = db.People;
+
+                foreach (var person in persons)
                 {
-                    Console.WriteLine(item.Department.Name);
+                    Console.WriteLine(person.FirstName);
+                    foreach (var pet in person.Pets)
+                    {
+                        
+                        Console.WriteLine("\t"+ pet.Name);
+                    }
+
+                    Console.WriteLine(person.OfficeAssignment);
                 }
 
                 Console.WriteLine("Press any key to exit...");
