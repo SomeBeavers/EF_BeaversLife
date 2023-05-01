@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202305011600423_AddNickNameTable2.cs" />
+    <Compile Include="Migrations\202305011600423_AddNickNameTable2.designer.cs">
+      <DependentUpon>202305011600423_AddNickNameTable2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AdditionalInfo.cs" />
     <Compile Include="Models\AdditionalTable.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305011505540_AddNickNameTable.resx">
       <DependentUpon>202305011505540_AddNickNameTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305011600423_AddNickNameTable2.resx">
+      <DependentUpon>202305011600423_AddNickNameTable2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

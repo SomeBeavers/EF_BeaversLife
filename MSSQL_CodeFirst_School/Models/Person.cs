@@ -37,7 +37,7 @@ namespace MSSQL_CodeFirst_School.Models
 
         public virtual OfficeAssignment OfficeAssignment { get; set; }
 
-        public virtual OnlinePerson OnlinePerson { get; set; }
+        //public virtual OnlinePerson OnlinePerson { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentGrade> StudentGrades { get; set; }

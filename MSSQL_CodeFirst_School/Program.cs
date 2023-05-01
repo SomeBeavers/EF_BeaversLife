@@ -26,18 +26,18 @@ namespace MSSQL_CodeFirst_School
                 //}
 
                 IQueryable<Person> persons = db.People;
-                 persons = db.People.MyExtension();
+                 //persons = db.People.MyExtension();
 
-                foreach (var person in persons)
+                foreach (var person in persons.Include(person => person.Pets))
                 {
                     Console.WriteLine(person.FirstName);
                     foreach (var pet in person.Pets)
                     {
                         
-                        Console.WriteLine("\t"+ pet.Name);
+                        Console.WriteLine("\t"+ pet.People.Count);
                     }
 
-                    OnlinePerson personOnlinePerson = person.OnlinePerson;
+                    //OnlinePerson personOnlinePerson = person.OnlinePerson;
                 }
 
                 Console.WriteLine("Press any key to exit...");
