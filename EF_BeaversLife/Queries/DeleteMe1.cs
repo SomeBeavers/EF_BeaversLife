@@ -153,6 +153,21 @@ public class DeleteMe1
 
         Console.ForegroundColor = ConsoleColor.White;
     }
+
+    public void DeleteMe6()
+    {
+        using var context = new AnimalContext();
+
+        var clubs = context.Clubs;
+
+        foreach (Club club in clubs)
+        {
+            foreach (Grade grade in club.Animals)
+            {
+                Club gradeClub = grade.Club;
+            }
+        }
+    }
 }
 
 public class TestDTO
