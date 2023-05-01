@@ -10,11 +10,11 @@ public class UseLinq
         await using var context = new AnimalContext();
 
         var beavers =
-                //(
+                (
                 from b in context.Beavers
                 where b.Fluffiness == FluffinessEnum.VeryFluffy
                 select b
-            //)
+            )
             //.Include("Clubs")
             ;
 

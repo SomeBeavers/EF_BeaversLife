@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace EF_BeaversLife.Queries;
 
@@ -130,6 +131,7 @@ public class DeleteMe1
 
     public void DeleteMe5()
     {
+        // I'm bit confused today.
         using var context = new AnimalContext();
 
         var blah = context.Beavers.Include(x => x.Clubs).Where(beaver => beaver.Name != string.Empty).Select(w => new BeaverDTO
