@@ -24,7 +24,7 @@ internal class Program
     private static void ExecuteQueries()
     {
         //new UseSplitQuery().UseSplitQuery1();
-        new DeleteMe1().DeleteMe5();
+        new DeleteMe1().DeleteMe6();
         //new UseSplitQuery().UseSplitQuery2();
 
         //new UseTVF().UseTVF1();

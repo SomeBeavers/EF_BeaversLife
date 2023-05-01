@@ -160,11 +160,11 @@ public class DeleteMe1
 
         var clubs = context.Clubs;
 
-        foreach (Club club in clubs)
+        foreach (Club club in clubs.Include(club => club.Animals))
         {
-            foreach (Grade grade in club.Animals)
+            foreach (var animal in club.Animals)
             {
-                Club gradeClub = grade.Club;
+                var gradeClub = animal.Clubs;
             }
         }
     }

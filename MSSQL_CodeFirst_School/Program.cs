@@ -34,7 +34,7 @@ namespace MSSQL_CodeFirst_School
                     foreach (var pet in person.Pets)
                     {
                         
-                        Console.WriteLine("\t"+ pet.People.Count);
+                        Console.WriteLine("\t"+pet.Name+" - " +pet.People.Count);
                     }
 
                     //OnlinePerson personOnlinePerson = person.OnlinePerson;
