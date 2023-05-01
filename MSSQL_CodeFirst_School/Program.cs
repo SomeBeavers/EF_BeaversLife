@@ -34,7 +34,7 @@ namespace MSSQL_CodeFirst_School
                         Console.WriteLine("\t"+ pet.Name);
                     }
 
-                    Console.WriteLine(person.OfficeAssignment);
+                    OnlinePerson personOnlinePerson = person.OnlinePerson;
                 }
 
                 Console.WriteLine("Press any key to exit...");

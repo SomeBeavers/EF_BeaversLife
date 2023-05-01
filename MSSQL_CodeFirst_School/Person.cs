@@ -36,6 +36,8 @@ namespace MSSQL_CodeFirst_School
 
         public virtual OfficeAssignment OfficeAssignment { get; set; }
 
+        public virtual OnlinePerson OnlinePerson { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentGrade> StudentGrades { get; set; }
 
@@ -43,17 +45,6 @@ namespace MSSQL_CodeFirst_School
         public virtual ICollection<Course> Courses { get; set; }
 
         public virtual ICollection<Pet> Pets { get; set; }
-    }
-
-    public class Pet
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PetID { get; set; }
-
-        public virtual ICollection<Person> People { get; set; }
-        public string Name { get; set; }
-        
-        //public virtual NickName NickName { get; set; }
     }
 
     //public class NickName
