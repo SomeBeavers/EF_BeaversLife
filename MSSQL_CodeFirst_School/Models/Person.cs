@@ -1,14 +1,15 @@
-namespace MSSQL_CodeFirst_School
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+namespace MSSQL_CodeFirst_School.Models
+{
     [Table("Person")]
     public partial class Person
     {
+        private ICollection<Pet> _pets;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Person()
         {
@@ -44,7 +45,11 @@ namespace MSSQL_CodeFirst_School
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }
 
-        public virtual ICollection<Pet> Pets { get; set; }
+        public virtual ICollection<Pet> Pets
+        {
+            get => _pets;
+            set => _pets = value;
+        }
     }
 
     //public class NickName

@@ -1,11 +1,9 @@
-namespace MSSQL_CodeFirst_School
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+namespace MSSQL_CodeFirst_School.Models
+{
     [Table("OnsiteCourse")]
     public partial class OnsiteCourse
     {

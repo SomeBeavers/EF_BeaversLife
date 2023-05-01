@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using MSSQL_CodeFirst_School.Models;
+
 namespace MSSQL_CodeFirst_School
 {
     internal class Program
@@ -23,7 +25,8 @@ namespace MSSQL_CodeFirst_School
                 //    Console.WriteLine(item.StudentGrades);
                 //}
 
-                var persons = db.People;
+                IQueryable<Person> persons = db.People;
+                 persons = db.People.MyExtension();
 
                 foreach (var person in persons)
                 {
@@ -40,6 +43,14 @@ namespace MSSQL_CodeFirst_School
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
             }
+        }
+    }
+
+    public static class Extensions
+    {
+        public static IQueryable<Person> MyExtension(this IQueryable<Person> persons)
+        {
+            return persons.Include(p => p.Pets);
         }
     }
 }

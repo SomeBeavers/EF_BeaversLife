@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MSSQL_CodeFirst_School
+namespace MSSQL_CodeFirst_School.Models
 {
     public class Pet
     {
