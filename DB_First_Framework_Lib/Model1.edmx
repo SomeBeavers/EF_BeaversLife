@@ -1209,6 +1209,39 @@ warning 6002: The table/view 'School.dbo.View_DepartmentCourseCount' does not ha
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams>
+      <Diagram DiagramId="4742aa84f49b486ea5da69a3eb182c73" Name="Diagram1">
+        <EntityTypeShape EntityType="SchoolModel.C__EFMigrationsHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.AdditionalInfo" Width="1.5" PointX="9.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Comment" Width="1.5" PointX="9.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.CommentTag" Width="1.5" PointX="12" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Course" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Department" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.OfficeAssignment" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.OnlineCourse" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.OnsiteCourse" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Person" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.StudentGrade" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Tag" Width="1.5" PointX="9.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.View_DepartmentCourseCount" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.Like" Width="1.5" PointX="12" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolModel.AdditionalTable" Width="1.5" PointX="12" PointY="14" IsExpanded="true" />
+        <AssociationConnector Association="SchoolModel.FK_AdditionalInfo_StudentGrade" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_Comment_StudentGrade_StudentGradeEnrollmentId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_CommentTag_Comment_CommentId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_CommentTag_Tags_TagId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_Course_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_OnlineCourse_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_OnsiteCourse_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_StudentGrade_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_OfficeAssignment_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_StudentGrade_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.CourseInstructor" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_Comment_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_Likes_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolModel.FK_AdditionalTable_Comment" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
   </Designer>
 </edmx:Edmx>
