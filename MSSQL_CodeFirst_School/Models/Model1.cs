@@ -89,9 +89,7 @@ namespace MSSQL_CodeFirst_School.Models
                 .HasForeignKey(e => e.StudentGradeId)
                 .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Pet>()
-            //    .HasRequired(t => t.NickName)
-            //    .WithRequiredPrincipal(t => t.Pet);
+            //modelBuilder.Entity<Person>().Ignore(x => x.Pets);
         }
     }
 }
