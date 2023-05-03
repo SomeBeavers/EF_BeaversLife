@@ -32,26 +32,26 @@ namespace MSSQL_CodeFirst_School
                 _dbPeople = db.People;
                 IQueryable<Person> persons = _dbPeople;
 
-                Person person;
+                Person firstOrDefault;
 
                 if (a)
                 {
-                    person = _dbPeople.MyExtension().FirstOrDefault();
+                    firstOrDefault = _dbPeople.MyExtension().FirstOrDefault();
                 }
                 else
                 {
-                    person = _dbPeople.FirstOrDefault();
+                    firstOrDefault = _dbPeople.FirstOrDefault();
                 }
 
 
-                Console.WriteLine(person.FirstName);
-                    foreach (var pet in person.Pets)
+                Console.WriteLine(firstOrDefault.FirstName);
+                    foreach (var pet in firstOrDefault.Pets)
                     {
                         
                         Console.WriteLine("\t"+ pet.Name);
                     }
 
-                    OnlinePerson personOnlinePerson = person.OnlinePerson;
+                    OnlinePerson personOnlinePerson = firstOrDefault.OnlinePerson;
                 
 
                 Console.WriteLine("Press any key to exit...");
