@@ -55,7 +55,6 @@ public partial class SchoolContext : DbContext
     {
         modelBuilder.Entity<AdditionalInfo>(entity =>
         {
-            entity.HasIndex(e => e.StudentGradeId, "IX_AdditionalInfos_StudentGradeId");
 
             entity.Property(e => e.AdditionalInfoId).HasColumnName("AdditionalInfoID");
 
@@ -67,9 +66,7 @@ public partial class SchoolContext : DbContext
 
         modelBuilder.Entity<AdditionalTable>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("AdditionalTable");
+
 
             entity.Property(e => e.Id)
                 .ValueGeneratedOnAdd()
@@ -93,7 +90,6 @@ public partial class SchoolContext : DbContext
 
             entity.ToTable("CommentTag");
 
-            entity.HasIndex(e => e.TagId, "IX_CommentTag_TagId");
 
             entity.Property(e => e.PublicationDate).HasDefaultValueSql("(getdate())");
 
@@ -119,24 +115,7 @@ public partial class SchoolContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Course_Department");
 
-            entity.HasMany(d => d.People).WithMany(p => p.Courses)
-                .UsingEntity<Dictionary<string, object>>(
-                    "CourseInstructor",
-                    r => r.HasOne<Person>().WithMany()
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_CourseInstructor_Person"),
-                    l => l.HasOne<Course>().WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_CourseInstructor_Course"),
-                    j =>
-                    {
-                        j.HasKey("CourseId", "PersonId");
-                        j.ToTable("CourseInstructor");
-                        j.IndexerProperty<int>("CourseId").HasColumnName("CourseID");
-                        j.IndexerProperty<int>("PersonId").HasColumnName("PersonID");
-                    });
+
         });
 
         modelBuilder.Entity<Department>(entity =>
@@ -153,7 +132,6 @@ public partial class SchoolContext : DbContext
 
         modelBuilder.Entity<Like>(entity =>
         {
-            entity.HasNoKey();
 
             entity.Property(e => e.Id)
                 .ValueGeneratedOnAdd()
@@ -246,24 +224,6 @@ public partial class SchoolContext : DbContext
             entity.Property(e => e.HireDate).HasColumnType("datetime");
             entity.Property(e => e.LastName).HasMaxLength(50);
 
-            entity.HasMany(d => d.PetPets).WithMany(p => p.PersonPeople)
-                .UsingEntity<Dictionary<string, object>>(
-                    "PersonPet",
-                    r => r.HasOne<Pet>().WithMany()
-                        .HasForeignKey("PetPetId")
-                        .HasConstraintName("FK_dbo.PersonPets_dbo.Pets_Pet_PetID"),
-                    l => l.HasOne<Person>().WithMany()
-                        .HasForeignKey("PersonPersonId")
-                        .HasConstraintName("FK_dbo.PersonPets_dbo.Person_Person_PersonID"),
-                    j =>
-                    {
-                        j.HasKey("PersonPersonId", "PetPetId").HasName("PK_dbo.PersonPets");
-                        j.ToTable("PersonPets");
-                        j.HasIndex(new[] { "PersonPersonId" }, "IX_Person_PersonID");
-                        j.HasIndex(new[] { "PetPetId" }, "IX_Pet_PetID");
-                        j.IndexerProperty<int>("PersonPersonId").HasColumnName("Person_PersonID");
-                        j.IndexerProperty<int>("PetPetId").HasColumnName("Pet_PetID");
-                    });
         });
 
         modelBuilder.Entity<Pet>(entity =>
@@ -297,9 +257,7 @@ public partial class SchoolContext : DbContext
 
         modelBuilder.Entity<ViewDepartmentCourseCount>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToView("View_DepartmentCourseCount");
+
 
             entity.Property(e => e.DepartmentId).HasColumnName("DepartmentID");
             entity.Property(e => e.DepartmentName).HasMaxLength(50);
