@@ -41,9 +41,6 @@ namespace MSSQL_CodeFirst_School
                     person = _dbPeople.FirstOrDefault();
                 }
 
-               
-                
-
 
                 Console.WriteLine(person.FirstName);
                     foreach (var pet in person.Pets)
