@@ -8,11 +8,11 @@ public class UseInverseProperty
     public void UseInverseProperty1()
     {
         using var context = new AnimalContext();
-        var       persons = context.Persons.Include(p => p.AnimalsLoved).Include(p => p.AnimalsHated);
+        var       persons = context.Persons;
 
         Console.ForegroundColor = ConsoleColor.Magenta;
 
-        foreach (var person in persons)
+        foreach (var person in persons.Include(person => person.AnimalsHated).Include(person => person.AnimalsLoved))
         {
             Console.WriteLine(person);
             foreach (var animalLoved in person.AnimalsLoved)
@@ -21,6 +21,24 @@ public class UseInverseProperty
                 Console.WriteLine(animalLoved);
             }
 
+            NewFunction(person);
+        }
+
+        Console.ForegroundColor = ConsoleColor.White;
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        void NewFunction(Person person)
+        {
             foreach (var animalHated in person.AnimalsHated)
             {
                 Console.Write("\t");
@@ -28,7 +46,5 @@ public class UseInverseProperty
                 Console.WriteLine(animalHated);
             }
         }
-
-        Console.ForegroundColor = ConsoleColor.White;
     }
 }

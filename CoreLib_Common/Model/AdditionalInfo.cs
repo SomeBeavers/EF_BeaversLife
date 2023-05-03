@@ -9,6 +9,7 @@ public class AdditionalInfo
     public string? Comment { get; set; }
 
     public virtual ICollection<Club>? Clubs { get; set; }
+    public virtual ICollection<Grade>? Grades { get; set; }
 
     public AdditionalInfoDetailed AdditionalInfoDetailed { get; set; }
 

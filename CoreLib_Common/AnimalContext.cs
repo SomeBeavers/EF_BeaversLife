@@ -62,7 +62,7 @@ public class AnimalContext : DbContext
 
             // TODO: uncomment to use lazy loading.
             //optionsBuilder.UseLazyLoadingProxies();
-            //optionsBuilder.UseLazyLoadingProxies(true);
+            optionsBuilder.UseLazyLoadingProxies(true);
 
             //optionsBuilder.UseLazyLoadingProxies(false);
         }

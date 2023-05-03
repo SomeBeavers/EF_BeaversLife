@@ -2,33 +2,32 @@
 
 public class DbContextVariations
 {
+    private AnimalContext context;
+    private AnimalContext context2;
+
     /// <summary>
     ///     Include is needed.
     /// </summary>
     /// <param name="context"><see cref="DbContext"/> as parameter.</param>
-    public void DbContextAsParameter(AnimalContext context)
+    public void DbContextAsParameter()
     {
-        var       persons = context.Persons;
+        var db = context.AdditionalInfos;
+        var db2 = context2.AdditionalInfos;
 
         Console.ForegroundColor = ConsoleColor.Magenta;
-
-        foreach (var person in persons)
+        
+        foreach (var info in db)
         {
-            Console.WriteLine(person);
-            foreach (var animalLoved in person.AnimalsLoved)
-            {
-                Console.Write("\t");
-                Console.WriteLine(animalLoved);
-            }
-
-            foreach (var animalHated in person.AnimalsHated)
-            {
-                Console.Write("\t");
-                Console.Write("\t");
-                Console.WriteLine(animalHated);
-            }
+            var b = info.Grades;
+            var a = info.Clubs;
         }
 
+
         Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    private AnimalContext GetAnimalContext(AnimalContext context)
+    {
+        return context;
     }
 }
