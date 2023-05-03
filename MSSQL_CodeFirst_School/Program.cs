@@ -11,7 +11,9 @@ namespace MSSQL_CodeFirst_School
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static DbSet<Person> _dbPeople;
+
+        static void Main(string[] args, bool a)
         {
             using (var db = new Model1())
             {
@@ -25,12 +27,25 @@ namespace MSSQL_CodeFirst_School
                 //    Console.WriteLine(item.StudentGrades);
                 //}
 
-                IQueryable<Person> persons = db.People;
-                 persons = db.People.MyExtension();
+                _dbPeople = db.People;
+                IQueryable<Person> persons = _dbPeople;
 
-                foreach (var person in persons)
+                Person person;
+
+                if (a)
                 {
-                    Console.WriteLine(person.FirstName);
+                    person = _dbPeople.MyExtension().FirstOrDefault();
+                }
+                else
+                {
+                    person = _dbPeople.FirstOrDefault();
+                }
+
+               
+                
+
+
+                Console.WriteLine(person.FirstName);
                     foreach (var pet in person.Pets)
                     {
                         
@@ -38,7 +53,7 @@ namespace MSSQL_CodeFirst_School
                     }
 
                     OnlinePerson personOnlinePerson = person.OnlinePerson;
-                }
+                
 
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
@@ -48,7 +63,7 @@ namespace MSSQL_CodeFirst_School
 
     public static class Extensions
     {
-        public static IQueryable<Person> MyExtension(this IQueryable<Person> persons)
+        public static IQueryable<Person> MyExtension(this DbSet<Person> persons)
         {
             return persons.Include(p => p.Pets);
         }

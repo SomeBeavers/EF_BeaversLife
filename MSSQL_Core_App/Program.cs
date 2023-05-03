@@ -1,9 +1,11 @@
-﻿using MSSQL_Core_App;
+﻿using MSSQL_Core_App.Models;
 
-await using var db = new BloggingContext();
+using var db = new SchoolContext();
 
-await foreach (var blog in db.Blogs)
+await foreach (Comment dbComment in db.Comments)
 {
-    var blogPosts = blog.Posts;
-    Console.WriteLine($"Blog: {blog.Url}");
-}   
+    foreach (CommentTag tag in dbComment.CommentTags)
+    {
+        
+    }
+}
