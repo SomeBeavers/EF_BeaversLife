@@ -6,7 +6,6 @@ namespace EF_BeaversLife.Queries;
 public class DeleteMe1
 {
     private readonly AnimalContext _context;
-    private List<Beaver> _contextBeavers;
 
     /// <summary>
     /// </summary>
@@ -153,49 +152,6 @@ public class DeleteMe1
         Console.WriteLine(blah.FirstOrDefault().Test.Name);
 
         Console.ForegroundColor = ConsoleColor.White;
-    }
-
-    public void DeleteMe6()
-    {
-        using var context = new AnimalContext();
-
-        DbSet<Beaver> contextBeavers = context.Beavers;
-        
-        Beaver first;
-        switch (contextBeavers.Any())
-        {
-            case false:
-                {
-                    if (!contextBeavers.Any())
-                    {
-                        first = contextBeavers.
-                        first.Clubs = null;
-                    }
-
-                    break;
-                }
-            default:
-                {
-                    first = contextBeavers.First();
-                    var beaver = first;
-                    Console.WriteLine(beaver);
-                    break;
-                }
-        }
-
-        List<Club> clubs = first.Clubs;
-
-
-        Console.ForegroundColor = ConsoleColor.Magenta;
-
-        Console.WriteLine(beavers);
-
-        Console.ForegroundColor = ConsoleColor.White;
-    }
-
-    private static DbSet<Beaver> ContextBeavers(DbSet<Beaver> contextBeavers)
-    {
-        return contextBeavers;
     }
 }
 

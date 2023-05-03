@@ -9,11 +9,13 @@ using MSSQL_CodeFirst_School.Models;
 
 namespace MSSQL_CodeFirst_School
 {
-    internal class Program
+    public class Program
     {
         private static DbSet<Person> _dbPeople;
 
-        static void Main(string[] args, bool a)
+        public static void Main() { }
+
+        public static void Main(string[] args, bool a)
         {
             using (var db = new Model1())
             {
