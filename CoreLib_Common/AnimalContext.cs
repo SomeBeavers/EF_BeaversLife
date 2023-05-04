@@ -54,7 +54,7 @@ public class AnimalContext : DbContext
             //    "Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;" +
             //    "MultipleActiveResultSets=True");
             optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
-                                        "MultipleActiveResultSets=True"
+                                        "MultipleActiveResultSets=True;TrustServerCertificate=True"
             , b => b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
             );
             optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
