@@ -1,5 +1,10 @@
 ﻿namespace CoreLib_Common;
 
+public static class Functions
+{
+    public static bool Function() => throw new InvalidOperationException();
+}
+
 public class AnimalContext : DbContext
 {
     #region Tables
@@ -70,8 +75,12 @@ public class AnimalContext : DbContext
 
     #endregion
 
+    public static string DbFunction() => throw new InvalidOperationException();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasDbFunction(() => DbFunction());
+        modelBuilder.HasDbFunction(() => Functions.Function());
         // TPT
         modelBuilder.Entity<Animal>().ToTable("Animals");
         modelBuilder.Entity<Beaver>().ToTable("Beavers");
