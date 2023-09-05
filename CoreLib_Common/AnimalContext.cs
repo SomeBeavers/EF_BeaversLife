@@ -1,4 +1,6 @@
-﻿namespace CoreLib_Common;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace CoreLib_Common;
 
 public static class Functions
 {
@@ -75,12 +77,14 @@ public class AnimalContext : DbContext
 
     #endregion
 
-    public static string DbFunction() => throw new InvalidOperationException();
+    [DbFunction]
+    public static int Foo(int n) => throw new InvalidOperationException();
+    public static string DbFunction(int i) => throw new InvalidOperationException();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDbFunction(() => DbFunction());
-        modelBuilder.HasDbFunction(() => Functions.Function());
+        modelBuilder.HasDbFunction(typeof(AnimalContext).GetMethod("DbFunction")!);
+        //modelBuilder.HasDbFunction(() => Functions.Function());
         // TPT
         modelBuilder.Entity<Animal>().ToTable("Animals");
         modelBuilder.Entity<Beaver>().ToTable("Beavers");
