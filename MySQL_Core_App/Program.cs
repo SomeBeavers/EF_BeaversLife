@@ -9,6 +9,7 @@ namespace MySQL_Core_App
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Green;
+            TestCanonicalMethods.Method();
             ExecuteQueries();
 
             Console.ForegroundColor = ConsoleColor.White;
