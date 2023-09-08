@@ -135,7 +135,7 @@ public class TestCanonicalMethods
         var animals = context.Animals;
 
         //supported
-
+        
         Console.WriteLine(animals.Where(a => a.Name.EndsWith("f")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.StartsWith("f").Equals(true)).ToList());
         Console.WriteLine(animals.Where(a => a.Name.CompareTo("dsfds").Equals("df")).ToList());
@@ -149,18 +149,25 @@ public class TestCanonicalMethods
         Console.WriteLine(animals.Where(a => a.Name.ToLower().Equals("df")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.ToUpper().Equals("df")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.Substring(4).Equals("df")).ToList());
+        Console.WriteLine(animals.Where(a => a.Name.Substring(4,5).Equals("df")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.Trim().Equals("df")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.TrimEnd().Equals("df")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.TrimStart().Equals("df")).ToList());
         Console.WriteLine(animals.Where(a => String.Compare(a.Name, a.Age.ToString()) == 0).ToList());
-        Console.WriteLine(animals.Where(a => a.Name.Replace("t", "r").Equals("")).ToList());
+        Console.WriteLine(animals.Where(a => a.Name.Replace("y", "y").Equals("")).ToList());
+        Console.WriteLine(animals.Where(a => String.Concat('t', 'd').Equals("")).ToList());
 
 
         //not supported
-
+        Console.WriteLine(animals.Where(a => a.Name.EndsWith('f')).ToList());
+        Console.WriteLine(animals.Where(a => a.Name.StartsWith('f').Equals(true)).ToList());
+        Console.WriteLine(animals.Where(a => a.Name.Contains('y')).ToList());
+        Console.WriteLine(animals.Where(a => a.Name.Contains("s", StringComparison.CurrentCulture)).ToList());
+        Console.WriteLine(animals.Where(a => a.Name.Contains('f', StringComparison.CurrentCulture)).ToList());
         Console.WriteLine(animals.Where(a => String.Compare(a.Name, 5, a.Age.ToString(), 4, 5, true) == 0).ToList());
         Console.WriteLine(animals.Where(a => String.Compare(a.Name, "r", StringComparison.Ordinal) > 3).ToList());
         Console.WriteLine(animals.Where(a => String.Concat(a.Name).Equals("")).ToList());
+        Console.WriteLine(animals.Where(a => String.Concat(a.Age.ToString(), 'd').Equals("")).ToList());
         Console.WriteLine(animals.Where(a => String.Copy(a.Name).Equals("")).ToList());
         Console.WriteLine(animals.Where(a => String.Format(a.Name).Equals("")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.IndexOf("4", StringComparison.Ordinal).Equals("")).ToList());
@@ -168,11 +175,13 @@ public class TestCanonicalMethods
         Console.WriteLine(animals.Where(a => String.Intern(a.Name).Equals("")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.IsNormalized() == true).ToList());
         Console.WriteLine(animals.Where(a => a.Name.LastIndexOf('t').Equals(4)).ToList());
+        Console.WriteLine(animals.Where(a => a.Name.LastIndexOf("t").Equals(4)).ToList());
         Console.WriteLine(animals.Where(a => a.Name.Normalize().Equals("")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.Replace('f', 't').Equals("")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.Replace("t", "r", true, CultureInfo.CurrentCulture).Equals("")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.Remove(5, 5).Equals("")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.Remove(4).Equals("")).ToList());
+        Console.WriteLine(animals.Where(a => a.Name.ToLower(CultureInfo.CurrentCulture).Equals("df")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.ToLowerInvariant().Equals("df")).ToList());
         Console.WriteLine(animals.Where(a => a.Name.ToUpperInvariant().Equals("df")).ToList());
 
