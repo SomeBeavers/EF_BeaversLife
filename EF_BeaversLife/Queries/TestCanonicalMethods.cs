@@ -14,33 +14,29 @@ public class TestCanonicalMethods
     [DbFunction("CustomDBFunction")]
     public static bool CustomDbFunction(int number) => throw new InvalidOperationException();
 
-    public static bool NormalFunction() => throw new InvalidOperationException();
+    public static bool NormalFunction(int number) => throw new InvalidOperationException();
 
-    public static void DbFunctionsUse()
+    public static void Method()
     {
         using var context = new AnimalContext();
         var animals = context.Animals;
 
-        var entities = animals.Where(entity => AnimalContext.Foo(entity.Age) > 10).ToList();
-
-        foreach (var animal in animals.Where(a => a.Clubs.Select((club, i) => club.Id >= i).Any() ||
-                                                  CustomDbFunction(a.Age) ||
-                                                  Functions.Function() ||
-                                                  AnimalContext.DbFunction(a.Age).Length > 0 ||
-                                                  NormalFunction() ||
-                                                  EF.Functions.IsNumeric("")))
-        {
-            Console.WriteLine(animal.Name);
-        }
-
-        foreach (var animal in animals.Include(animal => animal.Food))
+        foreach (var animal in animals.Where(
+                     a => a.Clubs.Select((club, i) => club.Id >= i).Any() ||
+                          CustomDbFunction(a.Age) ||
+                          AnimalContext.DbFunction(a.Age).Length > 0 ||
+                          NormalFunction(a.Age)))
         {
             Console.WriteLine(EF.Functions.IsNumeric(animal.Name));
         }
-        
     }
 
-    public static void Method()
+
+
+
+
+
+    public static void Method2()
     {
         using var context = new AnimalContext();
         var animals = context.Animals;
@@ -96,37 +92,37 @@ public class TestCanonicalMethods
         Console.WriteLine(animals.Where(a => Math.Round(Convert.ToDouble(a.Age)) > 10).ToList());
         Console.WriteLine(animals.Where(a => Math.Ceiling(Convert.ToDecimal(a.Age)) > 10).ToList());
         Console.WriteLine(animals.Where(a => Math.Floor(Convert.ToDecimal(a.Age)) > 10).ToList());
-        
+
 
 
         //not supported
 
-        //Console.WriteLine(animals.Where(a => a.Age == 1 && Math.Acosh(a.Age) > 10).ToList()); //-
-        //Console.WriteLine(animals.Where(a => a.Age == 1 && Math.Asinh(a.Age) > 10).ToList()); //-
-        //Console.WriteLine(animals.Where(a => a.Age == 1 && Math.Atanh(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.BigMul(a.Age, a.Id) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.BitDecrement(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.BitIncrement(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.Cbrt(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.Clamp(a.Age, Double.MinValue, Double.MaxValue) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.CopySign(a.Age, Double.MinValue) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.Cosh(a.Age) > 10).ToList());
-        //int t;
-        //Console.WriteLine(animals.Where(a => Math.DivRem(a.Age, a.Id, out t) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.FusedMultiplyAdd(a.Age, a.Id, a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.IEEERemainder(a.Age, a.Id) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.ILogB(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.Log2(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.Max(a.Age, a.Id) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.MaxMagnitude(a.Age, a.Id) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.Min(a.Age, a.Id) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.MinMagnitude(a.Age, a.Id) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.ReciprocalEstimate(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.ReciprocalSqrtEstimate(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.ScaleB(a.Age, a.Id) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.Sinh(a.Age) > 10).ToList());
-        //Console.WriteLine(animals.Where(a => Math.SinCos(a.Age).Cos > 5).ToList());
-        //Console.WriteLine(animals.Where(a => Math.Tanh(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => a.Age == 1 && Math.Acosh(a.Age) > 10).ToList()); //-
+        Console.WriteLine(animals.Where(a => a.Age == 1 && Math.Asinh(a.Age) > 10).ToList()); //-
+        Console.WriteLine(animals.Where(a => a.Age == 1 && Math.Atanh(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.BigMul(a.Age, a.Id) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.BitDecrement(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.BitIncrement(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.Cbrt(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.Clamp(a.Age, Double.MinValue, Double.MaxValue) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.CopySign(a.Age, Double.MinValue) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.Cosh(a.Age) > 10).ToList());
+        int t;
+        Console.WriteLine(animals.Where(a => Math.DivRem(a.Age, a.Id, out t) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.FusedMultiplyAdd(a.Age, a.Id, a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.IEEERemainder(a.Age, a.Id) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.ILogB(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.Log2(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.Max(a.Age, a.Id) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.MaxMagnitude(a.Age, a.Id) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.Min(a.Age, a.Id) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.MinMagnitude(a.Age, a.Id) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.ReciprocalEstimate(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.ReciprocalSqrtEstimate(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.ScaleB(a.Age, a.Id) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.Sinh(a.Age) > 10).ToList());
+        Console.WriteLine(animals.Where(a => Math.SinCos(a.Age).Cos > 5).ToList());
+        Console.WriteLine(animals.Where(a => Math.Tanh(a.Age) > 10).ToList());
     }
 
     public static void StringMethods()
