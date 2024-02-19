@@ -42,10 +42,10 @@ class AddElf
 
         Console.ForegroundColor = ConsoleColor.White;
 
-        deer.Elves = new List<Elf>()
-        {
+        deer.Elves =
+        [
             new Elf{ Name = "Legolas" }
-        };
+        ];
         context.SaveChanges();
 
 

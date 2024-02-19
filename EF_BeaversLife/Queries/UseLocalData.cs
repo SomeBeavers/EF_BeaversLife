@@ -11,8 +11,8 @@ public class UseLocalData
         context.Persons.Add(new Person
         {
             Name         = "BeaverPerson",
-            AnimalsLoved = new List<Animal> { context.Crows.First() },
-            AnimalsHated = new List<Animal> { context.Deers.First() }
+            AnimalsLoved = [context.Crows.First()],
+            AnimalsHated = [context.Deers.First()]
         });
 
         Console.ForegroundColor = ConsoleColor.Magenta;
@@ -46,8 +46,8 @@ public class UseLocalData
         context.Persons.Add(new Person
         {
             Name         = "BeaverPerson",
-            AnimalsLoved = new List<Animal> { context.Crows.First() },
-            AnimalsHated = new List<Animal> { context.Deers.First() }
+            AnimalsLoved = [context.Crows.First()],
+            AnimalsHated = [context.Deers.First()]
         });
 
         Console.ForegroundColor = ConsoleColor.Magenta;

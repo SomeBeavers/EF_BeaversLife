@@ -236,9 +236,9 @@ internal class Program
         var club1 = new Club
         {
             Title = "TreesWorshipers",
-            Animals = new List<Animal> { beaver1, beaver2, beaver3, beaver4, beaver5, crow4 },
-            Locations = new List<Location>
-            {
+            Animals = [beaver1, beaver2, beaver3, beaver4, beaver5, crow4],
+            Locations =
+            [
                 new()
                 {
                     Address            = "North America",
@@ -254,40 +254,40 @@ internal class Program
                     Address            = "Russia",
                     GeographicLocation = DbGeography.FromText("POINT(1 1)")
                 }
-            }
+            ]
         };
 
         var club2 = new Club
         {
             Title = "CornLovers",
-            Animals = new List<Animal> { crow1, crow2, crow3, crow4, crow5 },
-            Locations = new List<Location>
-            {
+            Animals = [crow1, crow2, crow3, crow4, crow5],
+            Locations =
+            [
                 new()
                 {
                     Address            = "Westeros",
                     GeographicLocation = DbGeography.FromText("POINT(00 00)")
                 }
-            }
+            ]
         };
 
         var club3 = new Club
         {
             Title = "ChristmasTeam",
-            Animals = new List<Animal>
-            {
+            Animals =
+            [
                 beaver1, beaver2, beaver3, beaver4, beaver5,
                 crow1, crow2, crow3, crow4, crow5,
                 deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8
-            },
-            Locations = new List<Location>
-            {
+            ],
+            Locations =
+            [
                 new()
                 {
                     Address            = "North Pole",
                     GeographicLocation = DbGeography.FromText("POINT(9 9)")
                 }
-            }
+            ]
         };
 
         context.Clubs.Add(club1);
@@ -505,28 +505,28 @@ internal class Program
         {
             Title = "Builder",
             Salary = 1,
-            Animals = new List<Animal>
-            {
+            Animals =
+            [
                 beaver1, beaver2, beaver3, beaver4, beaver5
-            }
+            ]
         };
         var job2 = new Job
         {
             Title = "Messenger",
             Salary = 10,
-            Animals = new List<Animal>
-            {
+            Animals =
+            [
                 crow1, crow2, crow3, crow4
-            }
+            ]
         };
         var job3 = new Job
         {
             Title = "Delivery",
             Salary = 100,
-            Animals = new List<Animal>
-            {
+            Animals =
+            [
                 deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8
-            }
+            ]
         };
 
         context.Jobs.Add(job1);
@@ -672,15 +672,15 @@ internal class Program
         var drawback1 = new Drawback
         {
             Title = "Crowdy",
-            Foods = new List<Food>
-            {
+            Foods =
+            [
                 food1, food2, food3, food4, /*food5,*/ food6, food7, food8, food9, food10, food11, food12, food13,
                 food14, food15, food16, food17, food18
-            },
-            Clubs = new List<Club>
-            {
+            ],
+            Clubs =
+            [
                 club1, club2, club3
-            },
+            ],
             Consequence = new Consequence
             {
                 Name = "Nervousness"
@@ -694,15 +694,15 @@ internal class Program
         var drawback2 = new Drawback
         {
             Title = "Windy",
-            Foods = new List<Food>
-            {
+            Foods =
+            [
                 food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, food11, food12, food13,
                 food14, food15, food16, food17, food18
-            },
-            Clubs = new List<Club>
-            {
+            ],
+            Clubs =
+            [
                 club1, club2, club3
-            },
+            ],
             Consequence = new Consequence
             {
                 Name = "Teleportation to Land of Oz"
@@ -716,15 +716,15 @@ internal class Program
         var drawback3 = new Drawback
         {
             Title = "Soggy",
-            Foods = new List<Food>
-            {
+            Foods =
+            [
                 food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, food11, food12, food13,
                 food14, food15, food16, food17, food18
-            },
-            Clubs = new List<Club>
-            {
+            ],
+            Clubs =
+            [
                 club1, club2, club3
-            },
+            ],
             Consequence = new Consequence
             {
                 Name = "Wet clothes"
@@ -738,15 +738,15 @@ internal class Program
         var drawback4 = new Drawback
         {
             Title = "Hardy",
-            Foods = new List<Food>
-            {
+            Foods =
+            [
                 food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, food11, food12, food13,
                 food14, food15, food16, food17, food18
-            },
-            Clubs = new List<Club>
-            {
+            ],
+            Clubs =
+            [
                 club1, club2, club3
-            },
+            ],
             Consequence = new Consequence
             {
                 Name = "Sadness"
@@ -820,8 +820,8 @@ internal class Program
         var person1 = new Person
         {
             Name = "BeaverPerson",
-            AnimalsLoved = new List<Animal> { beaver1, beaver2, beaver3, beaver4, beaver5 },
-            AnimalsHated = new List<Animal> { deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8 }
+            AnimalsLoved = [beaver1, beaver2, beaver3, beaver4, beaver5],
+            AnimalsHated = [deer1, deer2, deer3, deer4, deer5, deer6, deer7, deer8]
         };
 
         context.Persons.Add(person1);
