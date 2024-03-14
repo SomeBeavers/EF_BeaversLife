@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "EF_BeaversLife.sln",
+    "projects": [
+      "EF_BeaversLife_Framework\\MSSQL_Framework_App.csproj",
+      "FrameworkLib_Common\\MSSQL_Framework_Lib.csproj"
+    ]
+  }
+}
