@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute.cs" />
     <Compile Include="Models\AdditionalInfo.cs" />
     <Compile Include="Models\AdditionalTable.cs" />
     <Compile Include="Models\Comment.cs" />

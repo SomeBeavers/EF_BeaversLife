@@ -23,6 +23,9 @@ internal class Program
 
     private static void ExecuteQueries()
     {
+        TestCanonicalMethods.StringMethods();
+        TestCanonicalMethods.MathMethods();
+        TestCanonicalMethods.Method();
         //new UseSplitQuery().UseSplitQuery1();
         new DeleteMe1().DeleteMe5();
         //new UseSplitQuery().UseSplitQuery2();
