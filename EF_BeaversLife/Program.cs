@@ -8,7 +8,7 @@ internal class Program
 {
     private static async Task Main()
     {
-        SeedDb();
+        //SeedDb();
 
         Console.ForegroundColor = ConsoleColor.Green;
         ExecuteQueries();
@@ -23,11 +23,11 @@ internal class Program
 
     private static void ExecuteQueries()
     {
-        TestCanonicalMethods.StringMethods();
-        TestCanonicalMethods.MathMethods();
-        TestCanonicalMethods.Method();
+        //TestCanonicalMethods.StringMethods();
+        //TestCanonicalMethods.MathMethods();
+        //TestCanonicalMethods.Method();
         //new UseSplitQuery().UseSplitQuery1();
-        new DeleteMe1().DeleteMe5();
+        new UseInclude().UseFilteredInclude1();
         //new UseSplitQuery().UseSplitQuery2();
 
         //new UseTVF().UseTVF1();
