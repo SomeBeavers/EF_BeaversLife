@@ -6,6 +6,10 @@ public class Animal
 {
     private Food? _food = null!;
 
+    public Animal()
+    {
+    }
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
@@ -25,6 +29,7 @@ public class Animal
     [BackingField(nameof(_food))]
     public virtual Food? Food
     {
+        
         get => _food;
         set => _food = value;
     }
@@ -33,9 +38,16 @@ public class Animal
     public IPAddress IpAddress { get; set; } = null!;
 
     //public JsonDocument? Passport { get; set; }
+    
+    
+    
 
     public override string ToString()
     {
+        // These is not correct, but it is just for testing purposes
+        
+        // lshamsutdinova аввтор этого дела, но тут 
+        
         return $"Animal : Id = {Id} Name = {Name} IpAddress = {IpAddress}";
     }
 }
@@ -45,6 +57,7 @@ public class AnimalClub
     public int AnimalId { get; set; }
     public int ClubId   { get; set; }
 
+    
     public virtual Animal Animal { get; set; } = null!;
     public virtual Club   Club   { get; set; } = null!;
 

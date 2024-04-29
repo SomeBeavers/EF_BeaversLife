@@ -6,4 +6,5 @@
 	<s:Boolean x:Key="/Default/CodeInspection/CqrsGeneralOptions/EnableBothContextAnalysis/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/CqrsGeneralOptions/EnableCqrsValidation/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/CqrsGeneralOptions/EnabledCqrsNamingRecommendation/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/CodeInspection/CqrsGeneralOptions/WhetherToSearchCqrsByName/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/CodeInspection/CqrsGeneralOptions/WhetherToSearchCqrsByName/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/InstalledDictionaries/InstalledDictionaries/=Dictionaries_005CDictionary_002Dru_005Cindex_002Edic/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
