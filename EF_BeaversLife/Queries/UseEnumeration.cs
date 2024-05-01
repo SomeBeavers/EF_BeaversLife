@@ -76,6 +76,8 @@ public class UseEnumeration
     /// </summary>
     public void DbCallDueToToList3()
     {
+        
+        
         using var context   = new AnimalContext();
         using var context2  = new AnimalContext();
         var       drawbacks = context2.Drawbacks.ToList();
@@ -89,7 +91,9 @@ public class UseEnumeration
         Console.WriteLine(jobs[0].JobDrawbacks?.FirstOrDefault()?.Drawback);
 
         Console.ForegroundColor = ConsoleColor.White;
+        
     }
+
 
     /// <summary>
     ///     Include is needed.

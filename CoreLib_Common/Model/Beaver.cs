@@ -3,7 +3,14 @@
 //[Table("Beaver")]
 public class Beaver : Animal
 {
-    public FluffinessEnum Fluffiness { get; set; }
+    private FluffinessEnum _fluffiness;
+
+    public FluffinessEnum Fluffiness
+    {
+        get => _fluffiness;
+        set => _fluffiness = value;
+    }
+
     public int            Size       { get; set; }
 
     public override string ToString()
