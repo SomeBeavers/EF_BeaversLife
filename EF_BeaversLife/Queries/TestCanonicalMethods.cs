@@ -184,5 +184,9 @@ public class TestCanonicalMethods
 
     }
 
+    public static void StringMethodsWithParameters()
+    {
+        throw new NotImplementedException();
+    }
 }
 

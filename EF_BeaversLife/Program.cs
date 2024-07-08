@@ -23,6 +23,7 @@ internal class Program
 
     private static void ExecuteQueries()
     {
+        TestCanonicalMethods.StringMethodsWithParameters();
         //TestCanonicalMethods.StringMethods();
         //TestCanonicalMethods.MathMethods();
         //TestCanonicalMethods.Method();
