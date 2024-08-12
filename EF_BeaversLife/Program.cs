@@ -11,8 +11,8 @@ internal class Program
         //SeedDb();
 
         Console.ForegroundColor = ConsoleColor.Green;
-        ExecuteQueries();
-        //await ExecuteQueriesAsync();
+        //ExecuteQueries();
+        await ExecuteQueriesAsync();
 
         Console.ForegroundColor = ConsoleColor.White;
 
@@ -73,6 +73,7 @@ internal class Program
 
     private static async Task ExecuteQueriesAsync()
     {
+        await new UseRawSql().GetBeaver(CancellationToken.None);
         //await new UseLinq().UseLinq1();
     }
 

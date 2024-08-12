@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CoreLib_Common.DTOs;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreLib_Common;
 
@@ -27,6 +29,7 @@ public class AnimalContext : DbContext
     public DbSet<Elf>                    Elves                  { get; set; } = null!;
     public DbSet<AdditionalInfo>         AdditionalInfos        { get; set; } = null!;
     public DbSet<AdditionalInfoDetailed> AdditionalInfoDetailed { get; set; } = null!;
+    public DbSet<BeaverDto> BeaversDto { get; set; }
 
     public DbSet<MapToQuery> MapToQuery { get; set; } = null!;
 
@@ -59,8 +62,10 @@ public class AnimalContext : DbContext
             // TODO: fix connection property
             //optionsBuilder.UseSqlServer(
             //    "Server=unit-1019\\sqlexpress;Database=BeaversLife;Trusted_Connection=True;" +
-            //    "MultipleActiveResultSets=True");
-            optionsBuilder.UseSqlServer("Server=localhost;Database=BeaversLife;Trusted_Connection=True;" +
+            //    "MultipleActiveResultSets=True;TrustServerCertificate=True"
+            //    , b => b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
+            
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=BeaversLife;Trusted_Connection=True;" +
                                         "MultipleActiveResultSets=True;TrustServerCertificate=True"
             , b => b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
             );
@@ -83,6 +88,8 @@ public class AnimalContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<BeaverDto>().HasNoKey(); // Configure as keyless entity
+
         modelBuilder.HasDbFunction(typeof(AnimalContext).GetMethod("DbFunction")!);
         //modelBuilder.HasDbFunction(() => Functions.Function());
         // TPT
