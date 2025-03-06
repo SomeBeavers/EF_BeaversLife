@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="AnimalContext.cs" />
     <Compile Include="Model\Beaver.cs" />
-    <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\AnimalClub.cs" />
     <Compile Include="Model\AnimalLocation.cs" />
     <Compile Include="Model\Club.cs" />
