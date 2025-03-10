@@ -12,4 +12,11 @@ public class Location
     {
         return $@"Location: Address = {Address} GeographicLocation = {GeographicLocation}";
     }
+
+    public void Test() { }
+
+    public void Test2()
+    {
+        /*caret*/ Test();
+    }
 }

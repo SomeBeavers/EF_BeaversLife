@@ -1,6 +1,4 @@
-﻿using MSSQL_Core_App.UpdateDB;
-
-namespace EF_BeaversLife;
+﻿namespace EF_BeaversLife;
 
 // NOTE [for me]: use ef_method template to generate simple ef method
 // NOTE [for me]: use print_format to paste Console.Write("\t");
@@ -69,6 +67,7 @@ internal class Program
         //new EF_BeaversLife.Queries.Issues().RSRP_481645_new();
         //new UseMapToDTO().UseMapToDTO1();
         //new AddElf().ReplaceElvesCollection();
+        new AddEl
     }
 
     private static async Task ExecuteQueriesAsync()
